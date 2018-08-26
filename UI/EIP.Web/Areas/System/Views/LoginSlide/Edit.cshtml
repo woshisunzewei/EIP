@@ -1,0 +1,63 @@
+@{
+    ViewBag.Title = "µÇÂ¼»ÃµÆÆ¬±à¼­";
+    ViewBag.Require = "system-loginslide-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Core.Extensions
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@model EIP.System.Models.Entities.SystemLoginSlide
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "ÇëÌîÐ´µÇÂ¼»ÃµÆÆ¬",
+    Remark = "×¢£º´ø*ºÅµÄÎª±ØÌîÐÅÏ¢£¡"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">
+                    ±êÌâ£º
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Title, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" class="m">
+                    Í¼Æ¬£º
+                </th>
+                <td>
+                    <div style="cursor: pointer" title="µã»÷¸ü»»µÇÂ¼Ò³»ÃµÆÆ¬" id="logo">
+                       @{
+                           var src = @Model.Src.IsNullOrEmpty() ? "/Contents/images/common/photo_icon.png" : Model.Src;
+                       }
+                        <img id="Srcimghead" border="0" src="@src" onclick=" $('#Src').click(); ">
+                    </div>
+                    <input type="file" onchange=" previewImage(this, 'logo', 'Src') " style="display: none;" id="Src">
+                </td>
+            </tr>
+            <tr>
+                <th>¶³½á£º</th>
+                <td>
+                    @Html.CheckBoxFor(f => @Model.IsFreeze)
+                </td>
+            </tr>
+            <tr>
+                <th>ÅÅÐòºÅ£º</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">
+                    ±¸×¢£º
+                </th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-1024", ignore = "ignore", style = "height:40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.LoginSlideId)

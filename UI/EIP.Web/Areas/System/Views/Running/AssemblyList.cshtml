@@ -1,0 +1,25 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "全局参数配置项";
+    ViewBag.Require = "system-running-assemblylist";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <div class="tools-box">
+        <div class="tools-box-left" id="partial_button_toolbar">
+            @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+        </div>
+        <div class="tools-box-right">
+            @Html.SearchTextBox("Name", "名称")
+            <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+            <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+        </div>
+    </div>
+
+</div>

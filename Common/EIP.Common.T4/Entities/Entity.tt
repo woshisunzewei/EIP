@@ -1,0 +1,62 @@
+﻿<#@ template debug="True" hostspecific="True" #>
+<#@ assembly name="$(TargetDir)\EIP.Common.T4.dll" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\MultipleOutputHelper.ttinclude" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\SQLServer.ttinclude" #>
+<#
+    var tables = LoadTables();
+     
+    var manager = Manager.Create(Host, GenerationEnvironment);  
+
+	//遍历所有表
+	foreach(var tbl in tables){
+		if(!ExcludeTables.Contains(tbl.Name))
+		{
+			// 设置输出的文件名
+			manager.StartNewFile(tbl.ClassName.Replace("_","")+".cs");
+#>
+using System;
+using Common.Entities;
+using Common.Entities.CustomAttributes;
+namespace System.Entities
+{
+    /// <summary>
+    /// <#=tbl.Name #>表实体类
+    /// </summary>
+	[Serializable]
+	[Table(Name = "<#=tbl.ClassName#>")]
+    public class <#=tbl.ClassName.Replace("_","")#>: EntityBase
+    {
+<#
+        foreach(Column col in tbl.Columns)
+        {
+			if (tbl.ClassName == col.CleanName)
+			{
+				col.CleanName += "X";
+			}
+#>       
+        /// <summary>
+        /// <#=Replace(col.Description) #>
+        /// </summary>		
+		<#if(col.IsPK){#>
+[Id(Name = "<#= col.CleanName #>", Strategy = GenerationType.Sequence)]
+        <#}#><#{#>public <#=col.SysType #><#=CheckNullable(col)#> <#=col.CleanName #>{ get; set; }
+<#}#>
+<#}#>		
+		#region 分页参数
+        /// <summary>
+        /// 记录总数
+        /// </summary>
+		[Column(IsInsert = false,IsUpdate = false,IsSelect = false,IsSort = false)]
+        public int RecordCount { get; set; }
+        #endregion
+   } 
+}
+<# 
+			// 输出文件结束
+			manager.EndBlock();
+		} //if(!ExcludeTables.Contains(tbl.Name)) 判断结束
+       
+	}// end foreach
+	// 执行编译，生成文件
+    manager.Process(true);  
+#> 

@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "选择所有岗位";
+    ViewBag.Require = "common-usercontrol-chosen-post-all";
+    Layout = "~/Views/Shared/_LayoutPageBaseEdit.cshtml";
+}
+@model IList<EIP.System.Models.Dtos.Identity.SystemPostOutput>
+<div class="note-prompt" style="margin: 1px;">
+    温馨提示：选中复选框即可授予相应权限，取消选中则回收相应权限。
+</div>
+<div id="layout" class="layoutdiv" style="top: 42px; border-bottom: solid 1px #cccccc; margin-bottom: 12px">
+    <div id="listcenter" class="ui-layout-west" style="border-style: none">
+            <div class="tools-box">
+                <div class="tools-box-left">
+                    <a href="javascript:void(0);" onclick=" loadTree(); return false; "><span class="l-icon-reload">刷新组织机构</span></a>
+                </div>
+            </div>
+            <ul id="tree" class="ztree" style="height: 208px; padding: 5px;"></ul>
+</div>
+    <div id="uiNorth" class="ui-layout-center">
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" selectAll(); return false; "><span class="l-icon-ui-check-box">全选</span></a>
+            </div>
+            <div class="tools-box-right">
+                <input name="txtKeywords" class="txtInput" id="txtKeywords" type="text" placeholder="姓名模糊查询">
+                <input class="btnSearch" id="btnSearch" type="button" onclick=" search(); " value="搜 索">
+            </div>
+        </div>
+        @*显示所有岗位信息*@
+        <div style="height: 208px; padding: 5px;" class="ScrollBar">
+            <ul class="sys_spec_text">
+                @{
+                    foreach (var m in Model)
+                    {
+                        string className = "";
+                        <li title="@m.Name" searchname="@m.Name.ToLower()" name="@m.OrganizationId" class="@className">
+                            <a id="@m.PostId">
+                                @m.Name
+                            </a>
+                            <i></i>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/lib/ueditor/dialogs/internal.js"></script>

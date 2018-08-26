@@ -1,0 +1,92 @@
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using EIP.Common.Core.Attributes;
+using EIP.Common.Core.Extensions;
+using EIP.Common.Entities.Dtos;
+using EIP.Common.Web;
+using EIP.{{NameSpace}}.Business.Config;
+using EIP.{{NameSpace}}.Models.Entities;
+
+namespace EIP.Web.Areas.{{NameSpace}}.Controllers
+{
+    /// <summary>
+    /// {{Description}}控制器
+    /// </summary>
+    public class {{ControllerName}}Controller : BaseController
+    {
+        #region 构造函数
+        private readonly I{{ClassName}}Logic _{{ClassNameLower}}Logic;
+
+        public {{ControllerName}}Controller(I{{ClassName}}Logic {{ClassNameLower}}Logic)
+        {
+            _{{ClassNameLower}}Logic = {{ClassNameLower}}Logic;
+        }
+        #endregion
+
+        #region 视图
+        /// <summary>
+        ///     列表
+        /// </summary>
+        /// <returns></returns>
+        [CreateBy("孙泽伟")]
+        [Description("应用系统-{{Description}}-列表")]
+        public ViewResultBase List()
+        {
+            return View();
+        }
+
+        /// <summary>
+        ///     编辑
+        /// </summary>
+        /// <returns></returns>
+        [CreateBy("孙泽伟")]
+        [Description("应用系统-{{Description}}-编辑")]
+        public async Task<ViewResultBase> Edit(NullableIdInput input)
+        {
+            {{ClassName}} model = new {{ClassName}}();
+            if (!input.Id.IsNullOrEmptyGuid())
+            {
+                model = await _{{ClassNameLower}}Logic.GetByIdAsync(input.Id);
+            }
+            return View(model);
+        }
+        #endregion
+
+        #region 方法
+
+        /// <summary>
+        ///     获取{{Description}}
+        /// </summary>
+        /// <returns></returns>
+        [CreateBy("孙泽伟")]
+        [Description("应用系统-{{Description}}-方法-获取{{Description}}")]
+        public async Task<JsonResult> GetList()
+        {
+            return Json(await _{{ClassNameLower}}Logic.GetAllEnumerableAsync());
+        }
+
+        /// <summary>
+        ///     保存{{Description}}
+        /// </summary>
+        /// <returns></returns>
+        [CreateBy("孙泽伟")]
+        [Description("应用系统-{{Description}}-方法-保存{{Description}}")]
+        public async Task<JsonResult> Save({{ClassName}} model)
+        {
+            return Json(await _{{ClassNameLower}}Logic.Save(model));
+        }
+
+        /// <summary>
+        ///     删除{{Description}}
+        /// </summary>
+        /// <returns></returns>
+        [CreateBy("孙泽伟")]
+        [Description("应用系统-{{Description}}-方法-删除{{Description}}")]
+        public async Task<JsonResult> Delete(IdInput input)
+        {
+            return Json(await _{{ClassNameLower}}Logic.DeleteAsync(input.Id));
+        }
+        #endregion
+    }
+}

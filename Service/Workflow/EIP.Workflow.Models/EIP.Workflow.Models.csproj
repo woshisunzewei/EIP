@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{960ED4F8-1FF7-4623-BAB1-5825C886C8D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.Workflow.Models</RootNamespace>
+    <AssemblyName>EIP.Workflow.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dtos\Engine\WorkflowEngineActivityOrLineMarkedInput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineDealWithTaskOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineHaveDoTaskOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineHaveSendProcessOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineMonitoringProcessOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineNeedDoTaskOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineNextActivitysDoubleWay.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineNextLinesDoubleWay.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineProcessTaskStatusInput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineReceiveUserOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineRunnerInput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineStartTaskInput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineTrackForMapOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineTrackForTableOutput.cs" />
+    <Compile Include="Dtos\Engine\WorkflowEngineTrackOutput.cs" />
+    <Compile Include="Dtos\WorkflowSaveProcessInput.cs" />
+    <Compile Include="Entities\ResourceWorkflow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceWorkflow.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ResourceWorkflowEngine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceWorkflowEngine.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\WorkflowArchives.cs" />
+    <Compile Include="Entities\WorkflowButton.cs" />
+    <Compile Include="Entities\WorkflowComment.cs" />
+    <Compile Include="Entities\WorkflowDelegation.cs" />
+    <Compile Include="Entities\WorkflowForm.cs" />
+    <Compile Include="Entities\WorkflowProcess.cs" />
+    <Compile Include="Entities\WorkflowProcessActivity.cs" />
+    <Compile Include="Entities\WorkflowProcessAreas.cs" />
+    <Compile Include="Entities\WorkflowProcessInstance.cs" />
+    <Compile Include="Entities\WorkflowProcessInstanceActivity.cs" />
+    <Compile Include="Entities\WorkflowProcessInstanceLine.cs" />
+    <Compile Include="Entities\WorkflowProcessInstanceTask.cs" />
+    <Compile Include="Entities\WorkflowProcessLine.cs" />
+    <Compile Include="Entities\WorkflowSeal.cs" />
+    <Compile Include="Enums\EnumActivity.cs" />
+    <Compile Include="Enums\EnumCommentType.cs" />
+    <Compile Include="Enums\EnumLine.cs" />
+    <Compile Include="Enums\EnumProcess.cs" />
+    <Compile Include="Enums\EnumTask.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\ResourceWorkflow.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceWorkflow.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ResourceWorkflowEngine.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceWorkflowEngine.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Core\EIP.Common.Core.csproj">
+      <Project>{1cd7655d-aeaf-496d-a3ac-fff0b6423e60}</Project>
+      <Name>EIP.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Entities\EIP.Common.Entities.csproj">
+      <Project>{e11f0521-b8dd-4821-be16-8630ff147878}</Project>
+      <Name>EIP.Common.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

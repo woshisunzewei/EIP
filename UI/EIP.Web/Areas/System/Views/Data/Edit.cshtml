@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "数据权限规则维护";
+    ViewBag.Require = "system-data-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@section Head
+{
+
+    <style type="text/css">
+        #fieldvalues {
+            background: #f1f1f1;
+            border: 1px solid #d3d3d3;
+            margin: 4px;
+            padding: 2px;
+        }
+
+        .fieldvaluelink {
+            display: block;
+            float: left;
+            margin: 2px;
+            margin-right: 4px;
+            text-decoration: underline;
+        }
+
+        .fieldvaluelink:hover {
+            color: #FF0505;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .l-filter-value .valtxt { width: 200px; }
+
+        table.l-filter-group select, table.l-filter-group .valtxt { margin-top: 2px; }
+    </style>
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@model EIP.System.Models.Dtos.Permission.SystemDataDoubleWayDto
+@Html.EditTopRemark(new EditTopRemarkInput
+{
+    Title = "数据权限规则信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+        <tr>
+            <th style="width: 100px" class="m">显示名称：</th>
+            <td>
+                @Html.TextBoxFor(f => f.Name, new {datatype = "*1-256"})
+            </td>
+            <th style="width: 100px" class="m">归属菜单：</th>
+            <td>
+                @Html.TextBoxFor(f => f.MenuName, new {@readonly = true, datatype = "*1-256", @class = "text1", style = "width:134px;border-width:1px 0px 1px 1px;"})
+                <input type="button" title="" id="chosen_menu" class="button_search" style="cursor: pointer; margin: 0; margin-left: -5px" value="选择"/>
+            </td>
+        </tr>
+        <tr>
+            <th>选项：</th>
+            <td>
+                @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "IsFreeze",
+                    Title = "冻结",
+                    IsCheck = @Model.IsFreeze
+                })
+            </td>
+            <th>序号：</th>
+            <td>
+                @Html.TextBox("OrderNo", @Model.OrderNo, new {datatype = "n", ignore = "ignore"})
+            </td>
+        </tr>
+        <tr>
+            <th valign="top">规则SQL定义：</th>
+            <td colspan="3">
+                <script id="editor" name="editor" type="text/plain" style="height: 150px; width: 658px;">
+                    </script>
+                <div id="fieldvalues" style="clear: both; float: left; text-align: left;">
+                    <a class="fieldvaluelink all" onclick=" javascript: void (0); " val="{所有}" title="{所有}">{所有}</a>
+                    <a class="fieldvaluelink current_user_id" onclick=" javascript: void (0); " val="{当前用户}" title="{当前用户}">{当前用户}</a>
+                    <a class="fieldvaluelink current_organization_id" onclick=" javascript: void (0); " val="{所在组织}" title="{所在组织}">{所在组织}</a>
+                    <a class="fieldvaluelink current_organization_code" onclick=" javascript: void (0); " val="{所在组织代码}" title="{所在组织代码}">{所在组织}</a>
+                    <a class="fieldvaluelink chosen_organization_id" onclick=" javascript: void (0); " val="{指定组织}" title="{指定组织}">{指定组织}</a>
+                    <a class="fieldvaluelink current_post_id" onclick=" javascript: void (0); " val="{所在岗位}" title="{所在岗位}">{所在岗位}</a>
+                    <a class="fieldvaluelink chosen_post_id" onclick=" javascript: void (0); " val="{指定岗位}" title="{指定岗位}">{指定岗位}</a>
+                    <a class="fieldvaluelink current_group_id" onclick=" javascript: void (0); " val="{所在工作组}" title="{所在工作组}">{所在工作组}</a>
+                    <a class="fieldvaluelink chosen_group_id" onclick=" javascript: void (0); " val="{指定工作组}" title="{指定工作组}">{指定工作组}</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th valign="top">备注：</th>
+            <td colspan="3">
+                @Html.TextArea("Remark", @Model.Remark, new {style = "width:98%;height:50px"})
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    @Html.HiddenFor(f => f.DataId)
+    @Html.HiddenFor(f => f.MenuId)
+    @Html.HiddenFor(f => f.RuleHtml)
+</div>
+<script src="~/Scripts/lib/ueditor/ueditor.config.js"></script>
+<script src="/Scripts/lib/ueditor/ueditor.all.min.js"></script>
+<script src="/Scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="/Scripts/lib/ueditor/plugins/plugins.js"></script>
+<script src="/Scripts/lib/ueditor/plugins/compule.js"></script>

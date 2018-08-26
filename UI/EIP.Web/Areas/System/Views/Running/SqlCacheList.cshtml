@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Sql缓存";
+    ViewBag.Require = "system-running-sqlcachelist";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="uiCenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                    <a href="javascript:void(0);" onclick=" getGridData();return false; "><span class="l-icon-reload">刷新</span></a>
+                    <span class="toolbarsplit">&nbsp;</span>
+                </div>
+                <div class="tools-box-right">
+                    主键名：<input type="hidden" value="cn" />
+                    <input name="Key" type="text" class="filter" placeholder="请输入主键名查询" />
+                    <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                    <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="uiSouth" class="ui-layout-south" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <form id="form">
+        <div id="detailDiv" style="overflow: auto">
+            <table class="edit-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            表名：
+                        </th>
+                        <td>
+                            <label id="TableName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            类名：
+                        </th>
+                        <td>
+                            <label id="ClassName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th valign="top">
+                            属性：
+                        </th>
+                        <td id="Properties"></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+>

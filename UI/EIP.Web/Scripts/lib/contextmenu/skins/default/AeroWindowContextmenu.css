@@ -1,0 +1,76 @@
+.WincontextMenu {
+    -webkit-user-select: none;
+    background: url(contextmenu/menu_bg.gif) repeat-y;
+    display: none;
+    font-family: tahoma, arial, sans-serif;
+    font-size: 11px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    min-width: 100px;
+    width: 100px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f3f7;
+    border: 2px solid #c1dcfc;
+    border-radius: 5px;
+}
+
+    .WincontextMenu ul {
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+    }
+
+    .WincontextMenu li {
+        margin: 0px;
+        padding: 1px;
+        background-repeat: no-repeat;
+    }
+
+    .WincontextMenu a.cmDisable {
+        opacity: 0.3;
+        -moz-opacity: 0.3;
+        filter: alpha(opacity=30);
+    }
+
+    .WincontextMenu li a {
+        position: relative;
+        display: block;
+        padding: 3px 3px 3px 28px;
+        color: ButtonText;
+        text-decoration: none;
+        margin: 1px;
+    }
+
+        .WincontextMenu li a img {
+            position: absolute;
+            border: 0px;
+            left: 3px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .WincontextMenu li a:hover {
+            /*border: 1px solid #fffbff;*/
+            border: 1px solid #09F;
+            outline: 1px solid #b5d3ff;
+            border-radius: 2px;
+            margin: 0;
+            background: -moz-linear-gradient(top, rgba(239,239,255,0.5) 0%, rgba(223,223,255,0.5) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,239,255,0.5)), color-stop(100%,rgba(223,223,255,0.5))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, rgba(239,239,255,0.5) 0%,rgba(223,223,255,0.5) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, rgba(239,239,255,0.5) 0%,rgba(223,223,255,0.5) 100%); /* Opera11.10+ */
+            background: -ms-linear-gradient(top, rgba(239,239,255,0.5) 0%,rgba(223,223,255,0.5) 100%); /* IE10+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80efefff', endColorstr='#80dfdfff',GradientType=0 ); /* IE6-9 */
+            background: linear-gradient(top, rgba(239,239,255,0.5) 0%,rgba(223,223,255,0.5) 100%); /* W3C */
+            cursor:pointer;
+        }
+
+    .WincontextMenu .m-split {
+        height: 6px;
+        background: url(contextmenu/m_splitLine.gif) center repeat-x;
+        font-size: 0px;
+        margin: 0 2px;
+    }

@@ -1,0 +1,40 @@
+@charset "gb2312";
+
+
+#top_top{ height:31px;}
+.logBox{position:fixed;_position:absolute;top:0;_top:expression(documentElement.scrollTop+0+'px');left:0; background:#f9f9f9; height:31px;width:100%;box-shadow:0 1px 1px #ddd;z-index:9999;}
+.siderBar01{float:right;width:280px;}
+
+.topmenu li,.topmenu strong.icon_arr,.topmenu li.weibo strong,.topmenu li.weixin strong,.topmenu .focusht,.topmenu .wxht{background:url(images/common/topmenu.gif) no-repeat;}
+
+.topmenu{margin-top:5px;line-height:22px;}
+.topmenu li{float:left;position:relative;background-position:right top;}
+.topmenu strong{display:block;position:relative;height:25px;padding:0 10px;font-weight:normal;cursor:default;z-index:20;}
+.topmenu .jq_hidebox{display:none;position:absolute;left:0;top:25px; padding:10px; border:1px solid #dfdfdf;box-shadow:0 1px 2px #ccc;background:#fff;z-index:100;border-top: 0px}
+.topmenu li.hover strong{border:1px solid #dfdfdf;border-bottom:none;background-color:#fff;}
+.topmenu li.hover{margin:-1px -1px 0 -1px;}
+.topmenu li.htphone{_width:83px;}
+.topmenu li.htphone .jq_hidebox{width:71px;padding:1px 5px 0;}
+.topmenu .htphonebox{padding:5px;border-top:1px solid #f3f3f3;}
+.topmenu strong.icon_arr{padding-right:23px;background-position:right -23px;}
+.topmenu li.hover strong.icon_arr{background-position:right -46px;color:#333;}
+.topmenu li.weibo{_width:65px;}
+.topmenu li.weibo strong{padding-left:29px;background-position:0 -75px;}
+.topmenu li.weibo .jq_hidebox{width:250px;}
+.topmenu li.weixin{_width:66px;}
+.topmenu li.weixin strong{padding-left:30px;background-position:0 -46px;}
+.topmenu li.webnav{_width:83px;}
+.topmenu li.webnav .jq_hidebox{width:180px;left:-119px;}
+.topmenu li.qxpp{background:none;}
+.topmenu li.qxpp .jq_hidebox{width:160px;left:-99px;}
+.jq_hidebox a{color:#666}
+
+.topmenu li.nojq{margin:0;background:none;}
+.topmenu .focusht{display:block;width:155px;height:50px;background-position:0 -106px;text-indent:-100em;overflow:hidden;}
+.topmenu .wxht{height:72px;width:80px;padding-left:80px;background-position:0 -177px;}
+.topmenu .wxht span{display:inline-block;padding-top:3px;color:#666;}
+.aSty01{margin:0;}
+.aSty01 dt{margin-top:6px;padding:5px 0 2px 0;border-top:1px solid #e5e5e5;}
+.aSty01 dd{margin:0;}
+.aSty01 dd a{color:#666;}
+.aSty01 dd a:hover{color:#c00;}

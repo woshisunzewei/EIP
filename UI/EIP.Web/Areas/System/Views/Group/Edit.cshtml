@@ -1,0 +1,73 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "组信息编辑";
+    ViewBag.Require = "system-group-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.System.Models.Entities.SystemGroup
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写组信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th class="m" style="width: 100px">归属机构：</th>
+                <td>
+                    @Html.TextBox("OrganizationName", null, new { @readonly = true, @class = "text1", datatype = "*1-64", style = @"width: 414px; border-width: 1px 0px 1px 1px; " })
+                    @Html.Hidden("OrganizationId", @Model.OrganizationId)
+                    <input type="button" title="" id="chosen_org" plugin="organization-all" class="button_search" value="选择" />
+                </td>
+            </tr>
+            @*<tr>
+                    <th style="width: 100px">代码：</th>
+                    <td>
+                        @Html.TextBoxFor(f => @Model.Code, new { datatype = "*1-64", ajaxurl = "/System/Group/CheckGroupCode?id=" + @Model.GroupId, ignore = "ignore" })
+                    </td>
+                </tr>*@
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-256" })
+                </td>
+            </tr>
+            <tr>
+                <th>状态：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof(EnumGroupState)),
+                    Name = "State",
+                    NeedDefault = true,
+                    SelectedVal = @Model.State
+                })
+                </td>
+            </tr>
+            <tr>
+                <th>冻结：</th>
+                <td>
+                    @Html.CheckBox("IsFreeze", @Model.IsFreeze)
+                </td>
+            </tr>
+            <tr>
+                <th class="m">序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-512", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => @Model.CreateTime)
+@Html.HiddenFor(f => @Model.GroupId)

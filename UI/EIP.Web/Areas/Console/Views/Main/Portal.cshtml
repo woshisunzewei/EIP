@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Portal</title>
+    <link href="~/Contents/common.css" rel="stylesheet" />
+    <link href="~/Scripts/lib/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Contents/images/icons.css" rel="stylesheet" />
+    <link href="~/Scripts/lib/easyui/portal/portal.css" rel="stylesheet" />
+    <style type="text/css">
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 20px 10px;
+            background: #eee;
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .t-list {
+            padding: 5px;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/lib/easyui/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/lib/easyui/portal/jquery.portal.js"></script>
+    <script>
+        window.onresize = function () {
+            $('#portal').portal({
+                border: false,
+                fit: true
+            });
+        }
+        $(function () {
+            $('#portal').portal({
+                border: false,
+                fit: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="portal" class="easyui-portal" data-options="fit: true, border: false">
+        <div style="width: 33%;">
+            <div data-options="title: '待办事项', height: 300, collapsible: true">
+
+            </div>
+            <div data-options="title: '快捷菜单', height: 300, collapsible: true">
+
+            </div>
+        </div>
+        <div style="width: 34%;">
+            <div data-options="title: '通知公共', height: 300, iniframe: true, href: '', collapsible: true"></div>
+            <div data-options="title: '更新日志', height: 300, iniframe: true, href: '', collapsible: true"></div>
+        </div>
+        <div style="width: 33%;">
+            <div data-options="title: '关于本项目', height: 300, collapsible: true" style="padding: 10px;">
+
+            </div>
+            <div id="donatePanel" data-options="title: '开源动力捐赠', height: 300, collapsible: true, tools: [{ iconCls: 'l-icon-arrow-refresh', handler: function () { window.donate.reload(); } }]" style="padding: 10px;">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

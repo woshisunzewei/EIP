@@ -1,0 +1,56 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "字段管理";
+    ViewBag.Require = "system-field-list";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" reloadTreeAndGrid(); return false; ">
+                <span class="l-icon-reload">刷新</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" arrowin(); return false; ">
+                <span id="arrowin" class="l-icon-arrow-out">展开</span>
+            </a>
+        </div>
+    </div>
+    @*工具条*@
+    <ul id="tree" class="ztree"></ul>
+</div>
+
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="listcenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                </div>
+                <div class="tools-box-right">
+                    @Html.SearchTextBox("Label", "显示名称")
+                    @Html.SearchTextBox("field.Name", "字段名称")
+                    @Html.SearchTextBox("menu.Name", "归属")
+                    <input type="hidden" value="eq" />
+                    <input class="filter" id="MenuId" name="field.MenuId" type="hidden" value="" />
+                    <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                    <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+                </div>
+            </div>
+        </div>
+
+        <div id="uiSouth" class="ui-layout-south" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+            <div title="使用角色" icon="role" id="tabs-role" style="padding: 3px"></div>
+            <div title="使用组" icon="group" id="tabs-group" style="padding: 3px"></div>
+            <div title="使用岗位" icon="sitemap-application-blue" id="tabs-post" style="padding: 3px"></div>
+            <div title="使用人员" icon="user" id="tabs-user" style="padding: 3px"></div>
+            <div title="使用组织机构" icon="blue-document-tree" id="tabs-organization" style="padding: 3px"></div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_PartialSystemPrivilegeDetail")

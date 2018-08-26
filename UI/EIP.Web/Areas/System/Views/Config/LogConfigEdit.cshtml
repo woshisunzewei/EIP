@@ -1,0 +1,58 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "配置项编辑";
+    ViewBag.Require = "system-config-logconfigedit";
+    Layout = "~/Views/Shared/_LayoutPageBaseEdit.cshtml";
+}
+<div class="editor-wrapper">
+    <form id="form" name="form">
+        <div class="edit-main">
+            <div class="clearfix main-container">
+                <div class="edit-content" id="edit-content">
+                    <fieldset>
+                        <legend>日志配置</legend>
+                        <table class="complex-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 130px" class="m">文本文件地址：</th>
+                                    <td>
+                                        <input id="414d3131-7a2b-4568-8f72-816fd704d0e4" type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Excel导出缓存地址：</th>
+                                    <td>
+                                        <input id="3844fc35-68e9-4b1d-ae9d-bd5f3d0299ad" type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th valign="top">Log4net值：</th>
+                                    <td>
+                                        <textarea id="27332a9f-aae6-41fd-8432-eb212ab1de03" style="height:300px"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix btn form-submit-btn-container">
+            <a title="保存" id="btnSubmit" class="form-submit-button green">
+                <span class="icon-botton l-icon-disk"></span>保存
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    .complex-table th, .complex-table td {
+        border-left: 1px solid #cacaca;
+    }
+
+    .l-tab-content-item {
+        overflow: auto;
+    }
+</style>

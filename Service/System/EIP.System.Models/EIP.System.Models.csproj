@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30CBFB3F-A887-4D22-B9DB-46C1D45DCBBD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.System.Models</RootNamespace>
+    <AssemblyName>EIP.System.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Dtos\GlobalGetDictionaryInput.cs" />
+    <Compile Include="Dtos\Config\SystemAppOutput.cs" />
+    <Compile Include="Dtos\Config\SystemCodeGenerationInput.cs" />
+    <Compile Include="Dtos\Config\SystemCodeGenerationOutput.cs" />
+    <Compile Include="Dtos\Config\SystemCodeGenerationPcEditDoubleWay.cs" />
+    <Compile Include="Dtos\Config\SystemConfigDoubleWay.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseBackUpDoubleWay.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseBackUpOutput.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseColumnDoubleWay.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseFkColumnOutput.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseFkTableOuptut.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseSpaceOutput.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseSpOutput.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseSpParamOutput.cs" />
+    <Compile Include="Dtos\Config\SystemDataBaseTableDoubleWay.cs" />
+    <Compile Include="Dtos\Config\SystemDictionaryEditInput.cs" />
+    <Compile Include="Dtos\Config\SystemDictionaryEditOutput.cs" />
+    <Compile Include="Dtos\Identity\ChangePasswordInput.cs" />
+    <Compile Include="Dtos\Identity\ResetPasswordInput.cs" />
+    <Compile Include="Dtos\Identity\SystemGroupOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemOrganizationInput.cs" />
+    <Compile Include="Dtos\Identity\SystemOrganizationOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemPostOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemRoleOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemRoleUserOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemUserDetailOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemUserOutput.cs" />
+    <Compile Include="Dtos\Identity\SystemUserPagingInput.cs" />
+    <Compile Include="Dtos\Identity\SystemUserRoleOutput.cs" />
+    <Compile Include="Dtos\Identity\UserLoginInput.cs" />
+    <Compile Include="Dtos\Permission\GetAllFunctionsInput.cs" />
+    <Compile Include="Dtos\Permission\GetMenuHavePermissionByPrivilegeMasterValueInput.cs" />
+    <Compile Include="Dtos\Permission\GetPermissionByPrivilegeMasterValueInput.cs" />
+    <Compile Include="Dtos\Permission\GetSystemPermissionsMvcRoteInput.cs" />
+    <Compile Include="Dtos\Permission\SavePermissionInput.cs" />
+    <Compile Include="Dtos\Permission\SystemDataOutput.cs" />
+    <Compile Include="Dtos\Permission\SystemDataRuleJsonDoubleWay.cs" />
+    <Compile Include="Dtos\Permission\SystemFieldOutput.cs" />
+    <Compile Include="Dtos\Permission\SystemFieldPagingInput.cs" />
+    <Compile Include="Dtos\Permission\SystemMenuButtonEditInput.cs" />
+    <Compile Include="Dtos\Permission\SystemMenuButtonFunctionOutput.cs" />
+    <Compile Include="Dtos\Permission\SystemMenuButtonOutput.cs" />
+    <Compile Include="Dtos\Permission\SystemMenuEditInput.cs" />
+    <Compile Include="Dtos\Permission\SystemMenuEditOutput.cs" />
+    <Compile Include="Dtos\Permission\SystemPermissionSqlInput.cs" />
+    <Compile Include="Dtos\Permission\SystemPrivilegeDetailInput.cs" />
+    <Compile Include="Dtos\Permission\SystemPrivilegeDetailOutput.cs" />
+    <Compile Include="Entities\GanttDependencie.cs" />
+    <Compile Include="Entities\GanttTask.cs" />
+    <Compile Include="Entities\ResourceDictionary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceDictionary.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ResourceSystem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceSystem.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SystemApp.cs" />
+    <Compile Include="Entities\SystemArticle.cs" />
+    <Compile Include="Entities\SystemCalendar.cs" />
+    <Compile Include="Entities\SystemConfig.cs" />
+    <Compile Include="Entities\SystemData.cs" />
+    <Compile Include="Entities\SystemDataBase.cs" />
+    <Compile Include="Entities\SystemDataBaseBackUp.cs" />
+    <Compile Include="Entities\SystemDataLog.cs" />
+    <Compile Include="Entities\SystemDictionary.cs" />
+    <Compile Include="Entities\SystemDistrict.cs" />
+    <Compile Include="Entities\SystemDownload.cs" />
+    <Compile Include="Entities\SystemEmailAccount.cs" />
+    <Compile Include="Entities\SystemExceptionLog.cs" />
+    <Compile Include="Entities\SystemField.cs" />
+    <Compile Include="Entities\SystemFunction.cs" />
+    <Compile Include="Entities\SystemGroup.cs" />
+    <Compile Include="Entities\SystemLoginLog.cs" />
+    <Compile Include="Entities\SystemLoginSlide.cs" />
+    <Compile Include="Entities\SystemMenu.cs" />
+    <Compile Include="Entities\SystemMenuButton.cs" />
+    <Compile Include="Entities\SystemMenuButtonFunction.cs" />
+    <Compile Include="Entities\SystemOperationLog.cs" />
+    <Compile Include="Entities\SystemOrganization.cs" />
+    <Compile Include="Entities\SystemPermission.cs" />
+    <Compile Include="Entities\SystemPermissionUser.cs" />
+    <Compile Include="Entities\SystemPost.cs" />
+    <Compile Include="Entities\SystemRole.cs" />
+    <Compile Include="Entities\SystemSqlLog.cs" />
+    <Compile Include="Entities\SystemUserInfo.cs" />
+    <Compile Include="Enums\EnumControlType.cs" />
+    <Compile Include="Enums\EnumControlValidator.cs" />
+    <Compile Include="Enums\EnumDataBaseFiledType.cs" />
+    <Compile Include="Enums\EnumDistrictLevelType.cs" />
+    <Compile Include="Enums\EnumEmailAccountType.cs" />
+    <Compile Include="Enums\EnumField.cs" />
+    <Compile Include="Enums\EnumFrom.cs" />
+    <Compile Include="Enums\EnumGroupBelongTo.cs" />
+    <Compile Include="Enums\EnumGroupState.cs" />
+    <Compile Include="Enums\EnumIsFreeze.cs" />
+    <Compile Include="Enums\EnumMenuOpenType.cs" />
+    <Compile Include="Enums\EnumMenuType.cs" />
+    <Compile Include="Enums\EnumOrgNature.cs" />
+    <Compile Include="Enums\EnumOrgState.cs" />
+    <Compile Include="Enums\EnumPermissionRoteConvert.cs" />
+    <Compile Include="Enums\EnumPostState.cs" />
+    <Compile Include="Enums\EnumPrivilegeAccess.cs" />
+    <Compile Include="Enums\EnumPrivilegeMaster.cs" />
+    <Compile Include="Enums\EnumRoleState.cs" />
+    <Compile Include="Enums\EnumUserState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dtos\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Core\EIP.Common.Core.csproj">
+      <Project>{1cd7655d-aeaf-496d-a3ac-fff0b6423e60}</Project>
+      <Name>EIP.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Entities\EIP.Common.Entities.csproj">
+      <Project>{e11f0521-b8dd-4821-be16-8630ff147878}</Project>
+      <Name>EIP.Common.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Entities\" />
+    <Folder Include="Common\Enums\" />
+    <Folder Include="Dtos\Log\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\ResourceDictionary.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceDictionary.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entities\ResourceSystem.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceSystem.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

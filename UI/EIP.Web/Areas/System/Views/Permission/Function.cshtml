@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "FunctionPermission";
+    ViewBag.Require = "system-permission-function";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@section Head
+{
+    <style>
+        input[type="checkbox"] {
+            border: 1px solid #C6C6C6;
+            outline: none;
+        }
+         .button {
+             border-radius: 0px;
+         }
+
+        .mainbody {
+            padding: 0px;
+        }
+    </style>    
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@model IList<EIP.System.Models.Entities.SystemMenuButton>
+
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请选择权限",
+    Remark = "温馨提示：选中复选框即可授予相应权限，取消选中则回收相应权。<span style='color: red'>点击左侧菜单查看模块按钮信息</span>"
+})
+<div id="layout" class="layoutdiv" style="top: 34px;">
+    <div id="functionContainer" class="ui-layout-center" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; ">
+        @*工具条*@
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" selectall(); return false; "><span class="l-icon-ui-check-boxes-series">全选/反选</span></a>
+            </div>
+        </div>
+        @*所有功能性按钮*@
+        <div style="height: 383px;" class="ScrollBar">
+            @Html.MessageBox(new MessageBoxInput()
+            {
+                HtmlAttributes = " width='335'",
+                MessageBoxType = EnumMessageBoxType.info,
+                Msg = "点击左侧菜单查看模块按钮信息"
+            })
+            <ul id="AccessButton" class="sys_spec_text" style="display: none">
+                @{
+                    foreach (var m in Model)
+                    {
+                        string icon = m.Icon + ".png";
+                        <li title="@m.Name" modelid="@m.MenuId" style="display: none" class="@m.Remark">
+                            <a id="@m.MenuButtonId">
+                                <img src="/Contents/images/icons/@icon">@m.Name
+                            </a><i></i>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+
+    <div id="uiWest" class="ui-layout-west" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; position: absolute; margin: 0px; left: 2px; right: auto; top: 2px; bottom: 2px; height: 517px; z-index: 0; width: 198px; display: block; visibility: visible;">
+        @*工具条*@
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" arrowin(); return false; "><span id="arrowin" class="l-icon-arrow-out">展开</span></a>
+            </div>
+        </div>
+        @*工具条*@
+        <ul id="functionTree" class="ztree" style="height: 383px; width: 197px; "></ul>
+    </div>
+</div>

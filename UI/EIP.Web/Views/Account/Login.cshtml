@@ -1,0 +1,91 @@
+﻿@using EIP.Common.Core.Config
+@using EIP.Common.Core.Utils
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@GlobalParams.Get("loginTitle")</title>
+    @{
+        string path = UrlUtil.UrlConvertor();
+    }
+    <link href="@path/Contents/login.css" rel="stylesheet" />
+    <script src="@path/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <script src="@path/Scripts/app/solution/account/login.js"></script>
+    <script src="@path/Scripts/resource/language_zh.js"></script>
+</head>
+<body>
+    @*头部*@
+    <div id="header">
+        <div class="content">
+            <div class="announce">
+                @Html.Raw(GlobalParams.Get("loginTip"))
+            </div>
+        </div>
+        <div id="logo">
+            <img src="@GlobalParams.Get("loginlogo")" title="" style="margin-left: 50px" />
+        </div>
+    </div>
+    @*头部*@
+
+    @*主体*@
+    <div id="main">
+        @*背景滚动*@
+        <div id="funBoxBg">
+            <div id="funBox">
+                <div id="flashBg" style="background-attachment: scroll; background-position: 0% 0%; background-repeat: repeat no-repeat;">
+                    <div id="flashLine">
+                        <div id="flash"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*背景滚动*@
+
+        @*登录窗口*@
+        <div id="login" style="left: 820px;">
+            <h1 style="text-align: center">@GlobalParams.Get("loginTitle")</h1>
+            @* <div style="color: red; text-align: center;font-size: 16px">登录用户名/密码均为:admin</div>*@
+            <div id="modLoginWrap" class="mod-qiuser-pop">
+                <div class="login">
+                    <form method="post" class="bd" name="frmLogin" id="loginForm">
+                        <div class="form-message"></div>
+                        <!-- 用户名 -->
+                        <div class="item">
+                            <label class="name" for="userCode">帐&nbsp;&nbsp; 号：</label>
+                            <input id="userCode" class="ipt ipt-t" type="text" name="userCode" value="admin" />
+                        </div>
+                        <!-- 密码 -->
+                        <div class="item">
+                            <label class="name" for="userPwd">密&nbsp;&nbsp; 码：</label>
+                            <input id="userPwd" class="ipt ipt-g" type="password" name="userPwd" value="admin" />
+                        </div>
+                        <!-- 验证码 -->
+                        <div class="item">
+                            <label class="name">验证码：</label>
+                            <img id="validateCode" title="点击刷新" src="" width="75" height="30" style="cursor: pointer; display: inline; float: left; margin-right: 5px;">
+                            <input id="verify" name="verify" class="ipt ipt-y f_l" type="text" style="display: inline; margin-right: 5px;" />
+                        </div>
+                        <div class="item">
+
+                            <input type="checkbox" id="remember" class="remember" name="remember"/>
+                            <label class="remember_label" for="remember">记住密码</label>
+                        </div>
+                        <!-- 操作 -->
+                        <div class="item submit">
+                            <input type="button" class="btn btn-submit" value="登录" id="btnSubmit" />
+                            <input type="reset" class="btn btn-submit" value="重置" id="btnClear">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @*登录窗口*@
+    </div>
+    @*主体*@
+
+    @*底部说明信息*@
+    <div id="footer">
+        @Html.Raw(GlobalParams.Get("loginBottomDescription"))
+    </div>
+</body>
+</html>

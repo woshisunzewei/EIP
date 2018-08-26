@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "字段信息维护";
+    ViewBag.Require = "system-field-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+
+@model EIP.System.Models.Dtos.Permission.SystemFieldOutput
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写字段信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px">显示名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => f.Label, new { datatype = "*1-32", ignore = "ignore" })
+                </td>
+                <th style="width: 100px" class="m">字段名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => f.Name, new { datatype = "*1-256", ignore = "ignore" })
+                </td>
+            </tr>
+
+            <tr>
+                <th>排序名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => f.Index, new { datatype = "*1-256", ignore = "ignore" })
+                </td>
+                <th>宽度：</th>
+                <td>
+                    @Html.TextBoxFor(f => f.Width, new { datatype = "n", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>归属菜单：</th>
+                <td colspan="3">
+                    @Html.TextBoxFor(f => f.MenuName, new { @readonly = true, datatype = "*1-256", @class = "text1", style = @"width: 386px; border-width: 1px 0px 1px 1px; " })
+                    <input type="button" title="" id="chosen_menu" class="button_search" style="margin: 0; cursor: pointer;margin-left: -5px" value="选择" />
+                </td>
+            </tr>
+
+            <tr>
+                <th>排序方式：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput()
+                    {
+                        EnumType = (typeof(EnumFieldSortType)),
+                        Id = "Sorttype",
+                        SelectedVal = @Model.Sorttype,
+                        NeedDefault = true,
+                        CompareType = EnumCompareType.Text
+                    })
+                </td>
+                <th>对齐方式：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput()
+                {
+                    EnumType = (typeof(EnumFieldAlign)),
+                    Id = "Align",
+                    SelectedVal = @Model.Align,
+                    NeedDefault = true,
+                    CompareType = EnumCompareType.Text
+                })
+                </td>
+            </tr>
+            <tr>
+                <th>选项：</th>
+                <td colspan="3">
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "Hidden",
+                            Title = "显示",
+                            IsCheck = @Model.Hidden
+                        })
+                    </span>
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "CanbeDerive",
+                            Title = "导出/打印",
+                            IsCheck = @Model.CanbeDerive
+                        })
+                    </span>
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "Fixed",
+                            Title = "宽度固定",
+                            IsCheck = @Model.Fixed
+                        })
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th>格式化：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof(EnumFieldFormatter)),
+                    Id = "Formatter",
+                    SelectedVal = @Model.Formatter,
+                    NeedDefault = true,
+                    CompareType = EnumCompareType.Text
+                })
+                </td>
+                <th>序号：</th>
+                <td>
+                    @Html.TextBox("OrderNo", @Model.OrderNo, new { datatype = "n", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>Sql字段：</th>
+                <td colspan="3">
+                    @Html.TextAreaFor(f => f.SqlField, new { datatype = "*1-1024", ignore = "*", style = "width: 455px; height: 40px" })
+                </td>
+            </tr>
+            <tr>
+                <th>备注：</th>
+                <td colspan="3">
+                    @Html.TextArea("Remark", @Model.Remark, new { style = "width: 455px; height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @Html.HiddenFor(f => f.FieldId)
+    @Html.HiddenFor(f => f.MenuId)
+</div>

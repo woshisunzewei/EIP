@@ -1,0 +1,486 @@
+﻿/* -------------------------------------------------------
+文件名 : common.css
+作者   : 孙泽伟
+描述   : 公共样式
+更新   ：
+------------------------------------------------------------*/
+* {
+    font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu;
+    font-size: 9pt;
+}
+
+body {
+    margin: 0 auto;
+    border: 1px;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    border: 0;
+}
+
+/*超链接*/
+a {
+    color: #185697;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+.clear {
+    clear: both;
+    font-size: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+/*主页面*/
+.mainbody {
+    padding: 2px;
+}
+
+/**按钮图标**/
+.icon-botton {
+    height: 22px;
+    width: 16px;
+    float: left;
+    padding-right: 3px;
+}
+
+
+/*按钮组分割线*/
+.toolbarsplit {
+    background: rgba(0, 0, 0, 0) url("images/common/split.gif") no-repeat scroll left center;
+    vertical-align: middle;
+    width: 2px;
+}
+
+.tools-box {
+    display: table;
+    width: 100%;
+    height: 27px;
+    border-top: 0;
+    background: #ebf5fc none repeat scroll 0 0;
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.tools-box-left {
+    float: left;
+    margin-right: 10px;
+    padding-left: 2px;
+}
+
+    .tools-box-left a {
+        border: 1px dashed transparent;
+        color: #000000;
+        cursor: default;
+        display: inline-block;
+        height: 23px;
+        line-height: 23px;
+        padding: 0 2px;
+        text-decoration: none;
+        margin-top: 1px;
+    }
+
+        .tools-box-left a:hover {
+            background: #daeef9 none repeat scroll 0 0;
+            border: 1px solid #69a9c6;
+            color: #000000;
+            cursor: pointer;
+            display: inline-block;
+            height: 23px;
+            line-height: 23px;
+            padding: 0 2px;
+            text-decoration: none;
+        }
+
+        .tools-box-left a span {
+            background-position: left center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            display: inline-block;
+            padding-left: 20px;
+            padding-right: 2px;
+        }
+
+.tools-box-right {
+    float: right;
+    display: table-cell;
+    margin-right: 10px;
+    padding-top: 2px;
+}
+ .tools-box-right input {
+        margin-left: 1px;
+    }
+
+        .tools-box-right input .search {
+            margin-left: 1px;
+        }
+
+    .tools-box-right select {
+        height: 22px;
+    }
+
+    .tools-box-right label {
+        padding-left: 6px;
+    }
+
+/*查询内容区块*/
+.select_box {
+    /*padding: 0 10px;
+    _padding: 3px 10px 0 10px;*/
+    line-height: 30px;
+    overflow: hidden;
+}
+
+    .select_box input {
+        margin-left: 1px;
+    }
+
+        .select_box input .search {
+            margin-left: 1px;
+        }
+
+    .select_box select {
+        height: 24px;
+    }
+
+    .select_box label {
+        padding-left: 6px;
+    }
+
+.tools_separator {
+    float: left;
+    display: block;
+    height: 37px;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #fff;
+}
+
+/*点击查询按钮*/
+.btnSearch {
+    padding: 0 5px;
+    margin-left: 4px;
+    /* margin-bottom: 2px; */
+    height: 22px;
+    color: #707070;
+    border: 1px solid #D7D7D7;
+    background: url(images/common/btn_bg.gif) repeat-x;
+    cursor: pointer;
+    /*vertical-align: middle;*/
+    overflow: hidden;
+}
+
+    .btnSearch:hover {
+        background-position: 0 -22px;
+    }
+
+.layoutdiv {
+    bottom: 0;
+    left: 0;
+    margin-right: 0;
+    overflow: auto;
+    padding-top: 1px;
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    z-index: 1;
+}
+
+/*jqgrid列表*/
+.ui-jqgrid tr.jqgrow td {
+    font-weight: normal;
+    overflow: hidden;
+    white-space: pre;
+    height: 32px;
+    padding: 0 6px 0 6px;
+    border-bottom-width: 1px;
+    border-bottom-color: inherit;
+    border-bottom-style: solid;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+/*手型*/
+.ui-jqgrid tr.jqgrow td {
+    cursor: pointer;
+}
+
+/*列表无数据提示css*/
+.norecords {
+    border-width: 2px !important;
+    display: none;
+    font-weight: bold;
+    left: 45%;
+    margin: 5px;
+    padding: 6px;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    width: auto;
+    z-index: 102;
+}
+
+/*提示信息begin*/
+.note-prompt {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    background: #FFFDCD url('images/icons/light-bulb.png') no-repeat scroll 7px 12px;
+    color: #8F5700;
+}
+
+/*text*/
+.text1 {
+    background: #ffffff;
+    border: 1px solid #b7b6b4;
+    line-height: 21px;
+    vertical-align: middle;
+    height: 21px;
+    padding-left: 2px;
+    margin: 0;
+}
+
+/*button*/
+.button_search {
+    background: #5388ce;
+    border: 1px solid #0e66c8;
+    color: #ffffff;
+    line-height: 21px;
+    vertical-align: middle;
+    height: 25px;
+    margin: 0;
+    cursor: pointer;
+    margin-left: -5px;
+}
+
+.button2 {
+    background: #3c87da;
+    border: 1px solid #0e66c8;
+    color: #ffffff;
+    line-height: 25px;
+    vertical-align: middle;
+    height: 25px;
+}
+
+.buttondisabled {
+    background: #d5d5d4;
+    border: 1px solid #b7b6b4;
+    color: #a6a5a4;
+    line-height: 25px;
+    vertical-align: middle;
+    height: 25px;
+}
+/*button*/
+
+/* 提示框样式 */
+.messagebox {
+    margin: 0px auto;
+}
+    /* 表头 */
+    .messagebox .head td {
+        height: 32px;
+        overflow: hidden;
+    }
+
+    .messagebox .head .left {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') left 0px no-repeat;
+    }
+
+    .messagebox .head .center {
+        padding: 0px;
+        background: url('images/prompts/message_bg.png') 0px -32px repeat-x;
+    }
+
+        .messagebox .head .center .title {
+            float: left;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+    .messagebox .head .right {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') right 0px no-repeat;
+    }
+
+    /* 表头 */
+    .messagebox .head-no-title td {
+        height: 16px;
+    }
+
+    .messagebox .head-no-title .left {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') left -96px no-repeat;
+    }
+
+    .messagebox .head-no-title .center {
+        background: url('images/prompts/message_bg.png') 0px -112px repeat-x;
+    }
+
+    .messagebox .head-no-title .right {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') right -96px no-repeat;
+    }
+
+    /* 按钮栏 */
+    .messagebox .control td {
+        height: 40px;
+        vertical-align: top;
+    }
+
+    .messagebox .control .left {
+        width: 20px;
+        background: url('images/prompts/message_center_bg.png') left top repeat-y;
+    }
+
+    .messagebox .control .center {
+        background-color: #357ece;
+        text-align: center;
+    }
+
+    .messagebox .control .right {
+        width: 20px;
+        background: url('images/prompts/message_center_bg.png') right top repeat-y;
+    }
+
+    /* 表底 */
+    .messagebox .foot td {
+        height: 16px;
+    }
+
+    .messagebox .foot .left {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') left -64px no-repeat;
+    }
+
+    .messagebox .foot .center {
+        background: url('images/prompts/message_bg.png') 0px -80px repeat-x;
+        position: relative;
+    }
+
+        .messagebox .foot .center b {
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            top: -1px;
+            background: #357ece;
+        }
+
+    .messagebox .foot .right {
+        width: 20px;
+        background: url('images/prompts/message_bg.png') right -64px no-repeat;
+    }
+
+    /* 提示框 */
+    .messagebox .msg td {
+        height: 90px;
+    }
+
+    .messagebox .msg .left {
+        width: 20px;
+        background: url('images/prompts/message_center_bg.png') left top repeat-y;
+    }
+
+    .messagebox .msg .center {
+        padding-left: 70px;
+        font-size: 16px;
+        background-color: #357ece;
+    }
+
+        .messagebox .msg .center .msg-content {
+            color: #fff;
+            margin: 20px 12px 20px 6px;
+        }
+
+            .messagebox .msg .center .msg-content a {
+                color: #fff;
+                text-decoration: underline;
+            }
+
+    .messagebox .msg .right {
+        width: 20px;
+        background: url('images/prompts/message_center_bg.png') right top repeat-y;
+    }
+
+    .messagebox .msg .error {
+        background-image: url("images/prompts/icon64_error.png");
+        background-position: 0px 10px;
+        background-repeat: no-repeat;
+    }
+
+    .messagebox .msg .info {
+        background-image: url("images/prompts/icon64_info.png");
+        background-position: 0px 10px;
+        background-repeat: no-repeat;
+    }
+
+    .messagebox .msg .warning {
+        background-image: url("images/prompts/icon64_warning.png");
+        background-position: 0px 10px;
+        background-repeat: no-repeat;
+    }
+
+    .messagebox .msg .forbidden {
+        background-image: url("images/prompts/icon64_forbidden.png");
+        background-position: 0px 10px;
+        background-repeat: no-repeat;
+    }
+
+    .messagebox .msg .stop {
+        background-image: url("images/prompts/icon64_stop.png");
+        background-position: 0px 10px;
+        background-repeat: no-repeat;
+    }
+
+    .messagebox .msg .blank {
+        height: 40px;
+        padding: 10px 20px 10px 20px;
+        text-align: center;
+    }
+
+.font-red {
+    color: red;
+}
+
+.font-blue {
+    color: blue;
+}
+
+.font-green {
+    color: green;
+}
+
+
+fieldset {
+    padding: 10px;
+    margin: 10px;
+    color: #333;
+    border: #3994DD double 1px;
+}
+
+legend {
+    color: #06c;
+    font-weight: 800;
+    background: #fff;
+}

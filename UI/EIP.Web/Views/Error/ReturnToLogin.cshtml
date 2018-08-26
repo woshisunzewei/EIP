@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录失效,请重新登录!</title>
+    <script src="/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <link href="/Contents/common.css" rel="stylesheet" />
+    @*提示*@
+    <link href="/Scripts/lib/jnotify/jNotify.jquery.css" rel="stylesheet" />
+    <script src="/Scripts/lib/jnotify/jNotify.jquery.js"></script>
+    <script src="/Scripts/app/function.js"></script>
+    <script>
+        var method = {
+            initCss: function () {
+                $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+                $(window).resize(function () {
+                    $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+                });
+            },
+            initHref: function () {
+                top.location.href = '@ViewData["url"]';
+            },
+            initTopMsg: function () {
+                DialogTipsMsgErrorOnClosed("登录失效,请重新登录! 3秒钟之后将跳转至登录界面...", 3000, function () {
+                    method.initHref();
+                });
+            }
+        }
+        $(function () {
+            method.initCss();
+            method.initTopMsg();
+        });
+    </script>
+    <style>
+        body {
+            font-family: "微软雅黑";
+        }
+
+        /*error 404*/
+        .error {
+            background: url(/Contents/images/prompts/404.png) no-repeat;
+            margin-top: 75px;
+            padding-top: 65px;
+            width: 490px;
+        }
+
+            .error h2 {
+                font-size: 22px;
+                padding-left: 154px;
+            }
+
+            .error p {
+                color: #717678;
+                line-height: 35px;
+                padding-left: 154px;
+            }
+
+        .reindex {
+            padding-left: 154px;
+        }
+
+            .reindex a {
+                background: #3c95c8;
+                border-radius: 3px;
+                color: #fff;
+                display: block;
+                font-size: 14px;
+                font-weight: bold;
+                height: 35px;
+                line-height: 35px;
+                margin-top: 20px;
+                text-align: center;
+                width: 115px;
+            }
+    </style>
+</head>
+<body style="background: #edf6fa;">
+    <div class="error">
+        <h2>登录失效,请重新登录！</h2>
+        <div class="reindex"><a href="@ViewData["url"]" target="_parent">马上登录</a></div>
+    </div>
+</body>
+</html>

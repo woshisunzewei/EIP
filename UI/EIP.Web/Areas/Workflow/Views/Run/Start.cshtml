@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Start</title>
+    @{
+        var path = UrlUtil.UrlConvertor();
+        ViewBag.Path = path;
+    }
+    <script src="@ViewBag.Path/Scripts/resource/language_zh.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <link href="@ViewBag.Path/Contents/images/icons.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/common.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/edit.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/app/function.js"></script>
+    <link href="@ViewBag.Path/Contents/workflow.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/app/workflow/common.js"></script>
+    <link href="@ViewBag.Path/Scripts/lib/artdialog/skins/chrome.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/artdialog/artDialog.source.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/artdialog/plugins/iframeTools.source.js"></script>
+    @using EIP.Common.Core.Extensions
+    @using EIP.Common.Core.Utils
+    @using EIP.Common.Entities.Dtos
+    @using EIP.Web.DataUsers.Helpers
+    @using EIP.Workflow.Models.Enums
+
+    @model EIP.Workflow.Models.Dtos.Engine.WorkflowEngineDealWithTaskOutput
+</head>
+<body>
+    <div class="tools_box">
+        <div class="toolbar" id="partial_button_toolbar">
+            @foreach (var button in Model.ButtonList)
+            {
+                <a href="javascript:void(0);" title="@button.Remark" onclick="@button.Script;return false; ">
+                    <span class="l-icon-@button.Icon">@button.Title</span>
+                </a>
+                <span class="toolbarsplit">&nbsp;</span>
+            }
+        </div>
+    </div>
+    <table class="edit-table" style="margin: 4px auto;">
+        <tbody>
+            <tr>
+                <th style="width: 80px" class="m">标题：</th>
+                <td colspan="3">
+                    @Html.TextBox("Title", @Model.ProcessName, new { style = @"border: 0px;border-bottom: 1px solid #C6C6C6;" })
+                </td>
+                <th class="m">紧急程度：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput()
+                        {
+                            HtmlAttributes = "style = 'border: 0px;border-bottom: 1px solid #C6C6C6;'",
+                            EnumType = (typeof(EnumProcessUrgency)),
+                            Id = "Urgency",
+                            NeedDefault = false,
+                            CompareType = EnumCompareType.Text
+                        })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="workflow-form-div">
+        <table style="margin: auto; width: 850px;margin-top: 10px" class="workflow-form-content">
+            <tbody>
+                <tr>
+                    <td width="40" style="border-width: 0px;">
+                        <img src="/Contents/images/workflow/form/pline.gif" width="40" height="16">
+                    </td>
+                    <td style="border-width: 0px;">
+                        @{
+                            if (@Model.FormUrl.IsNullOrEmpty())
+                            {
+                                <label>该表单未发布或未填写表单地址</label>
+                            }
+                            else
+                            {
+                                @RenderPage(@Model.FormUrl)
+                            }
+                        }
+                    </td>
+                    <td width="40" style="border-width: 0px;">
+                        <img src="/Contents/images/workflow/form/pline.gif" width="40" height="16">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

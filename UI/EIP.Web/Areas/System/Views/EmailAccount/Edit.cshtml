@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    ViewBag.Require = "system-emailaccount-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUser.Helpers
+@model EIP.System.Models.Entities.SystemEmailAccount
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写邮件账号",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">
+                    账号：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.Name, new { datatype = "*1-128" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" class="m">
+                    密码：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.Password, new { type = "password", datatype = "*1-512" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">
+                    类型：
+                </th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumEmailAccountType)),
+                        HtmlAttributes = new { datatype = "*" },
+                        Name = "Type",
+                        SelectedVal = @Model.Type
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ssl：
+                </th>
+                <td>
+                    @Html.CheckBoxFor(f => @Model.Ssl)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    端口：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.Port, new { datatype = "n",ignore="ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">
+                    Smtp地址：
+                </th>
+                <td>
+                    @Html.DropDownListEmailServer(new DropDownListDictionaryInput()
+                    {
+                        Id = "Smtp",
+                        Name = "Smtp",
+                        NeedDefault = false,
+                        SelectedVal = @Model.Smtp
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    冻结：
+                </th>
+                <td>
+                    @Html.CheckBoxFor(f => @Model.IsFreeze)
+                </td>
+            </tr>
+            <tr>
+                <th>排序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n",ignore="ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">
+                    备注：
+                </th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-512", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.EmailAccountId)

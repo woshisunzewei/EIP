@@ -1,0 +1,163 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "模块信息编辑";
+    ViewBag.Require = "system-menu-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@model EIP.System.Models.Dtos.Permission.SystemMenuEditOutput
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写模块信息",
+    Remark = "注：带*号的为必填信息！若没有选择父级模块,则默认为首级模块,代码值唯一。"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px">上级模块：</th>
+                <td>
+                    @Html.TextBox("ParentName", @Model.ParentName, new { @readonly = true, @class = "text1", style = @"width: 136px; border-width: 1px 0px 1px 1px; " })
+                    <input type="button" title="" id="chosen_menu" class="button_search" style="margin: 0; cursor: pointer;margin-left: -5px" value="选择" />
+                </td>
+                <th style="width: 100px" class="m">名称：</th>
+                <td>
+                    @Html.TextBox("Name", @Model.Name, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <th class="m">代码：</th>
+                <td>
+                    @Html.TextBox("Code", @Model.Code, new { datatype = "*1-64", ajaxurl = "/System/Menu/CheckMenuCode?id=" + @Model.MenuId })
+                </td>
+                <th>图标：</th>
+                <td>
+                    @Html.TextBox("Icon", @Model.Icon, new { datatype = "*1-32", ignore = "ignore", @readonly = true, @class = "text1", style = @"width: 110px; border-width: 1px 0px 1px 1px; " })
+                    <input type="button" title="" class="button_search" id="chosen_icon" style="margin: 0; cursor: pointer; margin-left: -5px" value="选择" />
+                    <div class="l-icon l-icon-@Model.Icon" id="chosen_icon_show" style="margin: 5px 2px auto 0; float: right"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <th>打开方式：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumMenuOpenType)),
+                        Name = "OpenType",
+                        SelectedVal = @Model.OpenType
+                    })
+                </td>
+                <th class="m">排序号：</th>
+                <td>
+                    @Html.TextBox("OrderNo", @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+
+            <tr>
+                <th class="m">应用系统：</th>
+                <td colspan="3">
+                    @Html.DropDownListApp(new BaseDropDownListInput
+                    {
+                        Name = "App",
+                        SelectedVal = @Model.AppId.ToString(),
+                        HtmlAttributes = " datatype = '*1-512'"
+                    })
+                </td>
+            </tr>
+
+            <tr>
+                <th>区域：</th>
+                <td colspan="3">
+                    @Html.TextBox("Area", @Model.Area, new { datatype = "*1-64", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>控制器：</th>
+                <td colspan="3">
+                    @Html.TextBox("Controller", @Model.Controller, new { datatype = "*1-128", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>方法：</th>
+                <td colspan="3">
+                    @Html.TextBox("Action", @Model.Action, new { datatype = "*1-128", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>地址(Url)：</th>
+                <td colspan="3">
+                    @Html.TextBox("OpenUrl", @Model.OpenUrl, new { datatype = "*1-256", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">选项：</th>
+                <td colspan="3">
+                    <span class="item">
+                        <span class="item">
+                            @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "IsShowMenu",
+                            Title = "模块显示",
+                            IsCheck = @Model.IsShowMenu
+                        })
+                        </span>
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "HaveMenuPermission",
+                            Title = "模块权限",
+                            IsCheck = @Model.HaveMenuPermission
+                        })
+                    </span>
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "HaveFunctionPermission",
+                            Title = "模块按钮权限",
+                            IsCheck = @Model.HaveFunctionPermission
+                        })
+                    </span>
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "HaveFieldPermission",
+                            Title = "字段权限",
+                            IsCheck = @Model.HaveFieldPermission
+                        })
+                    </span>
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "HaveDataPermission",
+                            Title = "数据权限",
+                            IsCheck = @Model.HaveDataPermission
+                        })
+                    </span>
+
+
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "IsFreeze",
+                            Title = "冻结",
+                            IsCheck = @Model.IsFreeze
+                        })
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td colspan="3">
+                    @Html.TextArea("Remark", @Model.Remark, new { datatype = "*1-512", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.Hidden("MenuId", @Model.MenuId)
+@Html.Hidden("ParentId", @Model.ParentId)
+@Html.Hidden("HiddenCode", @Model.ParentCode)

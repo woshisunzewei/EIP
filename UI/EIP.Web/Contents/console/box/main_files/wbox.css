@@ -1,0 +1,87 @@
+#wBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  text-align: left;
+}
+
+#wBox .wBox_popup {
+  position: relative;
+}
+
+#wBox table {
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#wBox td {
+  border-bottom: 0;
+  padding: 0;
+}
+
+#wBox .wBox_body {
+	background-color: #f1f6ff;
+    border:1px solid #46a7df;
+}
+
+#wBox img {
+  border: 0;
+  margin: 0;
+}
+#wBox .wBox_title {
+  height:28px;
+  color:#000000;
+  width:100%;
+  background:url(titleBG.png) repeat-x;
+}
+#wBox .wBox_title .wBox_itemTitle{
+    padding-left:5px;
+    overflow: hidden;
+	font-size:14px;
+	font-weight:bold;
+	color:#fff;
+}
+
+#wBox .wBox_title .wBox_close {
+	background:url(close.png) no-repeat 0 0;
+    height:14px;
+    width:14px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.wBox_ok,.wBox_yes {
+}
+
+#wBox .wBox_title .on{
+    background-position:0 -14px;
+}
+
+#wBox #wBoxContent{
+	padding:0px;
+}
+
+#wBox_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 1px;
+  bottom: 1px;
+}
+#wBox .wBox_load{
+	width:270px;
+}
+.wBox_hide {
+  z-index:-10000;
+}
+
+.wBox_overlayBG {
+  background-color: #FFF;
+  z-index: 99999;
+}
+#wBox #wBox_loading{
+	width:32px;
+	height:32px;
+	margin:0 auto;
+}

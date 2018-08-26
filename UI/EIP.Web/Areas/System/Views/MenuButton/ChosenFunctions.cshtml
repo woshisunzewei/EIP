@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "角色用户";
+    ViewBag.Require = "system-menubutton-chosenfunctions";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Web.DataUsers.Helpers
+
+@model IList<EIP.System.Models.Dtos.Identity.SystemChosenUserOutput>
+<div class="note-prompt" style="margin: 1px;">
+    温馨提示：选中复选框点击保存即可授予相应关联模块按钮。
+</div>
+<div id="layout" class="layoutdiv" style="top: 42px">
+    <div id="uiCenter" class="ui-layout-center" style="border-style: none">
+        <table id="list"></table>
+        <div id="pager"></div>
+    </div>
+
+    <div id="uiNorth" class="ui-layout-north" style="border-top-color: #ccc; border-top-style: solid; border-top-width: 1px; ">
+        <div class="tools-box">
+            <div class="tools-box-right">
+                @Html.SearchTextBox("AppCode", "系统代码")
+                @Html.SearchTextBox("Controller", "控制器")
+                @Html.SearchTextBox("Remark", "备注")
+                <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+            </div>
+        </div>
+    </div>
+</div>

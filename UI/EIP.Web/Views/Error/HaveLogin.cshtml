@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>您的账号已在其它地方登录，被迫下线,若非本人操作,请及时修改密码</title>
+    <script language="javascript" type="text/javascript">
+        var timer;
+        //启动跳转的定时器
+        function startTimes() {
+            timer = window.setInterval(showSecondes, 1000);
+        }
+
+        var i = 10;
+        function showSecondes() {
+            if (i > 0) {
+                i--;
+                document.getElementById("secondes").innerHTML = i;
+            }
+            else {
+                window.clearInterval(timer);
+                top.window.location.href = '@FormsAuthentication.LoginUrl';
+            }
+        }
+
+        //取消跳转
+        function resetTimer() {
+            if (timer != null && timer != undefined) {
+                window.clearInterval(timer);
+                top.window.location.href = '@FormsAuthentication.LoginUrl';
+            }
+        }
+    </script>
+</head>
+<body onload="startTimes();">
+
+    <div style="position: absolute; top: 50%; left: 50%; text-align: center; width: 300px; height: 140px; padding-top: 10px; margin-top: -75px; margin-left: -150px;">
+        <img src="/contents/images/common/warning.png" alt="" />
+        <p style="margin: 0; padding: 0; margin-top: 20px; font-weight: bold; color: #FF9C0D;">
+            您的账号已在其它地方登录，被迫下线,<br />若非本人操作,请及时修改密码
+        </p>
+        <p style="font-size: 12px;">
+            系统将在<span id="secondes">10</span>秒后自动跳转到登录页，您也可以<a href="@FormsAuthentication.LoginUrl" style="color: #28508c;">点击登录</a>
+        </p>
+    </div>
+
+</body>
+</html>

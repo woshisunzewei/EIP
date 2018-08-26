@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4336809E-0F83-45E8-BFC4-DC5BEB0C2BB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.Workflow.DataAccess</RootNamespace>
+    <AssemblyName>EIP.Workflow.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\IWorkflowButtonRepository.cs" />
+    <Compile Include="Config\IWorkflowCommentRepository.cs" />
+    <Compile Include="Config\IWorkflowFormRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessActivityRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessAreasRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceActivityRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceLineRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessLineRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessRepository.cs" />
+    <Compile Include="Config\IWorkflowProcessTaskRepository.cs" />
+    <Compile Include="Config\WorkflowButtonRepository.cs" />
+    <Compile Include="Config\WorkflowCommentRepository.cs" />
+    <Compile Include="Config\WorkflowFormRepository.cs" />
+    <Compile Include="Config\WorkflowProcessActivityRepository.cs" />
+    <Compile Include="Config\WorkflowProcessAreasRepository.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceActivityRepository.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceLineRepository.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceRepository.cs" />
+    <Compile Include="Config\WorkflowProcessLineRepository.cs" />
+    <Compile Include="Config\WorkflowProcessRepository.cs" />
+    <Compile Include="Config\WorkflowProcessTaskRepository.cs" />
+    <Compile Include="Engine\IWorkflowEngineRepository.cs" />
+    <Compile Include="Engine\WorkflowEngineRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Core\EIP.Common.Core.csproj">
+      <Project>{1cd7655d-aeaf-496d-a3ac-fff0b6423e60}</Project>
+      <Name>EIP.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Dapper\EIP.Common.Dapper.csproj">
+      <Project>{b2adf77f-16e8-4b8b-b11e-9b1f6cb5b07d}</Project>
+      <Name>EIP.Common.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.DataAccess\EIP.Common.DataAccess.csproj">
+      <Project>{e355c064-e7c7-45f1-a231-587f0d46466c}</Project>
+      <Name>EIP.Common.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Entities\EIP.Common.Entities.csproj">
+      <Project>{e11f0521-b8dd-4821-be16-8630ff147878}</Project>
+      <Name>EIP.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EIP.Workflow.Models\EIP.Workflow.Models.csproj">
+      <Project>{960ed4f8-1ff7-4623-bab1-5825c886c8d0}</Project>
+      <Name>EIP.Workflow.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

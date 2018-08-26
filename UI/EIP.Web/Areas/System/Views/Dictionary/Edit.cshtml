@@ -1,0 +1,63 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "字典编辑";
+    ViewBag.Require = "system-dictionary-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@model EIP.System.Models.Dtos.Config.SystemDictionaryEditOutput
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写字典信息",
+    Remark = "注：带*号的为必填信息！若没有选择父级菜单,则默认为首级字典项,代码值唯一。"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px">上级：</th>
+                <td>
+                    @Html.TextBox("ParentName", @Model.ParentName, new { @readonly = true, @class = "text1", style = @"width:430px; border-width: 1px 0px 1px 1px; " })
+                    <input type="button" title="请选择升级菜单" onclick=" initChosenDic() " class="button_search" style="margin: 0; cursor: pointer; margin-left: -5px" value="选择" />
+                </td>
+            </tr>
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-128" })
+                </td>
+            </tr>
+            <tr>
+                <th>代码：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Code, new { datatype = "*1-128",ignore="ignore", ajaxurl = "/System/Dictionary/CheckDictionaryCode?id=" + @Model.DictionaryId })
+                </td>
+            </tr>
+
+            <tr>
+                <th>值：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Value, new { datatype = "*1-128", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">顺序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-512", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => @Model.DictionaryId)
+@Html.HiddenFor(f => @Model.ParentId)
+@Html.HiddenFor(f => @Model.CanbeDelete)
+@Html.Hidden("HiddenCode", @Model.ParentCode)

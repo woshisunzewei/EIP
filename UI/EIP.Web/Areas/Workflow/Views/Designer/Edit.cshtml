@@ -1,0 +1,71 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Entities
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "流程基本信息配置";
+    ViewBag.Require = "workflow-designer-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.Web.Areas.Workflow.Models.DesignerEditModel
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写配置信息",
+    Remark = "注：带*号的为必填信息！代码值唯一。"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">归属：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.ProcessTypeStr, new { @readonly = true, @class = "text1", style = @"width: 442px; border-width: 1px 0px 1px 1px; ", datatype = "*1-128" })
+                    @Html.Hidden("ProcessType", Model.WorkflowProcess.ProcessType)
+                    <input type="button" class="button_search" plugin="dictionary" plugin-code="@ResourceDictionary.流程类别" value="选择" />
+                </td>
+            </tr>
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBox("Name", @Model.WorkflowProcess.Name, new { datatype = "*1-128" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">代码：</th>
+                <td>
+                    @Html.TextBox("Code", @Model.WorkflowProcess.Code, new { datatype = "*1-64" })
+                </td>
+            </tr>
+           <tr>
+                <th>地址：</th>
+                <td>
+                    @Html.TextBox("PageUrl", @Model.WorkflowProcess.PageUrl, new { })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">序号：</th>
+                <td>
+                    @Html.TextBox("OrderNo", @Model.WorkflowProcess.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th>选项：</th>
+                <td>
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "IsFreeze",
+                    Title = "冻结",
+                    IsCheck = @Model.WorkflowProcess.IsFreeze
+                })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextArea("Remark", @Model.WorkflowProcess.Remark, new { datatype = "*", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.Hidden("ProcessId", Model.WorkflowProcess.ProcessId)

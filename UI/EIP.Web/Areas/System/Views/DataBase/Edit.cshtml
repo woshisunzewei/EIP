@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "应用数据库编辑";
+    ViewBag.Require = "system-database-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Entities
+@using EIP.Web.DataUsers.Helpers
+@model SystemDataBase
+@Html.EditTopRemark(new EditTopRemarkInput
+{
+    Title = "请填写数据库信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">类别：</th>
+                <td>
+                    @Html.DropDownListDictionary(new DropDownListDictionaryInput
+                {
+                    Id = "RdbmsType",
+                    Name = "RdbmsType",
+                    Code = ResourceDictionary.数据库类别,
+                    NeedDefault = false,
+                    SelectedVal = @Model.RdbmsType,
+                    HtmlAttributes="datatype = '*'"
+                })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">数据源：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.DataSource, new { datatype = "*1-512" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">数据库名：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.CatalogName, new { datatype = "*1-64" })
+                </td>
+            </tr>
+
+            <tr>
+                <th class="m">用户名：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.UserId, new { datatype = "*1-64" })
+                </td>
+            </tr>
+
+            <tr>
+                <th class="m">密码：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Password, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">排序：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-512", ignore = "ignore", style = "height:40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.DataBaseId)

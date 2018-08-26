@@ -1,0 +1,29 @@
+Release history for Bryntum Ext Gantt:
+
+2.0.0     2011-08-08 10:35
+
+    [FEATURES / ENHANCEMENTS]
+    
+    - Support for Ext JS 4, including support for dynamic class loading
+    - Support for skipping weekends and holidays (defined through a new calendarStore)
+    - A set of columns classes, allowing 0-configurable editing of common task properties, like StartDate/EndDate/Duration
+    - Improved resource assignment with new assignment editor 
+    - New demo showcasing task reordering by using drag and drop
+    - Task indent/outdent
+    - Removed dependencies on all 3rd party components/stores. The underlying code base of Ext Gantt is now pure Ext JS supported by Sencha.
+    - Improved baseline support
+    - Basic HTML print support
+    - New dependency editor demo
+    - Possible to set start and end dates by clicking and dragging (similar to how you create events in Ext Scheduler)
+
+
+    [API CHANGES]
+
+    - review in progress
+
+    [BUG FIXES]
+
+    - Fixed bug with dependencies not being rendered if a task cut the visible date range
+    - Fixed styling bug for tasks that cut the visible date range
+    - Normalized event names
+    - Fixed bug when resizing progressbar     

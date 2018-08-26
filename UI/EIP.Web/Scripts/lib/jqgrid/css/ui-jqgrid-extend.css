@@ -1,0 +1,25 @@
+﻿.ui-jqgrid .loading {position: absolute; top: 45%;left: 45%; cursor:wait;  background:#FFFFFF url(../images/loading.gif) no-repeat 5px 50%; width:100px;z-index:101;padding: 6px; margin: 5px;text-align: right;font-weight: bold;display: none; border-color:#AECAE8; border-width: 1px !important;}
+.ui-jqgrid tr.jqgroup { outline-style: none;           
+                         background: url("../images/layout-header.gif") repeat-x scroll 0 0 #E5EFFE;
+            height: 24px;
+            line-height: 24px;
+            overflow: hidden;
+            padding-left: 10px;
+            position: relative; }
+.ui-jqgrid tr.jqgroup td {color: #183152;font-weight: bold; overflow: hidden; white-space: pre;border-bottom-width: 1px; border-bottom-color: inherit; border-bottom-style: solid;}
+.ui-jqgrid tr.jqgroup td .ui-icon{ background-image:none; height:24px; line-height:24px;}
+.ui-jqgrid tr.jqgroup td .ui-icon-circlesmall-minus{ background:url("../images/elbow-minus.gif") no-repeat 50% 50% ; }
+.ui-jqgrid tr.jqgroup td .ui-icon-circlesmall-plus{background:url("../images/elbow-plus.gif") no-repeat 50% 50% ;}
+.ui-jqgrid .jqgrid-rownum{/*background:url("../images/rownum.png") repeat-y 50% 50% ;*/}
+.ui-jqgrid .ui-th-column{/*background:url("../images/header.png") repeat-x 50% 50% ;*/}
+.ui-jqgrid th{background:url("../images/header.png") repeat-x 50% 50% ;}
+
+.eui-icon { background-image: url(../images/c.png); }
+
+.jgrid-icon-add, .jgrid-icon-edit, .jgrid-icon-del, .jgrid-icon-tovoid, .jgrid-icon-deliver, .jgrid-icon-view { width: 16px; height: 16px; display: inline-block; cursor: pointer; }
+.jgrid-icon-tovoid { background-position: -42px -594px; }
+.jgrid-icon-add { background-position: -103px -594px; }
+.jgrid-icon-edit { background-position: -140px -594px; }
+.jgrid-icon-del { background-position: -66px -594px; }
+.jgrid-icon-deliver { width: 18px; background-position: -156px -556px; }
+.jgrid-icon-view { background-position: -188px -563px; }

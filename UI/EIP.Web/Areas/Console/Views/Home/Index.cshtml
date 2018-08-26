@@ -1,0 +1,120 @@
+﻿@using EIP.Common.Core.Auth
+@using EIP.Common.Core.Config
+<!DOCTYPE html>
+<html lang="zh-cn" data-require="console-home-index">
+<head>
+    <script src="/Scripts/require.min.js" data-main="/Scripts/main.js"></script>
+    <title>@GlobalParams.Get("title")</title>
+    @{
+        PrincipalUser principalUser = FormAuthenticationExtension.Current(HttpContext.Current.Request);
+    }
+    <script type="text/javascript">
+        //用户编号
+        var userid = "@principalUser.UserId";
+        //用户名
+        var username = "@principalUser.Name";
+    </script>
+</head>
+<body>
+    <div class="pageloading_bg" id="pageloading_bg"></div>
+    <div id="pageloading">数据加载中，请稍等...</div>
+    <div position="top" class="header">
+        <div class="header-left">
+            <a href="#" target="_parent">
+                <img src="@GlobalParams.Get("logo")" title="@GlobalParams.Get("title")" />
+            </a>
+        </div>
+        <div class="header-box">
+            <div class="header-right">
+                <input type="button" value="" class="functionBtn3" onclick=" backHome() " />
+                <input type="button" value="" class="functionBtn1" />
+                <input type="button" value="" onclick=" loginOut(); " class="functionBtn2" />
+                <div style="float: right; margin: 35px 20px 0px 0px; color: white">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                @principalUser.Name
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-blue">
+                                <li>
+                                    <a data-toggle="tab" href="#" id="changePwd">
+                                        <i class="glyphicon glyphicon-lock"></i>修改密码
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown active">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                快捷方式<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu dropdown-blue">
+                                <li>
+                                    <a data-toggle="tab" href="#">人员管理</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#">权限管理</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a data-toggle="tab" href="#">
+                                        <i class="glyphicon glyphicon-plus"></i>新增快捷方式
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                消息 <span class="badge" data-placement="bottom" data-toggle="tooltip" title="4">4</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="dowloadFile"><span class="glyphicon glyphicon-save"></span>常用下载</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="logo"></a>
+        </div>
+    </div>
+
+    <div id="layout" class="layout">
+        <div position="left" reload="true" title="系统菜单" id="position-left"></div>
+        <div position="center" id="framecenter" toolsid="tab-tools-nav">
+            <div tabid="home" icon="home" title="我的主页" style="height: 300px; margin-left: 0px;">
+                <iframe frameborder="0" name="home" id="home" src="/Contents/console/box/main.html"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="console_layout_bottom">
+        <div style="width: 42%; text-align: left; float: left;">
+            &nbsp;<a title="点击链接公司官网" href="javascript:void()">技术支持：@GlobalParams.Get("technicalSupport")</a>
+            <span class="south-separator"></span>
+            &nbsp;专业版 @GlobalParams.Get("version")
+
+            <span class="south-separator"></span>
+            &nbsp;<a title="将问题提交给开发商进行解决" target="_blank" href="@GlobalParams.Get("problemFeedback")">问题反馈</a>
+            <span class="south-separator"></span>
+        </div>
+        <div style="width: 36%; text-align: left; float: left;">
+            <a title="@GlobalParams.Get("copyRight")" href="javascript:void()">@Html.Raw(GlobalParams.Get("copyRight"))</a>
+        </div>
+        <div style="width: 22%; text-align: right; float: left;">
+            所在部门：IT信息部
+            <span class="south-separator"></span>
+            在线人数：@*@WebImHub.OnlineUsers.Count()*@ &nbsp;
+        </div>
+    </div>
+</body>
+</html>
+<link href="../../../../Scripts/lib/ligerui/skins/Aqua/css/ligerui-all.css" rel="stylesheet" />
+<link href="../../../../Contents/ui/ligerui.css" rel="stylesheet" />
+@*图标库*@
+<link href="../../../../Contents/images/icons.css" rel="stylesheet" />
+<link href="../../../../Contents/console.css" rel="stylesheet"/>
+<style>
+    img {
+        vertical-align: top;
+    }
+</style>

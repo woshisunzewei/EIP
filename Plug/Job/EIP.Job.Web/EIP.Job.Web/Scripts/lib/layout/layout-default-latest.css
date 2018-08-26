@@ -1,0 +1,117 @@
+	.layout-header, .layout-footer{
+		height: 23px;
+	    line-height:23px;
+	    text-align: center;
+	}
+
+	.layout-header .toolbar{
+		display:inline-block;
+		float:right;
+		line-height:23px;
+	}
+	.layout-header .toolbar .tool{
+		cursor:pointer;
+		margin:2px 0 0 0
+	}
+	.layout-header .toolbar a,.layout-header .toolbar a:visited{
+		display:inline-block;
+		padding-right:10px;
+		line-height:23px;
+		color:#3f3e40;
+		text-decoration:none;
+		cursor:pointer;
+	}
+	.layout-header .toolbar a:active,.layout-header .toolbar a:hover{
+		text-decoration:underline;
+	}
+	.layout-header .toolbar span:hover{
+		padding: 1px 0 0 1px;
+	}
+	.layout-header .title{
+		display:inline-block;
+		float:left;
+		line-height:23px;
+		padding-left:5px;
+		font-size:1.1em;
+		font-weight:bold;
+		text-align:left;
+	}	
+	
+	.ui-layout-content{
+		border: none
+	}
+	.ui-layout-north, .ui-layout-earth, .ui-layout-south, .ui-layout-west, .ui-layout-center{
+		padding:0;
+	}
+	.ui-layout-resizer-west {
+		/* NOTE: SOMETHING in the theme CSS is setting opacity here */
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-w.gif) no-repeat 0 center;*/
+	}
+	.ui-layout-resizer-west-closed {
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color:#ebf5fc;
+		/*background: #fbfbfb url(images/resizable-w.gif) no-repeat 0 center;*/
+	}
+	.ui-layout-resizer-east {
+		/* NOTE: SOMETHING in the theme CSS is setting opacity here */
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-e.gif) no-repeat 0 center;*/
+	}
+	.ui-layout-resizer-east-closed {
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-e.gif) no-repeat 0 center;*/
+	}
+	.ui-layout-resizer-north {
+		/* NOTE: SOMETHING in the theme CSS is setting opacity here */
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-n.gif) repeat-x center;*/
+	}
+	.ui-layout-resizer-north-closed {
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+	    border-top: 1px solid #eef1f5;
+		/*background: #fbfbfb url(images/resizable-n.gif) repeat-x center;*/
+	}
+	.ui-layout-resizer-south {
+		/* NOTE: SOMETHING in the theme CSS is setting opacity here */
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-s.gif) repeat-x center;*/
+		
+	}
+	.ui-layout-resizer-south-closed {
+		opacity: .80;
+		filter:	alpha(opacity=80);
+        background-color: #ebf5fc;
+		/*background: #fbfbfb url(images/resizable-s.gif) repeat-x center;*/
+		
+	}
+	.ui-layout-resizer-dragging ,
+	.ui-layout-resizer-sliding ,
+	.ui-layout-resizer:hover {
+		opacity:1;
+		filter:alpha(opacity=100);
+	}
+	
+	.ui-layout-toggler-north-open ,
+	.ui-layout-toggler-south-closed { background: url(images/toggle-up.gif) no-repeat center bottom; }
+	.ui-layout-toggler-north-closed ,
+	.ui-layout-toggler-south-open { background: url(images/toggle-dn.gif) no-repeat center top; }
+	
+	.ui-layout-toggler-east-closed ,
+	.ui-layout-toggler-west-open { background: url(images/toggle-lt.gif) no-repeat center right; }
+	.ui-layout-toggler-west-closed ,
+	.ui-layout-toggler-east-open { background: url(images/toggle-rt.gif) no-repeat center left; }
+	

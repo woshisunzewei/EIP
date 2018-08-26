@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "日历编辑";
+    ViewBag.Require = "system-quartz-calendaredit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Core.Quartz.Enums
+@using EIP.Common.Entities.Dtos
+@using EIP.Job.Web.DataUser.Helpers
+@model EIP.Job.Web.Models.SystemQuartzCalendarModel
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写日历信息",
+    Remark = "注：修改时勾选‘替换现有日历’若名称不一样时将新增日历"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">类型：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumCalendar)),
+                        Id = "EnumCalendar",
+                        Name = "EnumCalendar",
+                        SelectedVal = (byte)@Model.EnumCalendar
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => Model.CalendarName, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">描述：</th>
+                <td>
+                    @Html.TextAreaFor(f => Model.Description, new { datatype = "*1-64" })
+                </td>
+            </tr>
+
+            <tr id="tr_simple">
+                <th class="m">选项：</th>
+                <td>
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                    {
+                        Name = "UpdateTriggers",
+                        Title = "更新相关作业",
+                        IsCheck = @Model.UpdateTriggers
+                    })
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                    {
+                        Name = "ReplaceExists",
+                        Title = "替换现有日历",
+                        IsCheck = @Model.ReplaceExists
+                    })
+                </td>
+
+            </tr>
+            <tr id="tr_cron">
+                <th class="m">Cron表达式：</th>
+                <td>
+                    @Html.TextBox("Expression", @Model.Expression, new { datatype = "*1-32", ignore = "ignore", style = "width: 370px;  " })
+                    <input type="button" title="" class="button_search" id="chosen_cron" style="margin: 0; cursor: pointer; margin-left: -5px" value="新增" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

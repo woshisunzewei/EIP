@@ -1,0 +1,170 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>处理流程:@Model.ProcessName</title>
+    @{
+        var path = UrlUtil.UrlConvertor();
+        ViewBag.Path = path;
+    }
+    <script src="@ViewBag.Path/Scripts/resource/language_zh.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <link href="@ViewBag.Path/Contents/images/icons.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/common.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/edit.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/app/function.js"></script>
+    <link href="@ViewBag.Path/Contents/workflow.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/app/workflow/common.js"></script>
+    <link href="@ViewBag.Path/Scripts/lib/artdialog/skins/chrome.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/artdialog/artDialog.source.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/artdialog/plugins/iframeTools.source.js"></script>
+    <script src="@ViewBag.Path/Scripts/app/workflow/common.js"></script>
+    <link href="@ViewBag.Path/Scripts/lib/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/kindeditor/kindeditor-all.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/kindeditor/lang/zh-CN.js"></script>
+    @*easyui*@
+    <link href="@ViewBag.Path/Scripts/lib/easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Scripts/lib/easyui/themes/icon.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/easyui/jquery.easyui.min.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/template.js"></script>
+    @using EIP.Common.Core.Extensions
+    @using EIP.Common.Core.Utils
+    @model EIP.Workflow.Models.Dtos.Engine.WorkflowEngineDealWithTaskOutput
+    <style type="text/css">
+        .commenttable {
+            margin: 12px auto 10px auto;
+            width: 96%;
+            background: #ededee;
+        }
+
+            .commenttable tr th {
+                text-align: left;
+                height: 25px;
+                background: #ffffff;
+                font-weight: normal;
+            }
+
+            .commenttable tr td {
+                height: 28px;
+                background: #ffffff;
+            }
+    </style>
+
+    <script>
+        var commentKe;
+        function initKE() {
+            KindEditor.ready(function (K) {
+                commentKe = K.create('textarea[name="Comment"]', {
+                    uploadJson: '/Common/Upload/KindEditorUpload',
+                    newlineTag: this.value,
+                    filterMode: false, //不会过滤HTML代码
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'emoticons', 'image', 'link'
+                    ],
+                    afterCreate: function () { }
+                });
+            });
+        }
+
+        $(function () {
+            initKE();
+            getTaskHistory();
+        });
+    </script>
+</head>
+<body>
+   <div class="editor-wrapper">
+        <form id="form" name="form">
+            <div class="edit-main">
+                <div class="clearfix main-container">
+                    <div class="workflow-form-div" style="top: 0px;bottom: 33px">
+                        <table style="width: 1050px; margin: 10px auto 10px auto" class="workflow-form-content">
+                            <tbody>
+                                <tr>
+                                    <td width="40" style="border-width: 0px;">
+                                        <img src="/Contents/images/workflow/form/pline.gif" width="40" height="16">
+                                    </td>
+                                    <td style="border-width: 0px;">
+                                        @{
+                                            if (@Model.FormUrl.IsNullOrEmpty())
+                                            {
+                                                <label>该表单未发布或未填写表单地址</label>
+                                            }
+                                            else
+                                            {
+                                                @RenderPage(@Model.FormUrl)
+                                            }
+                                        }
+                                    </td>
+                                    <td width="40" style="border-width: 0px;">
+                                        <img src="/Contents/images/workflow/form/pline.gif" width="40" height="16">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-width: 0px;" colspan="3">
+                                        <div class="easyui-layout" style="MARGIN-RIGHT: auto; MARGIN-LEFT: auto; width: 1050px; height: 220px; border: 1px rgb(202, 196, 196) solid; border-radius: 5px;">
+                                            <div style="height: 100%;">
+                                                <div class="easyui-tabs" data-options="fit:true,border:false">
+                                                    <div title="流程意见">
+                                                        <fieldset>
+                                                            <legend>流程处理意见</legend>
+                                                            <textarea name="Comment" style="width: 1020px;"></textarea>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div title="流程过程">
+                                                        <div id="form_commentlist_div">
+                                                            <script id="taskhistory-template" type="text/html">
+                                                                {{each history as value i}}
+                                                                <table cellpadding="0" cellspacing="1" border="0" class="commenttable">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th style="width: 5%; text-align: center" rowspan="2">第<strong>{{i + 1}}</strong>步</th>
+                                                                            <th style="width: 30%;">&nbsp;步骤名称：<strong>{{value.ActivityName}}</strong></th>
+                                                                            <th style="width: 15%;">&nbsp;处理人：<strong>{{value.DoUserName}}</strong></th>
+                                                                            <th style="width: 25%;">&nbsp;收件时间：<strong>{{value.ReceiveTime}}</strong></th>
+                                                                            <th style="width: 25%;">&nbsp;完成时间：<strong>{{value.DoTime}}</strong></th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="4">
+                                                                                处理意见： {{value.Comment}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                {{/each}}
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix btn form-submit-btn-container">
+
+                <a title="关闭" onclick=" art.dialog.close(); " class="form-submit-button green">
+                    <span class="icon-botton l-icon-cross-button"></span>关闭
+                </a>
+                @foreach (var button in Model.ButtonList)
+                {
+                    <a href="javascript:void(0);" title="@button.Remark" onclick="@button.Script;return false; " class="form-submit-button green">
+                        <span class="icon-botton l-icon-@button.Icon"></span>@button.Title
+                    </a>
+                }
+            </div>
+        </form>
+    </div>
+</body>
+</html>

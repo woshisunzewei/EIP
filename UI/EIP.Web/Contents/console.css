@@ -1,0 +1,281 @@
+﻿/* -------------------------------------------------------
+文件名 : console.css
+作者   : 孙泽伟
+描述   : 主控制面板样式
+更新   ：
+------------------------------------------------------------*/
+body, html {
+    height: 100%;
+}
+
+body {
+    background: #EAEEF5;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.south-separator {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #fff;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+/*超链接*/
+a:link {
+    color: #222;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #222;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #222;
+    text-decoration: none;
+}
+
+a:active {
+    color: #222;
+    text-decoration: none;
+}
+
+
+/*页面加载等待*/
+/*等待背景*/
+.pageloading_bg {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 110;
+}
+
+#pageloading {
+    cursor: wait;
+    display: block;
+    font-weight: bold;
+    height: 28px;
+    left: 45%;
+    line-height: 27px;
+    margin-left: -74px;
+    margin-top: -14px;
+    padding: 10px 10px 10px 50px;
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    width: 124px;
+    z-index: 111;
+    background: url('images/console/loading.gif') no-repeat scroll 12px center #FFFFFF;
+    border: 2px solid #86A5AD;
+}
+
+.l-tab-loading {
+    display: block;
+    font-weight: bold;
+    height: 28px;
+    left: 45%;
+    line-height: 27px;
+    margin-left: -74px;
+    margin-top: -14px;
+    padding: 10px 0px 10px 50px;
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    width: 124px;
+    z-index: 111;
+    cursor: wait;
+    background: url('images/console/loading.gif') no-repeat scroll 12px center #FFFFFF;
+    border: 2px solid #86A5AD;
+}
+
+.aui_loading {
+    display: block;
+    font-weight: bold;
+    height: 28px;
+    left: 50%;
+    line-height: 27px;
+    margin-left: -74px;
+    margin-top: -14px;
+    padding: 10px 0px 10px 50px;
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    width: 124px;
+    z-index: 111;
+    text-indent: 0px;
+    background: url('images/console/loading.gif') no-repeat scroll 12px center #FFFFFF;
+    border: 2px solid #86A5AD;
+}
+/*logo*/
+.logo {
+    display: block;
+    height: 60px;
+    width: 370px;
+    background: url(images/console/logo.gif) no-repeat;
+    text-indent: -9999px;
+}
+
+/*头部*/
+.header {
+    background: #07c url('images/console/top.gif') 0px 0px repeat-x;
+    color: #E8E8E8;
+    border-bottom: 2px solid #07c;
+}
+
+
+    .header .header-box {
+        height: 60px;
+    }
+
+        .header .header-box .header-right {
+            float: right;
+            background: url(images/console/navbg.gif) no-repeat;
+            text-align: right;
+            height: 58px;
+            width: 370px;
+            display: inline;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='logo.gif', sizingMethod='crop');
+        }
+
+/*.header .header-box .header-right span {
+                padding-left: 18px;
+                background: url(images/console/memeber.gif) no-repeat;
+            }
+
+                .header .header-box .header-right span b {
+                    margin-right: 6px;
+                    font-weight: normal;
+                    color: #FF0;
+                }*/
+
+/*左侧图片*/
+.header-left {
+    float: left;
+    height: 50px;
+    width: 300px;
+}
+
+    .header-left img {
+        margin: 8px;
+    }
+
+/*内容布局*/
+.layout {
+    margin: 4px 0 0 0;
+    width: 99.5%;
+}
+
+/*底部*/
+.console_layout_bottom {
+    background: #EFF6FF;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+}
+
+/*左上角按钮*/
+.functionBtn3 {
+    background-image: url(images/console/functionBtn3.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    width: 103px;
+    height: 25px;
+    cursor: pointer;
+    cursor: hand;
+    position: absolute;
+    top: 0px;
+    right: 225px;
+}
+
+.functionBtn1 {
+    background-image: url(images/console/functionBtn1.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    width: 103px;
+    height: 25px;
+    cursor: pointer;
+    cursor: hand;
+    position: absolute;
+    top: 0px;
+    right: 115px;
+}
+
+.functionBtn2 {
+    background-image: url(images/console/functionBtn2.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    width: 103px;
+    height: 25px;
+    cursor: pointer;
+    cursor: hand;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+
+/*bootrap*/
+.nav > li > a {
+    padding: 0 10px 0px 10px;
+    color: #fff;
+}
+
+.navbar-nav > li > a > .badge {
+    background: #FFF;
+    color: #FF0000;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.navbar-nav > li {
+    border-right: 1px #89b7dd solid;
+}
+
+.dropdown-menu {
+    width: 40px;
+    min-width: 100px;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    background-color: transparent;
+}
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+    background-color: transparent;
+    border-color: #428bca;
+}
+
+.nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover, .nav > li.dropdown.open.active > a:focus {
+    background-color: transparent;
+}
+
+.dropdown-menu > li > a {
+    font-size: 12px;
+    padding: 3px 2px 2px 5px;
+}
+
+.dropdown-menu .divider {
+    margin: 2px 0;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}

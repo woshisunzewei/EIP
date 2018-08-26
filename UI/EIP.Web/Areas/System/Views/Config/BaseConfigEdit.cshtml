@@ -1,0 +1,212 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "配置项编辑";
+    ViewBag.Require = "system-config-baseconfigedit";
+    Layout = "~/Views/Shared/_LayoutPageBaseEdit.cshtml";
+}
+<div class="editor-wrapper">
+    <form id="form" name="form">
+        <div class="edit-main">
+            <div class="clearfix main-container">
+                <div class="edit-content" id="edit-content">
+                    <fieldset>
+                        <legend>登录配置</legend>
+                        <table class="complex-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 130px">登录界面标题：</th>
+                                    <td>
+                                        <input type="text" id="2ac2f924-787c-4fb2-b27d-f7f659fe94b1" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        登录界面logo地址：
+                                        <br />
+                                        建议:宽298px 高49px
+                                    </th>
+                                    <td>
+                                        <div style="cursor: pointer" title="点击更换登录界面logo" id="preview">
+                                            <img id="f79a849f-0f49-4483-9b24-5399090188f3imghead" border="0" src="/Contents/images/common/photo_icon.png" onclick=" $('#f79a849f-0f49-4483-9b24-5399090188f3').click(); ">
+                                        </div>
+                                        <input type="file" onchange=" previewImage(this, 'preview', 'f79a849f-0f49-4483-9b24-5399090188f3') " style="display: none;" id="f79a849f-0f49-4483-9b24-5399090188f3">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>同时登录一个帐号：</th>
+                                    <td>
+                                        <select id="11203027-bad9-4bc2-92f2-2da0e5361055">
+                                            <option value="true">是</option>
+                                            <option value="false">否</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th valign="top">登录地址底部描述：</th>
+                                    <td>
+                                        <textarea id="7295f6ce-1ddb-4e89-8626-58a16e253e14" style="height: 100px"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th valign="top">登录界面提示语句：</th>
+                                    <td>
+                                        <textarea id="b1eff77a-a8ba-492d-bbd6-21f353c5719d" style="height: 100px"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">密码记住时间(天)：</th>
+                                    <td>
+                                        <input type="text" id="8553d000-02b5-4e34-9578-45839fc59aa4" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>系统首页</legend>
+                        <table class="complex-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 130px" class="m">系统标题：</th>
+                                    <td>
+                                        <input type="text" id="126979e7-b17b-4ff1-b9ad-7cf77e9598b9" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">系统Logo：</th>
+                                    <td>
+                                        <div style="cursor: pointer" title="点击更换系统Logo" id="systemlogo">
+                                            <img id="6406657e-6d34-43d9-9593-28b076a94f8bimghead" border="0" src="/Contents/images/common/photo_icon.png" onclick=" $('#6406657e-6d34-43d9-9593-28b076a94f8b').click(); ">
+                                        </div>
+                                        <input type="file" onchange=" previewImage(this, 'systemlogo', '6406657e-6d34-43d9-9593-28b076a94f8b') " style="display: none;" id="6406657e-6d34-43d9-9593-28b076a94f8b">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">系统版本号：</th>
+                                    <td>
+                                        <input type="text" id="56a4da5b-1301-43bd-a1cf-ae25edc28398" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>缓存实例值：</th>
+                                    <td>
+                                        <input type="text" id="3641e0e6-ce8b-40f3-b83a-51bf528766a7" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>技术支持：</th>
+                                    <td>
+                                        <input type="text" id="73e26cff-7a91-47b7-8b4b-d84241a951a3" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>问题反馈：</th>
+                                    <td>
+                                        <input type="text" id="eb667561-8c67-4502-8776-cf3c620d0d56" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>CopyRight：</th>
+                                    <td>
+                                        <input type="text" id="85dd5058-bc9f-426f-93c3-68ed8d8e451c" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>密码</legend>
+                        <table class="complex-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 130px" class="m">登录密码Key：</th>
+                                    <td>
+                                        <input type="password" id="f03312ad-386f-4a2a-9700-133f1b0f61cf" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">重置密码值：</th>
+                                    <td>
+                                        <input type="password" id="80f04cab-92aa-4080-b149-99e197105bde" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>错误邮件提示设置</legend>
+                        <table class="complex-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 130px" class="m">发生错误发送邮件：</th>
+                                    <td>
+                                        <select id="ae5ab5aa-700f-4ac6-9290-08a3c4f1425f">
+                                            <option value="true">是</option>
+                                            <option value="false">否</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>发送邮箱账号：</th>
+                                    <td>
+                                        <input type="text" id="9572fec2-0522-45b7-ae1f-0384f6cab841" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>发送邮箱密码：</th>
+                                    <td>
+                                        <input type="password" id="891f6f0d-22db-4308-bcce-ab46c4edad4b" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>接收邮箱账号：</th>
+                                    <td>
+                                        <input type="text" id="91d07986-95cd-48e1-86f2-8dbe2b22b48a" />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>接收邮箱SMTP：</th>
+                                    <td>
+                                        @Html.DropDownListEmailServer(new DropDownListDictionaryInput()
+                        {
+                            Id = "ab890271-5baa-47a6-afcd-233ddcb335dd",
+                            Name = "ab890271-5baa-47a6-afcd-233ddcb335dd",
+                            NeedDefault = false
+                        })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>使用SSL：</th>
+                                    <td>
+                                        <select id="d1740b06-0d4e-4258-a187-4ac10f2e0624">
+                                            <option value="true">是</option>
+                                            <option value="false">否</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix btn form-submit-btn-container">
+            <a title="保存" id="btnSubmit" class="form-submit-button green">
+                <span class="icon-botton l-icon-disk"></span>保存
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    .complex-table th, .complex-table td {
+        border-left: 1px solid #cacaca;
+    }
+
+    .l-tab-content-item {
+        overflow: auto;
+    }
+</style>

@@ -1,0 +1,440 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <link rel="stylesheet" type="text/css" href="./main_files/layout.css" />
+    <link rel="stylesheet" type="text/css" href="./main_files/common.css" />
+    <link rel="stylesheet" type="text/css" href="./main_files/wbox.css" />
+    <style>
+        body {
+            overflow-y: visible;
+            _width: 98%;
+        }
+
+        * {
+            font-size: 12px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+
+        .tabs {
+            border: 1px #AACCEE solid;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .tab_b {
+            margin: 5px;
+            overflow: hidden;
+        }
+
+        .menu {
+            height: 100px;
+            overflow: hidden;
+        }
+
+            .menu li {
+                background-color: #EDF4FC;
+                border-bottom: 1px #AACCEE solid;
+                border-right: 1px #AACCEE solid;
+                display: block;
+                display: list-item;
+                float: left;
+                line-height: 20px;
+                text-align: center;
+                width: 25%;
+            }
+
+                .menu li a {
+                    display: block;
+                }
+
+        .menu_d {
+            background-color: #FFFFFF;
+            border-bottom: 1px #FFFFFF solid;
+        }
+
+        .tab ul li.aaa {
+            background: #FFFFFF;
+            border-bottom: 0px #FFFFFF solid;
+        }
+    </style>
+
+    <style id="poshytip-css-tip-yellow" type="text/css">
+        div.tip-yellow {
+            left: 0;
+            position: absolute;
+            top: 0;
+            visibility: hidden;
+        }
+
+        div.tip-yellow table, div.tip-yellow td {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-variant: inherit;
+            font-weight: inherit;
+            margin: 0;
+        }
+
+        div.tip-yellow td.tip-bg-image span {
+            display: block;
+            font: 1px/1px sans-serif;
+            height: 10px;
+            overflow: hidden;
+            width: 10px;
+        }
+
+        div.tip-yellow td.tip-right {
+            background-position: 100% 0;
+        }
+
+        div.tip-yellow td.tip-bottom {
+            background-position: 100% 100%;
+        }
+
+        div.tip-yellow td.tip-left {
+            background-position: 0 100%;
+        }
+
+        div.tip-yellow div.tip-inner {
+            background-position: -10px -10px;
+        }
+
+        div.tip-yellow div.tip-arrow {
+            font: 1px/1px sans-serif;
+            overflow: hidden;
+            position: absolute;
+            visibility: hidden;
+        }
+    </style>
+    <script src="../../../../Scripts/lib/jquery-1.7.2.js"></script>
+   
+</head>
+<body>
+    <table width="100%" id="mainTable" class="bodyTable" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr id="homePageTr">
+               <td style="width: 38%;">
+                    <div class="publicDiv" style="height: 280px;">
+                        <ul class="publicTitle">
+                            <span class="titleImg"><img src="./main_files/picNews.png" /></span>
+                            <span class="columnName">图片新闻</span>
+                            <span class="more"><a href="javascript:" title="更多"></a></span>
+                        </ul>
+                        <div class="publicList" style="height: 255px;">
+                            <div id="slideBox15" class="slideBox" style="height: 255px;">
+                                <ul id="show_pic15" class="show_pic" style="left: -1038px;">
+                                    <li style="width: 519.08px;">
+                                        <a href="javascript:" title="“天和杯”第一届篮球比赛" style="display: none;"></a>
+                                    </li>
+                                    <li style="width: 519.08px;">
+                                        <a href="javascript:" title="“天和杯”第一届篮球比赛" style="display: none;"></a>
+                                    </li>
+                                    <li style="width: 519.08px;">
+                                        <a href="javascript:" title="“天和杯”第一届篮球比赛" style="display: none;"></a>
+                                    </li>
+                                    <li style="width: 519.08px;">
+                                        <a href="javascript:" title="“天和杯”第一届篮球比赛" style="display: none;"></a>
+                                    </li>
+                                    <li style="width: 519.08px;">
+                                        <a href="javascript:" title="“天和杯”第一届篮球比赛" style="display: none;"></a>
+                                    </li>
+                                </ul><ul id="iconBall15" class="iconBall">
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class="active"></li>
+                                    <li class=""></li>
+                                </ul><ul id="textBall15" class="textBall">
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class="active"></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px; width: 100%;">
+                        <ul class="publicTitle">
+                            <li id="clm1_20_0" class="aaa">
+                                <a href="javascript:">待办任务</a>
+                            </li>
+                            <li id="clm1_20_1">
+                                <a href="javascript:">我的项目</a>
+                            </li>
+                        </ul>
+                        <div class="listBody oFlow" id="div_clm1_20_0" style="display: block;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <a title="(超期)客户问题处理" href="#">(超期)客户问题处理(章忠亮)</a><span>[2015-01-12]</span>
+                                </li>
+                                <li>
+                                    <a title="(超期)中秋节礼品采购活动" href="#">(超期)中秋节礼品采购活动(郑俊生)</a><span>[2014-09-05]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm1_20_1" style="display: none;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <a href="#" title="上海江苏路明欣小区FTPH光纤入户工程">上海江苏路明欣小区FTPH光纤入户工程(薛明鹏)</a><span>[2015-05-21]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px; width: 100%;">
+                        <ul class="publicTitle">
+                            <li id="clm1_30_0" class="aaa">
+                                <a href="javascript:">产品知识</a>
+                            </li>
+                            <li id="clm1_30_1">
+                                <a href="javascript:">技术知识</a>
+                            </li>
+                            <li id="clm1_30_2">
+                                <a href="javascript:">质量知识</a>
+                            </li>
+                            <li id="clm1_30_3">
+                                <a href="javascript:">营销知识</a>
+                            </li>
+                            <li id="clm1_30_4">
+                                <a href="javascript:">管理知识</a>
+                            </li>
+                        </ul>
+                        <div class="listBody oFlow" id="div_clm1_30_0" style="display: block;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <span title="OA需求分析1.doc" style="float: left;"><a href="#">OA需求分析1.doc</a></span><span>[2015-01-12]</span>
+                                </li>
+                                <li>
+                                    <span title="4D智能型低氮燃烧器.docx" style="float: left;"><a href="">4D智能型低氮燃烧器.docx</a></span><span>[2015-02-23]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm1_30_1" style="display: none;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <span title="电站整体优化技术.docx" style="float: left;"><a href="">电站整体优化技术.docx</a></span><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <span title="锅炉燃烧优化技术.docx" style="float: left;"><a href="">锅炉燃烧优化技术.docx</a></span><span>[2015-02-23]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm1_30_2" style="display: none;">
+                            <ul class="titleList" style="height: 175px;"></ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm1_30_3" style="display: none;">
+                            <ul class="titleList" style="height: 175px;"></ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm1_30_4" style="display: none;">
+                            <ul class="titleList" style="height: 175px;"></ul>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 35%;">
+                    <div class="publicDiv" style="height: 280px; width: 100%;">
+                        <ul class="publicTitle">
+                            <li id="clm2_10_0" class="aaa">
+                                <a href="javascript:">公司新闻</a>
+                            </li>
+                            <li id="clm2_10_1">
+                                <a href="javascript:">通知公告</a>
+                            </li>
+                            <li id="clm2_10_2">
+                                <a href="javascript:">行业新闻</a>
+                            </li>
+                        </ul>
+                        <div class="listBody oFlow" id="div_clm2_10_0" style="display: block;">
+                            <ul class="titleList" style="height: 255px;">
+                                <li>
+                                    <a href="javascript:" title="天和技术低氮改造样板工程——秦皇岛#4炉">天和技术低氮改造样板工程——秦皇岛#4炉<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="武汉天和技术公司荣获2013年度工业倍增贡献奖“高成长企业”称号">武汉天和技术公司荣获2013年度工业倍增贡献奖...<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="“等离子体点燃低反应性煤粉技术攻关”通过集团验收">“等离子体点燃低反应性煤粉技术攻关”通过集团验收<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="[喜讯] 热烈庆祝新疆华电喀什二期发电有限责任公司35万千瓦机组等离子体项目点火成功">[喜讯] 热烈庆祝新疆华电喀什二期发电有限责任...<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="[喜讯] 热烈庆祝陕西华电蒲城发电有限责任公司#4炉低氮改造项目点火成功">[喜讯] 热烈庆祝陕西华电蒲城发电有限责任公司...<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="2015元旦放假通知">2015元旦放假通知</a><span>[2015-01-18]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="2014中秋放假通知">2014中秋放假通知<img src="./main_files/news.gif" border="0" /></a><span>[2014-09-09]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="博拉贝尔协办中国电科节能环保宣传月专项活动">博拉贝尔协办中国电科节能环保宣传月专项活动</a><span>[2014-07-09]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm2_10_1" style="display: none;">
+                            <ul class="titleList" style="height: 255px;">
+                                <li>
+                                    <a href="javascript:" title="美联储会议纪要：低通胀不会影响加息决定">美联储会议纪要：低通胀不会影响加息决定</a><span>[2015-01-18]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="美联储会议纪要：三地方联储12月再次呼吁上调贴现率 ">美联储会议纪要：三地方联储12月再次呼吁上调贴现率 <img src="./main_files/news.gif" border="0" /></a><span>[2015-01-18]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="公司改制调研情况通报">公司改制调研情况通报</a><span>[2014-09-08]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm2_10_2" style="display: none;">
+                            <ul class="titleList" style="height: 255px;">
+                                <li>
+                                    <a href="javascript:" title="中国最严格环境考核制度出炉 实行一票否决">中国最严格环境考核制度出炉 实行一票否决<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="2013年中国能源十大新闻">2013年中国能源十大新闻<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="2012年我国对于垃圾气化发电行业扶持政策汇总">2012年我国对于垃圾气化发电行业扶持政策汇总<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="工信部发布《工业节能“十二五”规划》明确推广等离子体点火技术">工信部发布《工业节能“十二五”规划》明确推广等...<img src="./main_files/news.gif" border="0" /></a><span>[2015-02-23]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="如何选择适合你的OA">如何选择适合你的OA<img src="./main_files/news.gif" border="0" /></a><span>[2015-01-18]</span>
+                                </li>
+                                <li>
+                                    <a href="javascript:" title="OA办公自动化详解">OA办公自动化详解</a><span>[2015-01-12]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px;">
+                        <ul class="publicTitle">
+                            <span class="titleImg"><img src="./main_files/handleTask.gif" /></span>
+                            <span class="columnName">待办流程</span>
+                            <span class="more"><a href="#" title="更多"></a></span>
+                        </ul>
+                        <div class="listBody" style="height: 175px;">
+                            <ul class="titleList">
+                                <li>
+                                    <a title="请假申请单_2015-01-26_章忠亮" href="#">请假申请单_2015-01-26_章忠亮(章忠亮)</a><span>[2015-01-26]</span>
+                                </li>
+                                <li>
+                                    <a title="名片申请流程_2015-12-06_章忠亮" href="#">名片申请流程_2015-12-06_章忠亮(章忠亮)</a><span>[2015-12-06]</span>
+                                </li>
+                                <li>
+                                    <a title="请假申请单_2015-01-14_章忠亮" href="#">请假申请单_2015-01-14_章忠亮(章忠亮)</a><span>[2015-01-14]</span>
+                                </li>
+                                <li>
+                                    <a title="撒旦发射" href="#">撒旦发射(章忠亮)</a><span>[2015-01-12]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px; width: 100%;">
+                        <ul class="publicTitle">
+                            <li id="clm2_30_0" class="aaa">
+                                <a href="javascript:">优秀员工</a>
+                            </li>
+                            <li id="clm2_30_1">
+                                <a href="javascript:">员工情怀</a>
+                            </li>
+                            <li id="clm2_30_2">
+                                <a href="javascript:">规章制度</a>
+                            </li>
+                        </ul>
+                        <div class="listBody oFlow" id="div_clm2_30_0" style="display: block;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <a href="javascript:" title="祝贺章亮为2014年度优秀员工">祝贺章亮为2014年度优秀员工</a><span>[2015-01-12]</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm2_30_1" style="display: none;">
+                            <ul class="titleList" style="height: 175px;"></ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm2_30_2" style="display: none;">
+                            <ul class="title" style="height: 175px;">
+                                <li>
+                                    <span title="oa上线前检核-以此版为准.docx" style="float: left;"><a target="_blank" href="">oa上线前检核-以此版为准.docx</a></span><span>[2015-01-11]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="publicDiv" style="height: 280px;">
+                        <ul class="publicTitle">
+                            <span class="titleImg"><img src="./main_files/mySchedule.gif" /></span>
+                            <span class="columnName">工作日程</span>
+                            <span class="more"><a href="#" title="更多"></a></span>
+                        </ul>
+                        <div id="scheduleItem_3_0" style="height: 205px; width: 100%;">
+                        </div>
+                        <div class="listBody" style="height: 75px;">
+                            <ul class="titleList" id="scheduleItem_3_0_ul"></ul>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px; width: 100%;">
+                        <ul class="publicTitle">
+                            <li id="clm3_10_0" class="aaa">
+                                <a href="javascript:">员工去向</a>
+                            </li>
+                            <li id="clm3_10_1">
+                                <a href="javascript:">知会任务</a>
+                            </li>
+                        </ul>
+                        <div class="listBody oFlow" id="div_clm3_10_0" style="display: block;">
+                            <ul class="titleList" style="height: 175px;"></ul>
+                        </div>
+                        <div class="listBody oFlow" id="div_clm3_10_1" style="display: none;">
+                            <ul class="titleList" style="height: 175px;">
+                                <li>
+                                    <a title="(超期)客户问题处理" href="#">(超期)客户问题处理(章忠亮)</a><span>[2015-01-12]</span>
+                                </li>
+                                <li>
+                                    <a title="(超期)中秋节礼品采购活动" href="#">(超期)中秋节礼品采购活动(郑俊生)</a><span>[2014-09-05]</span>
+                                </li>
+                                <li>
+                                    <a title="中秋节文艺活动创意" href="#">中秋节文艺活动创意(章忠亮)</a><span>[2015-01-12]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="publicDiv" style="height: 200px;">
+                        <ul class="publicTitle">
+                            <span class="titleImg"><img src="./main_files/imail.gif" /></span>
+                            <span class="columnName">我的邮件</span>
+                            <span class="more"><a href="#" title="更多"></a></span>
+                        </ul>
+                        <div class="listBody" style="height: 175px;">
+                            <ul class="titleList">
+                                <li>
+                                    <a title="转发： 8%返利持续 + 精选返校季促销：Kipling最高6折, ebags低至3.5折, Kohl&#39;s满$30减$10等，再享达16%返利！(631899117 &lt;631899117@qq.com&gt;)" href="#">转发： 8%返利持续 +...<img src="./main_files/news.gif" border="0" /></a><span>[2014-09-05]</span>
+                                </li>
+                                <li>
+                                    <a title="转发：开源中国6周年 ?? 成都源创会正在报名中（9月13日）(631899117 &lt;631899117@qq.com&gt;)" href="#">转发：开源中国6周年 ?...<img src="./main_files/news.gif" border="0" /></a><span>[2014-09-05]</span>
+                                </li>
+                                <li>
+                                    <a title="转发：2014品牌齐聚 天猫与您共度新年(631899117 &lt;631899117@qq.com&gt;)" href="#">转发：2014品牌齐聚 ...<img src="./main_files/news.gif" border="0" /></a><span>[2014-09-05]</span>
+                                </li>
+                                <li>
+                                    <a title="电信用户新特权：易信新注册用户可领取7重大礼 限时！快抢！(易信 &lt;yixin@service.netease.com&gt;)" href="#">电信用户新特权：易信新注...<img src="./main_files/news.gif" border="0" /></a><span>[2013-12-13]</span>
+                                </li>
+                                <li>
+                                    <a title="大话2天罡星重出江湖，“逆天”大招助你飞速升级！(《大话西游2》开发组 &lt;xy2_ad@service.netease.com&gt;)" href="#">大话2天罡星重出江湖，“...<img src="./main_files/news.gif" border="0" /></a><span>[2013-06-10]</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

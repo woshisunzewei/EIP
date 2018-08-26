@@ -1,0 +1,585 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@{
+    Layout = null;
+    @model IEnumerable<EIP.System.Models.Dtos.Config.SystemDataBaseColumnDoubleWay>
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>代码生成</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Contents/edit.css" rel="stylesheet" />
+    <script src="/Scripts/lib/smartwizard/js/jquery.min.js"></script>
+
+    <link href="/Contents/common.css" rel="stylesheet" />
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="/Scripts/lib/smartwizard/css/bootstrap.min.css">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="/Scripts/lib/smartwizard/css/bootstrap-theme.min.css">
+    <!-- Include SmartWizard CSS -->
+    <link href="/Scripts/lib/smartwizard/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+    <!-- Optional SmartWizard theme -->
+    <link href="/Scripts/lib/smartwizard/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+    @*syntaxhighlighter*@
+    <script src="~/Scripts/lib/syntaxhighlighter/scripts/shCore.js"></script>
+    <script src="~/Scripts/lib/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+    <script src="~/Scripts/lib/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <link type="text/css" rel="stylesheet" href="~/Scripts/lib/syntaxhighlighter/styles/shCoreDefault.css" />
+
+
+    <style type="text/css">
+        .step-height {
+            height: 514px;
+            overflow: auto;
+        }
+
+        .btn {
+            padding: 3px 6px;
+            font-size: 14px;
+        }
+
+        .sw-theme-arrows .step-content {
+            padding: 0px;
+        }
+
+        .sys_spec_text li {
+            height: 40px;
+        }
+
+        .border {
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+            border-image: initial;
+        }
+
+        .editview {
+            position: relative;
+            margin: 1px;
+        }
+
+            .editview:hover {
+                border: 1px dashed #337ab7;
+            }
+
+        .editviewtitle {
+            display: none;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+            z-index: 100;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #2e6da4;
+            cursor: pointer;
+            background-color: #337ab7;
+            color: #fff;
+        }
+
+        .complex-table th {
+            text-align: center;
+        }
+
+        .td-nobr {
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        .aui_main {
+            overflow: auto;
+        }
+
+        .form-control {
+            color: #000;
+            border-radius: 0px;
+            box-shadow: none;
+            font-size: 9pt;
+            height: 28px;
+            padding-top: 0px;
+            padding-bottom: 1px;
+            padding-right: 0px;
+            padding-left: 5px;
+            resize: none;
+        }
+
+            .form-control:focus {
+                border-color: #337ab7;
+                box-shadow: none;
+            }
+
+        .app_layout {
+            margin: 0px auto;
+            position: relative;
+            height: 444px;
+            border-left: 1px solid #ccc;
+            padding: 3px;
+            overflow: auto;
+            overflow-x: hidden;
+        }
+
+            .app_layout .item_table {
+                border-top: 1px solid #d5d5d5;
+                border-bottom: 0px solid #d5d5d5;
+                min-height: 444px;
+            }
+
+            .app_layout .item_row {
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #eeecec;
+                overflow: hidden;
+                cursor: move;
+            }
+
+            .app_layout .activeerror {
+                border-bottom: 1px solid #B94A48;
+            }
+
+            .app_layout .active .item_field_label {
+                background-color: #337ab7;
+                color: #fff;
+            }
+
+                .app_layout .active .item_field_label font {
+                    color: #fff;
+                }
+
+            .app_layout .item_field_label {
+                float: left;
+                width: 120px;
+                padding-left: 20px;
+                background-color: #f5f5f5;
+                vertical-align: top;
+                display: block;
+            }
+
+                .app_layout .item_field_label font {
+                    color: red;
+                    position: absolute;
+                    padding-left: 10px;
+                }
+
+            .app_layout .item_field_value {
+                float: left;
+                height: 100%;
+                padding-left: 10px;
+                color: #9f9f9f;
+                display: block;
+            }
+
+            .app_layout .item_field_remove {
+                float: right;
+                padding-right: 235px;
+                z-index: 101;
+                cursor: pointer;
+            }
+
+                .app_layout .item_field_remove i.del {
+                    color: #CF5C60;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    border-radius: 5px;
+                    text-align: center;
+                    display: none;
+                }
+
+            .app_layout .active .item_field_remove i {
+                display: inline-block;
+            }
+
+            .app_layout .item_table {
+                overflow: hidden;
+                border-top: 1px solid #eeecec;
+                border-bottom: none;
+                min-height: 400px;
+            }
+
+            .app_layout .item_row {
+                cursor: default;
+                position: relative;
+            }
+
+                .app_layout .item_row .item_field_label {
+                    cursor: move;
+                }
+
+                .app_layout .item_row:hover {
+                    border: 1px dashed #337ab7;
+                }
+
+                .app_layout .item_row:last-child {
+                    border-bottom: 1px solid #eeecec;
+                }
+
+            .app_layout .ui-state-highlight {
+                border: none;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="smartwizard">
+            <ul>
+                <li><a href="#step-1">1-基本配置<br /></a></li>
+                <li><a href="#step-2">2-列表界面<br /></a></li>
+                <li><a href="#step-3">3-表单页面<br /></a></li>
+                <li><a href="#step-4">4-查看代码<br /></a></li>
+                <li><a href="#step-5">5-自动创建<br /></a></li>
+            </ul>
+
+            <div>
+                @*基本配置*@
+                <div id="step-1" class="step-height">
+                    @Html.EditTopRemark(new EditTopRemarkInput { Title = "文件名配置" })
+                    <div class="edit-content">
+                        <table class="complex-table base">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 118px" class="m">表主键名：</th>
+                                    <td>
+                                        <select name="TableKey" id="TableKey">
+                                            @{
+                                                foreach (var m in Model)
+                                                {
+                                                    <option value="@m.ColumnName">@m.ColumnName (@m.ColumnDescription)</option>
+                                                }
+                                            }
+                                        </select>
+                                    </td>
+                                    <th style="width: 118px" class="m">实体类名：</th>
+                                    <td>
+                                        <input name="entity" id="entity" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>DataAccess接口：</th>
+                                    <td>
+                                        <input name="dataAccessInterface" id="dataAccessInterface" type="text">
+                                    </td>
+                                    <th>DataAccess实现：</th>
+                                    <td>
+                                        <input name="dataAccess" id="dataAccess" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Business接口：</th>
+                                    <td>
+                                        <input name="businessInterface" id="businessInterface" type="text">
+                                    </td>
+                                    <th>Business实现：</th>
+                                    <td>
+                                        <input name="business" id="business" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>控制器：</th>
+                                    <td>
+                                        <input name="controller" id="controller" type="text">
+                                    </td>
+                                    <th>列表页名：</th>
+                                    <td>
+                                        <input name="list" id="list" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>表单页名：</th>
+                                    <td>
+                                        <input name="edit" id="edit" type="text">
+                                    </td>
+                                    <th>表单详细：</th>
+                                    <td>
+                                        <input name="detail" id="detail" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>js列表：</th>
+                                    <td>
+                                        <input name="listjs" id="listjs" type="text">
+                                    </td>
+                                    <th>js表单：</th>
+                                    <td>
+                                        <input name="editjs" id="editjs" type="text">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    @Html.EditTopRemark(new EditTopRemarkInput { Title = "输出路径" })
+                    <div class="edit-content">
+                        <table class="complex-table base">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 118px" class="m">实体：</th>
+                                    <td>
+                                        <input name="entityPath" id="entityPath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">DataAccess接口：</th>
+                                    <td>
+                                        <input name="dataAccessInterfacePath" id="dataAccessInterfacePath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">DataAccess实现：</th>
+                                    <td>
+                                        <input name="dataAccessPath" id="dataAccessPath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">Business接口：</th>
+                                    <td>
+                                        <input name="businessInterfacePath" id="businessInterfacePath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">Business实现：</th>
+                                    <td>
+                                        <input name="businessPath" id="businessPath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">控制器：</th>
+                                    <td>
+                                        <input name="controllerPath" id="controllerPath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">js列表：</th>
+                                    <td>
+                                        <input name="listjspath" id="listjspath" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m">js表单：</th>
+                                    <td>
+                                        <input name="editjspath" id="editjspath" type="text">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                @*列表界面*@
+                <div id="step-2" class="step-height">
+                    @Html.EditTopRemark(new EditTopRemarkInput { Title = "按钮配置" })
+                    <div class="editview border" style="height: 60px;">
+                        <div class="ScrollBar">
+                            <ul class="sys_spec_text" style="">
+                                <li title="新增" class="selected">
+                                    <a icon="add" title="新增" script="add" orderno="0" remark="新增">
+                                        <img src="/Contents/images/icons/add.png">新增
+                                    </a><i></i>
+                                </li>
+                                <li title="编辑" class="selected">
+                                    <a icon="edit" title="编辑" script="edit" orderno="1" remark="编辑">
+                                        <img src="/Contents/images/icons/edit.png">编辑
+                                    </a><i></i>
+                                </li>
+                                <li title="删除" class="selected">
+                                    <a icon="delete" title="删除" script="del" orderno="2" remark="删除">
+                                        <img src="/Contents/images/icons/delete.png">删除
+                                    </a><i></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    @Html.EditTopRemark(new EditTopRemarkInput { Title = "列表配置", HtmlAttributes = "<div style=\"width:40px;float:right\"><input type=\"checkbox\" style=\"cursor: pointer\" id=\"IsPaging\" ><label for=\"IsPaging\" style=\"cursor: pointer\">分页</label></div>" })
+                    <div class="editview border" style=" padding: 2px;">
+                        <div class="editviewtitle" id="viewgrid" style="display: none;">
+                            预览表格
+                        </div>
+                        <div class="editviewbody">
+                            <table id="codeGenerationList" class="complex-table" style="text-align: center;">
+                                <tr>
+                                    <th style="width: 114px">字段名称</th>
+                                    <th style="width:90px">显示名称</th>
+                                    <th>绑定名称</th>
+                                    <th>排序名称</th>
+                                    <th style="width: 220px">选项</th>
+                                    <th style="width: 60px">宽度(px)</th>
+                                    <th style="width: 80px">排序方式</th>
+                                    <th style="width: 80px">对齐方式</th>
+                                    <th style="width: 80px">格式化</th>
+                                    <th style="width: 60px">序号</th>
+                                </tr>
+                                @{
+                                    foreach (var m in Model)
+                                    {
+                                        <tr>
+                                            <td class="td-nobr" title="@m.ColumnName (@m.ColumnDescription)">@m.ColumnName</td>
+                                            <td><input name="label" type="text" value="@m.ColumnDescription"></td>
+                                            <td><input name="name" type="text" value="@m.ColumnName"></td>
+                                            <td><input name="index" type="text"></td>
+                                            <td>
+                                                <span class="item">
+                                                    <input type="checkbox" name="need" style="cursor: pointer" checked="checked" id="Need_@m.ColumnName"><label for="Need_@m.ColumnName" style="cursor: pointer">展示该列</label>
+                                                </span>
+                                                <span class="item">
+                                                    <input type="checkbox" name="hidden" style="cursor: pointer" id="Hidden_@m.ColumnName" checked="checked"><label for="Hidden_@m.ColumnName" style="cursor: pointer">显示</label>
+                                                </span>
+                                                <span class="item">
+                                                    <input type="checkbox" name="sortable" style="cursor: pointer" id="Sort_@m.ColumnName" checked="checked"><label for="Sort_@m.ColumnName" style="cursor: pointer">排序</label>
+                                                </span>
+                                                <span class="item">
+                                                    <input type="checkbox" name="fixed" style="cursor: pointer" id="Fixed_@m.ColumnName"><label for="Fixed_@m.ColumnName" style="cursor: pointer">自适应</label>
+                                                </span>
+
+                                            </td>
+                                            <td><input type="text" name="width"></td>
+                                            <td>
+                                                <select name="sorttype">
+                                                    <option value="">=请选择=</option>
+                                                    <option value="0">int</option>
+                                                    <option value="1">integer</option>
+                                                    <option value="2">float</option>
+                                                    <option value="3">number</option>
+                                                    <option value="4">currency</option>
+                                                    <option value="5">date</option>
+                                                    <option value="6">text</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select>
+                                                    <option value="align">=请选择=</option>
+                                                    <option value="0">right</option>
+                                                    <option value="1">center</option>
+                                                    <option value="2">left</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select name="formatter">
+                                                    <option value="">=请选择=</option>
+                                                    <option value="0">Datetime</option>
+                                                    <option value="1">Icon</option>
+                                                    <option value="2">Sex</option>
+                                                    <option value="3">State</option>
+                                                    <option value="4">YesOrNo</option>
+                                                    <option value="5">UpOrdel</option>
+                                                    <option value="6">Del</option>
+                                                    <option value="7">Update</option>
+                                                </select>
+                                            </td>
+                                            <td><input name="orderno" type="text" value="0"></td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                @*表单界面*@
+                <div id="step-3" class="step-height">
+                    @Html.EditTopRemark(new EditTopRemarkInput { Title = "表单页面配置", Remark = " 注：1、请在左侧勾选需要在表单中显示的字段。2、可编辑控件参数。3、可拖动控件显示位置。" })
+
+                    <div id="layout" class="layoutdiv ui-layout-container" style="top: 34px;  overflow: hidden;">
+                        <div class="ui-layout-center ui-layout-pane ui-layout-pane-center" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; position: absolute; margin: 0px; left: 216px; right: 0px; top: 1px; bottom: 0px; height: 478px; width: 782px; z-index: 0; display: block; visibility: visible;">
+                            <div style="float: left; position: absolute; padding-left: 3px; padding-top: 2px; width: 150px;">
+                                <input id="EditWidth" type="text" class="form-control" placeholder="表单宽度" style="float: left; width: 60px; margin-right: 5px;">
+                                <input id="EditHeight" type="text" class="form-control" placeholder="表单高度" style="float: left; width: 60px;">
+                            </div>
+                            <div class="row" style="text-align: center; padding-top: 2px">
+                                <div id="FormshowType" class="btn-group">
+                                    <a id="FormType1" class="btn btn-default active" data-value="1">一排</a>
+                                    <a id="FormType2" class="btn btn-default" data-value="2">二排</a>
+                                </div>
+                            </div>
+
+                            <div id="Form_layout" class="app_layout" style=" border-left: none;">
+                                <div id="Form_layout_list" class="item_table ui-sortable">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ui-layout-west ui-layout-pane ui-layout-pane-west" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; position: absolute; margin: 0px; left: 0px; right: auto; top: 1px; bottom: 0px; height: 478px; z-index: 0; width: 210px; display: block; visibility: visible;">
+                            <ul id="tree" class="ztree" style="height: 475px"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                @*查看代码*@
+                <div id="step-4" class="step-height">
+                    <div title="实体" id="codeForEntities" icon="document-invoice" lselected="true" style="height: 486px; overflow: auto"></div>
+                    <div title="数据访问接口" id="codeForDataAccessInterface" icon="document-invoice" style="min-height: 480px; overflow: auto"></div>
+                    <div title="数据访问接口实现" id="codeForDataAccess" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="业务逻辑接口" id="codeForBusinessInterface" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="业务逻辑接口实现" id="codeForBusiness" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="控制器" id="codeForController" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="列表页" id="codeForList" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="编辑页" id="codeForEdit" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="列表页Js" id="codeForListJs" icon="document-invoice" style="padding: 3px"></div>
+                    <div title="编辑页Js" id="codeForEditJs" icon="document-invoice" style="padding: 3px"></div>
+                </div>
+
+                @*自动创建:若发布则像数据库里插入对应的按钮菜单*@
+                <div id="step-5" class="step-height">
+                    <table class="messagebox" align="center" style="margin-top: 200px" width="315" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr class="head-no-title">
+                                <td class="left"></td>
+                                <td class="center"></td>
+                                <td class="right"></td>
+                            </tr>
+                            <tr class="msg" height="90">
+                                <td class="left"></td>
+                                <td class="center info" style="padding-left:75px">
+                                    <div class="msg-content" style="margin-right: 0px"><strong style="font-size: 18px">操作提示:</strong><label style="font-size: 18px" id="createFileMessage">正在创建中...</label></div>
+                                </td>
+                                <td class="right"></td>
+                            </tr>
+                            <tr class="foot">
+                                <td class="left"></td>
+                                <td class="center"><b></b></td>
+                                <td class="right"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div align="center" id="createFileAddMenu" style="display: none;cursor: pointer" onclick="addMenu();return false; ">发布功能及按钮</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/resource/language_zh.js"></script>
+
+    @*ztree*@
+    <link href="/Scripts/lib/ztree/zTreeStyle.css" rel="stylesheet" />
+    <script src="/Scripts/lib/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script src="/Scripts/lib/ztree/js/jquery.ztree.excheck-3.5.min.js"></script>
+    <script src="/Scripts/lib/ztree/js/jquery.ztree.exhide-3.5.min.js"></script>
+
+    @*layout*@
+    <link href="/Scripts/lib/layout/layout-default-latest.css" rel="stylesheet" />
+    <script src="/Scripts/lib/layout/jquery-ui-latest.js"></script>
+    <script src="/Scripts/lib/layout/jquery.layout-latest.js"></script>
+
+    <script src="/Scripts/lib/smartwizard/js/jquery.smartWizard.min.js"></script>
+    <link href="/Scripts/lib/artdialog/skins/chrome.css" rel="stylesheet" />
+    <script src="/Scripts/lib/artdialog/artDialog.source.js"></script>
+    <script src="/Scripts/lib/artdialog/plugins/iframeTools.source.js"></script>
+    <script src="/Scripts/app/common.js"></script>
+    <script src="/Scripts/app/function.js"></script>
+    <script src="/Scripts/app/system/codegeneration/pc-codegeneration.js"></script>
+
+    @*ligerui*@
+    <link href="~/Contents/ui/ligerui.css" rel="stylesheet" />
+    <link href="~/Scripts/lib/ligerui/skins/Aqua/css/ligerui-tab.css" rel="stylesheet" />
+    <link href="~/Contents/images/icons.css" rel="stylesheet" />
+    <script src="~/Scripts/lib/ligerui/js/core/base.js"></script>
+    <script src="~/Scripts/lib/ligerui/js/plugins/ligerMenu.js"></script>
+    <script src="~/Scripts/lib/ligerui/js/plugins/ligerTab.js"></script>
+    <script src="~/Scripts/lib/ligerui/js/plugins/ligerLayout.js"></script>
+    <script src="~/Scripts/lib/ligerui/js/plugins/ligerAccordion.js"></script>
+
+    <script src="~/Scripts/lib/jquery.formval.js"></script>
+</body>
+</html>
+

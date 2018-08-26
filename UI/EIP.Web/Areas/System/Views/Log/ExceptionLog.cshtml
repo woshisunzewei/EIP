@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "异常日志";
+    ViewBag.Require = "system-log-exceptionlog";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="uiCenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                </div>
+                <div class="tools-box-right">
+                    异常时间：<input type="hidden" value="time" /><input class="Wdate filter" name="CreateTime" type="text" onclick=" WdatePicker() " placeholder="请输入异常时间查询" />
+                    错误信息：<input type="hidden" value="cn" /><input name="Message" class="filter" type="text" placeholder="请输入错误信息查询" />
+                    <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                    <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div id="uiSouth" class="ui-layout-south" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <form id="form">
+        <div id="detailDiv" style="overflow: auto">
+            <table class="edit-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            异常时间：
+                        </th>
+                        <td>
+                            <label id="CreateTime" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            登录名：
+                        </th>
+                        <td>
+                            <label id="CreateUserCode" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            真实姓名：
+                        </th>
+                        <td>
+                            <label id="CreateUserName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            错误信息：
+                        </th>
+                        <td>
+                            <label id="Message" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            堆栈信息：
+                        </th>
+                        <td>
+                            <label id="StackTrace" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            内部异常：
+                        </th>
+                        <td>
+                            <label id="InnerException" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            异常类型：
+                        </th>
+                        <td>
+                            <label id="ExceptionType" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            请求Url：
+                        </th>
+                        <td>
+                            <label id="RequestUrl" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            浏览器信息：
+                        </th>
+                        <td>
+                            <label id="UserAgent" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            请求方式：
+                        </th>
+                        <td>
+                            <label id="HttpMethod" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            请求数据：
+                        </th>
+                        <td>
+                            <label id="RequestData" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            服务器：
+                        </th>
+                        <td>
+                            <label id="ServerHost" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            客户端：
+                        </th>
+                        <td>
+                            <label id="ClientHost" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+

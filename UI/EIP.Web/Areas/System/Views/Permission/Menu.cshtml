@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "模块权限";
+    ViewBag.Require = "system-permission-menu";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@section Head
+{   
+    <style type="text/css">
+        input[type="checkbox"]{
+            border: 1px solid #C6C6C6;
+            outline: none;
+        }
+        .tree-container {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: solid 1px #C8C8C8;
+            overflow: auto;
+        }
+    </style>
+}
+<div class="search-box" style="">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" arrowin(); return false; ">
+                <span id="arrowin" class="l-icon-arrow-out">展开</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" selectall(); return false; ">
+                <span id="select" class="l-icon-ui-check-box">全选</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="tree-container" style="top: 38px;">
+    <ul id="menuTree" class="ztree"></ul>
+</div>

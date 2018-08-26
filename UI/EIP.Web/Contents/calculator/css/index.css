@@ -1,0 +1,16 @@
+/*body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}*/
+
+.calc-main { /* center / center */
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin-top: -170px;
+	margin-left: -250px;
+}
+.calc-small {
+	margin-left: -130px;
+}

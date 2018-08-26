@@ -1,0 +1,18 @@
+﻿@using EIP.Common.Core.Utils
+<!DOCTYPE html>
+<html lang="zh-cn" data-require="@ViewBag.Require">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="/Scripts/require.min.js" data-main="/Scripts/main.js"></script>
+    @{ string path = UrlUtil.UrlConvertor(); ViewBag.Path = path;}
+    <link href="@ViewBag.Path/Contents/images/icons.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/common.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/edit.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+    
+</head>
+<body class="mainbody">
+    @RenderBody()
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "意见编辑";
+    ViewBag.Require = "workflow-comment-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.Workflow.Models.Entities.WorkflowComment
+    @Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写意见信息",
+    Remark = "注：带*号的为必填信息！"
+})
+    <div class="edit-content">
+        <table class="complex-table">
+            <tbody>
+                <tr>
+                    <th style="width: 100px" class="m" valign="top">内容：</th>
+                    <td>
+                        @Html.TextAreaFor(f => @Model.Content, new { datatype = "*1-512",style="height: 100px" })
+                    </td>
+                </tr>
+                <tr>
+                    <th class="m">序号：</th>
+                    <td>
+                        @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                    </td>
+
+        </table>
+    </div>
+    @Html.HiddenFor(f => Model.CommentId)

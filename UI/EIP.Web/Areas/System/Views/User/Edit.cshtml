@@ -1,0 +1,80 @@
+﻿@using EIP.Common.Core.Config
+@using EIP.Common.Entities.Dtos
+
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "系统用户信息编辑";
+    ViewBag.Require = "system-user-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.System.Models.Entities.SystemUserInfo
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写用户信息",
+    Remark = string.Format("注：带*号的为必填信息！登录名唯一【初始化密码为:{0}】", GlobalParams.Get("defaultPwd"))
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th class="m" style="width: 110px">归属机构：</th>
+                <td>
+                    @Html.TextBox("OrgName",null, new {@readonly = true, @class = "text1", datatype = "*1-64", style = @"width: 414px; border-width: 1px 0px 1px 1px; "})
+                    @Html.Hidden("OrgId")
+                    <input type="button" title="" id="chosen_org" plugin="organization-all" class="button_search" value="选择" />
+                </td>
+            </tr>
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-32" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">登录名：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Code, new { datatype = "*1-256", ajaxurl = "/System/User/CheckUserCode?id=" + @Model.UserId })
+                </td>
+            </tr>
+            <tr>
+                <th>联系电话：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Mobile, new { datatype = "*1-32", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>邮箱：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Email, new { datatype = "e", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>类别：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof(EnumUserNature)),
+                    HtmlAttributes = new { datatype = "*" },
+                    Name = "State",
+                    SelectedVal = @Model.State
+                })
+                </td>
+            </tr>
+            <tr>
+                <th>冻结：</th>
+                <td>
+                    @Html.CheckBoxFor(f => @Model.IsFreeze)
+                </td>
+            </tr>
+
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { style = "height: 40px", datatype = "*1-512", ignore = "ignore" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => f.UserId)

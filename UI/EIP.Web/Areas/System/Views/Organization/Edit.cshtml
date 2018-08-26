@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "组织机构信息编辑";
+    ViewBag.Require = "system-organization-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+@model EIP.System.Models.Dtos.Identity.SystemOrganizationOutput
+@Html.EditTopRemark(new EditTopRemarkInput
+{
+    Title = "请填写机构信息",
+    Remark = "注：带*号的为必填信息！若没有选择父级菜单,则默认为首级机构,代码值唯一。"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+        <tr>
+            <th style="width: 100px">上级组织：</th>
+            <td>
+                @Html.TextBox("ParentName", @Model.ParentName, new {@readonly = true, @class = "text1", style = "width:135px;border-width:1px 0 1px 1px;"})
+                <input type="button" title="" id="chosen_organization" class="button_search" style="cursor: pointer; margin: 0; margin-left: -5px" value="选择"/>
+            </td>
+            <th style="width: 100px" class="m">名称：</th>
+            <td>
+                @Html.TextBox("Name", @Model.Name, new {datatype = "*1-256"})
+            </td>
+        </tr>
+        <tr>
+            <th>简称：</th>
+            <td>
+                @Html.TextBox("ShortName", @Model.ShortName, new {datatype = "*1-256", ignore = "ignore"})
+            </td>
+            <th>代码：</th>
+            <td>
+                @Html.TextBox("Code", @Model.Code, new {datatype = "*1-64", ajaxurl = "/System/Organization/CheckOrganizationCode?id=" + @Model.OrganizationId, ignore = "ignore"})
+            </td>
+        </tr>
+
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <th>公司性质：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumOrgNature)),
+                    Name = "Nature",
+                    NeedDefault = true,
+                    SelectedVal = @Model.Nature
+                })
+            </td>
+            <th>状态：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumOrgState)),
+                    Name = "State",
+                    NeedDefault = true,
+                    SelectedVal = @Model.State
+                })
+            </td>
+        </tr>
+        <tr>
+            <th>主负责人：</th>
+            <td>
+                @Html.TextBox("MainSupervisor", @Model.MainSupervisor, new {datatype = "*1-32", ignore = "ignore"})
+            </td>
+            <th>联系方式：</th>
+            <td>
+                @Html.TextBox("MainSupervisorContact", @Model.MainSupervisorContact, new {datatype = "*1-64", ignore = "ignore"})
+            </td>
+        </tr>
+        <tr>
+            <th>选项：</th>
+            <td>
+                @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "IsFreeze",
+                    Title = "冻结",
+                    IsCheck = @Model.IsFreeze
+                })
+            </td>
+            <th class="m">序号：</th>
+            <td>
+                @Html.TextBox("OrderNo", @Model.OrderNo, new {datatype = "n", ignore = "ignore"})
+            </td>
+        </tr>
+        <tr>
+            <th valign="top">备注：</th>
+            <td colspan="3">
+                @Html.TextArea("Remark", @Model.Remark, new {datatype = "*1-512", ignore = "ignore", style = "height:40px"})
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+@Html.Hidden("ParentId", @Model.ParentId)
+@Html.Hidden("OrganizationId", @Model.OrganizationId)
+@Html.Hidden("HiddenCode", @Model.ParentCode)

@@ -1,0 +1,51 @@
+﻿@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "系统数据配置项";
+    ViewBag.Require = "system-app-checkcodelist";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west">
+    <div id="layout_app" class="layoutdiv">
+        <div class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools_box">
+                <div class="select_box">
+                    @Html.SearchTextBox("AppName","名称")
+                    <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="uiCenter" class="ui-layout-center">
+    <div id="layout_mvcAssembly" class="layoutdiv">
+        <div class="ui-layout-center" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+            <table id="mvcAssembly_list"></table>
+            <div id="mvcAssembly_pager"></div>
+        </div>
+
+        <div class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    <a href="javascript:void(0);" title="更新模块按钮" onclick="reloadMvcAssembly(); return false; ">
+                        <span class="l-icon-reload">更新模块按钮</span>
+                    </a>
+                    <span class="toolbarsplit">&nbsp;</span>
+                    <a href="javascript:void(0);" title="导入数据库" onclick=" importDataBase(); return false; ">
+                        <span class="l-icon-database--plus">导入数据库</span>
+                    </a>
+                    <span class="toolbarsplit">&nbsp;</span>
+                </div>
+            </div>
+            <div class="select_box mvc_select_box">
+                @Html.SearchTextBox("Area", "区域")
+                @Html.SearchTextBox("Controller", "控制器")
+                <input type="button" id="btn_mvcassmebly_select_box" value="搜 索" class="btnSearch">
+            </div>
+        </div>
+    </div>
+</div>

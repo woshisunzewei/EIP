@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title>select</title>
+    <script src="~/Scripts/lib/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('selectController', function ($scope) {
+            $scope.mycity = '北京';
+            $scope.Cities = [{ id: 1, name: '北京' }, { id: 2, name: '上海' }, { id: 3, name: '广州' }];
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="selectController">
+        <select ng-model="mycity" ng-options="city for city in Cities"></select>
+    </div>
+</body>
+</html>

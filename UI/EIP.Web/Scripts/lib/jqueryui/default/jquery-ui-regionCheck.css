@@ -1,0 +1,119 @@
+
+.top-regions {
+    height: 2em;
+    border-bottom: 2px solid #6197d0;
+	overflow:hidden;
+}
+
+.top-regions .top-regions-r {
+    float: right;
+    text-align: right;
+}
+
+.top-regions .region-rank-radios {
+    display: block;
+	margin-top: -.1em;
+}
+
+.top-regions .top-regions-c{
+    text-align: right;
+	padding-top: .5em;
+}
+.top-regions .region-rank-label {
+	font-size: 1.1em;
+    text-align: right;
+	margin-right: 165px;
+}
+
+.top-regions .top-regions-l {
+    float: left;
+    text-align: left;
+	height: 2em;
+}
+
+.top-regions-l ul {
+	padding: 0;
+	margin: 0;
+}
+
+.top-regions-l li {
+    display: inline-block;
+	float:left;
+    min-width: 13px;
+    font-size: 1.1em;
+    padding: .1em .8em;
+    border: 1px solid #f9f9f9;
+    cursor: pointer;
+}
+
+.top-regions-l li:hover {
+    border: 1px solid #fff;
+    color: #fff;
+    background: #FB7A24;
+}
+
+.top-regions-l li.selected {
+    border: 1px solid #fff;
+    color: #fff;
+    background: #6197d0;
+}
+
+.regions-container {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.regions-container .regions-group {
+}
+
+.regions-container .regions-group-hide {
+    display: none;
+}
+
+ul.regions-group {
+    display: block;
+    float: none;
+    clear: both;
+    padding: 1px;
+	margin:0
+}
+
+.regions-group li {
+    display: block;
+    float: left;
+	min-width: 75px;
+    padding: 3px 4px;
+	margin: 0 10px;
+}
+
+.regions-group li.index {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #FB7A24;
+    max-width: 40px;
+    max-height: 50px;
+    padding: 3px 4px 3px 0px;
+}
+
+.regions-group li a {
+    cursor: pointer;
+}
+
+.regions-group li a:hover {
+    text-decoration: underline;
+}
+
+.regions-footer{
+	display:block; 
+	margin-top:20px; 
+	padding:5px; 
+	clear:both; 
+	border-top:1px solid #6197d0;
+}
+.regions-footer .regions-currentRank{
+	float:left
+}
+.regions-footer .regions-returnUp{
+	float:right; 
+	text-align:right;
+}

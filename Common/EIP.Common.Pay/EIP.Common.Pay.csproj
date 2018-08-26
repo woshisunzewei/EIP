@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FEBDD8A6-A8D7-4A65-838D-26A51497833B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.Common.Pay</RootNamespace>
+    <AssemblyName>EIP.Common.Pay</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Share\NPOI\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\..\Share\Wx\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Share\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\..\Share\Wx\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\..\Share\Wx\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment">
+      <HintPath>..\..\Share\Wx\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickMark">
+      <HintPath>..\..\Share\Wx\QuickMark.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\Share\Wx\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\..\Share\Wx\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alipay\AlipayConfig.cs" />
+    <Compile Include="Alipay\AlipayCore.cs" />
+    <Compile Include="Alipay\AlipayNotify.cs" />
+    <Compile Include="Alipay\AlipaySubmit.cs" />
+    <Compile Include="Alipay\MD5.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unionpay\AcpService.cs" />
+    <Compile Include="Unionpay\BigNum.cs" />
+    <Compile Include="Unionpay\CertUtil.cs" />
+    <Compile Include="Unionpay\HttpClient.cs" />
+    <Compile Include="Unionpay\SDKConfig.cs" />
+    <Compile Include="Unionpay\SDKUtil.cs" />
+    <Compile Include="Unionpay\SecurityUtil.cs" />
+    <Compile Include="WeiXin\Business\DownloadBill.cs" />
+    <Compile Include="WeiXin\Business\JsApiPay.cs" />
+    <Compile Include="WeiXin\Business\MicroPay.cs" />
+    <Compile Include="WeiXin\Business\NativeNotify.cs" />
+    <Compile Include="WeiXin\Business\NativePay.cs" />
+    <Compile Include="WeiXin\Business\OrderQuery.cs" />
+    <Compile Include="WeiXin\Business\Refund.cs" />
+    <Compile Include="WeiXin\Business\RefundQuery.cs" />
+    <Compile Include="WeiXin\Business\ResultNotify.cs" />
+    <Compile Include="WeiXin\Lib\Config.cs" />
+    <Compile Include="WeiXin\Lib\Data.cs" />
+    <Compile Include="WeiXin\Lib\Exception.cs" />
+    <Compile Include="WeiXin\Lib\HttpService.cs" />
+    <Compile Include="WeiXin\Lib\Log.cs" />
+    <Compile Include="WeiXin\Lib\Notify.cs" />
+    <Compile Include="WeiXin\Lib\WxPayApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

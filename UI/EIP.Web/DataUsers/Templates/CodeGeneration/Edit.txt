@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "{{Description}}编辑";
+    ViewBag.Require = "{{NameSpaceLower}}-{{ControllerName}}-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@model EIP.{{NameSpace}}.Models.Entities.{{ClassName}}
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写{{Description}}",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            {{tbody}}
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.{{KeyName}})

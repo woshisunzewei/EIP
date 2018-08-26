@@ -1,0 +1,22 @@
+﻿using System;
+using EIP.Common.Entities;
+using EIP.Common.Entities.CustomAttributes;
+
+namespace EIP.{{NameSpace}}.Models.Entities
+{
+    /// <summary>
+    /// {{Description}}表实体类
+    /// </summary>
+    [Serializable]
+    [Table(Name = "{{TableName}}")]
+    public class {{ClassName}} : EntityBase
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        [Id(Name = "{{KeyName}}", Strategy = {{GenerationType}})]
+        public Guid {{KeyName}} { get; set; }
+
+{{EntitiesBody}}
+    }
+}

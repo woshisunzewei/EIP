@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "应用系统配置";
+    ViewBag.Require = "system-app-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@model EIP.System.Models.Entities.SystemApp
+@Html.EditTopRemark(new EditTopRemarkInput
+{
+    Title = "请填写应用系统配置",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">
+                    代码：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.Code, new { datatype = "*1-64", ajaxurl = "/System/App/CheckAppCode?id=" + @Model.AppId })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" class="m">
+                    全称：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.Name, new { datatype = "*1-512" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">
+                    简称：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.ShortName, new { datatype = "*1-512" })
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    域名/IP：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Domain, new { datatype = "*1-512", ignore = "ignore"})
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    发布路径Dll：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.DllPath, new { datatype = "*1-512", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>排序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">
+                    备注：
+                </th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*1-1024", ignore = "ignore", style = "height:40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.AppId)

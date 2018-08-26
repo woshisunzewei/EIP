@@ -1,0 +1,21 @@
+@{
+    ViewBag.Title = "文章下载记录表编辑";
+    ViewBag.Require = "system-download-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@model EIP.System.Models.Entities.SystemDownload
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写文章下载记录表",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            {{tbody}}
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.DownloadId)

@@ -1,0 +1,94 @@
+﻿<script id="role-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left" class="noborder">组织机构</th>
+            </tr>
+            {{each Role as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="post-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each Post as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="group-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each Group as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="user-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each User as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="organization-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each Organization as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>

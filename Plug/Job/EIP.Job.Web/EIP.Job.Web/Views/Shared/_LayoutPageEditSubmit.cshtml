@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPageBaseEdit.cshtml";
+}
+@section Head
+{
+    @RenderSection("Head", false)
+}
+<div class="editor-wrapper">
+    <form id="form" name="form">
+        <div class="edit-main">
+            <div class="clearfix main-container">@RenderBody()</div>
+        </div>
+        <div class="clearfix btn form-submit-btn-container">
+            <a title="关闭" onclick=" art.dialog.close(); " class="form-submit-button green">
+                <span class="icon-botton l-icon-cross-button"></span>关闭
+            </a>
+            <a title="保存" id="btnSubmit" class="form-submit-button green">
+                <span class="icon-botton l-icon-disk"></span>保存
+            </a>
+            <div style="float: left;padding-top:5px;padding-left:15px;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;user-select: none;">
+                <input checked="checked" type="checkbox" id="IsdialogClose" style="vertical-align: middle;">
+                <label style="cursor:pointer" for="IsdialogClose">确认并关闭窗口</label>
+            </div>
+        </div>
+    </form>
+</div>

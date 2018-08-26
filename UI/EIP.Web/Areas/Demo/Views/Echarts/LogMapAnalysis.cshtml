@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>登录分布图</title>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LO9cOOqxbMhqMQ74VIwn8kQX"></script>
+    <link href="~/Areas/Console/Contents/css/css.css" rel="stylesheet" />
+</head>
+<body style="background-color: white">
+    <div class="rig_lm02">
+        <div class="title">
+            <img src="~/Areas/Console/Contents/images/listicon.jpg" class="icon" style="padding-top:13px;" />
+            <h2>登录分布图</h2>
+        </div>
+        <div class="detail">
+            <div class="det_inner" id="mapAnalysis" style="height: 500px"></div>
+          
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("mapAnalysis");
+    var point = new BMap.Point(116.417854, 39.921988);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(point, 15);
+    var opts = {
+        width: 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title: "海底捞王府井店", // 信息窗口标题
+        enableMessage: true,//设置允许信息窗发送短息
+        message: "亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+    }
+    var infoWindow = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", opts);  // 创建信息窗口对象
+    marker.addEventListener("click", function () {
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    });
+</script>

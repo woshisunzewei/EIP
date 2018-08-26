@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "编辑器";
+    ViewBag.Require = "system-codegeneration-pc-codegeneration-form-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+@model EIP.System.Models.Dtos.Config.SystemCodeGenerationPcEditDoubleWay
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写信息",
+    Remark = "注：带*号的为必填信息！"
+})
+
+
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">
+                    字段标识：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.ControlId, new { datatype = "*1-128", disabled = "disabled" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" class="m">
+                    字段名称：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.ControlName, new { datatype = "*1-128" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px">
+                    字段验证：
+                </th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof(EnumControlValidator)),
+                    Name = "ControlValidator",
+                    SelectedVal = (short)@Model.ControlValidator,
+                    NeedDefault = true
+                })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" class="m">
+                    字段类型：
+                </th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof(EnumControlType)),
+                    Name = "ControlType",
+                    SelectedVal = (short)@Model.ControlType
+                })
+                </td>
+            </tr>
+            <tr>
+                <th>合并列</th>
+                <td>
+                    <span class="item">
+                        @{
+                            string check = string.Empty, nocheck = string.Empty;
+                            if (Model.ControlColspan == 1)
+                            {
+                                check = "checked='true'";
+                            }
+                            else
+                            {
+                                nocheck = "checked='true'";
+
+                            }
+                        }
+                        <input name="ControlColspan" id="ControlColspanNo" type="radio" value="0" @nocheck>
+                        <label style="cursor: pointer" for="ControlColspanNo">不合并</label>
+                    </span>
+                    <span class="item">
+                        <input name="ControlColspan" id="ControlColspanYes" type="radio" value="1" @check>
+                        <label style="cursor: pointer" for="ControlColspanYes">合并</label>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    默认值：
+                </th>
+                <td>
+                    @Html.TextBoxFor(f => Model.ControlDefault, new { datatype = "*1-128", ignore = "ignore" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>微信公众号支付</title>
+    <script src="~/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <script>
+        //获取url的参数
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+        //获取微信信息
+        function getWxInfo() {
+            var vCode = getQueryString("code");
+            if (vCode != "" && vCode != null) {
+                $.ajax({
+                    type: "post",
+                    data: {
+                        code: vCode
+                    },
+                    url: "/Demo/Pay/GetWxInfo",
+                    success: function(sjson) {
+                        //alert(sjson);
+                        //var vData = JSON.stringify(sjson);
+                        //alert(vData);
+                        $.messager.show({
+                            title: "提示",
+                            msg: "欢迎您来到微信端充值中心。"
+                        });
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "/Demo/Pay/GetCode",
+                    success: function(sjson) {
+                        //alert(sjson);
+                        location.href = sjson;
+                    }
+                });
+            }
+        }
+
+        //初始化微信支付环境
+        function fCharge() {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener("WeixinJSBridgeReady", onBridgeReady, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent("WeixinJSBridgeReady", onBridgeReady);
+                    document.attachEvent("onWeixinJSBridgeReady", onBridgeReady);
+                }
+            } else {
+                fPostCharge();
+            }
+        }
+
+        //提交充值数据
+        function fPostCharge() {
+            $.ajax({
+                type: "post",
+                url: "/Demo/Pay/WeiXinJsApiPay",
+                success: function(json) {
+                    //$.messager.progress("close"); //记得关闭
+                    //var json = eval("(" + msg + ")");//转换后的JSON对象
+                    onBridgeReady(json);
+                },
+                error: function() {
+                    alert("支付失败");
+                    //$.messager.progress('close'); //记得关闭
+                    //$.messager.alert("提示", '调用微信支付模块失败，请稍后再试。', 'info');
+                }
+            });
+
+        }
+
+        //调用微信支付模块
+        function onBridgeReady(json) {
+            WeixinJSBridge.invoke(
+                "getBrandWCPayRequest", {
+                    "appId": json.appId, //公众号名称，由商户传入
+                    "timeStamp": json.timeStamp, //时间戳，自1970年以来的秒数
+                    "nonceStr": json.nonceStr, //随机串
+                    "package": json.packageValue,
+                    "signType": "MD5", //微信签名方式:
+                    "paySign": json.paySign //微信签名
+                },
+                function(res) {
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        alert("支付成功,正在处理订单...");
+                        //订单支付成功
+                        //$(".payment_card").text("支付成功,正在处理订单...");
+                        //window.location.href = "query.aspx?rid=" + orderno + "&p=" + pno;
+                    } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                        //订单支付成功
+                        alert("支付失败，您取消了支付。");
+                    } else {
+                        alert("支付失败" + res.err_code + res.err_desc + res.err_msg);
+                    }
+                }
+            );
+        }
+
+        //首页
+        function fBackHome() {
+            location.href = "/";
+        }
+
+        $(function() {
+            getWxInfo();
+        });
+    </script>
+</head>
+<body>
+<div>
+    <input type="button" class="btn" value="立即付款" onclick=" fCharge() " style="margin-top: 20px;"/>
+</div>
+</body>
+</html>

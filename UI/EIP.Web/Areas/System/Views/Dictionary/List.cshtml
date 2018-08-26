@@ -1,0 +1,45 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "字典信息维护";
+    ViewBag.Require = "system-dictionary-list";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+
+<div id="uiWest" class="ui-layout-west" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" reload(); return false; "><span class="l-icon-reload">刷新</span></a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" arrowin(); return false; ">
+                <span id="arrowin" class="l-icon-arrow-out">展开</span>
+            </a>
+        </div>
+    </div>
+
+    <ul id="tree" class="ztree"></ul>
+</div>
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="listcenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                </div>
+                <div class="tools-box-right">
+                    @Html.SearchTextBox("Code", "代码")
+                    @Html.SearchTextBox("Name", "名称")
+                    @Html.SearchTextBox("Value", "值")
+                    <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                    <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*隐藏父级Id*@
+@Html.Hidden("hiddenPid")

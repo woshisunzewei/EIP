@@ -1,0 +1,57 @@
+﻿@using EIP.Job.Web.DataUser.Helpers
+@{
+    ViewBag.Title = "调度管理器";
+    ViewBag.Require = "system-quartz-quartzlist";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <div class="tools_box">
+        <div class="toolbar" id="partial_button_toolbar">
+            <a href="javascript:void(0);" title="新增" onclick=" add();return false; ">
+                <span class="l-icon-add">新增</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="编辑" onclick=" edit();return false; ">
+                <span class="l-icon-edit">编辑</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="删除" onclick=" del();return false; ">
+                <span class="l-icon-delete">删除</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="暂停所有作业" onclick=" pauseAll();return false; ">
+                <span class="l-icon-alarm-clock--minus">暂停所有作业</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="暂停作业" onclick=" pauseJob();return false; ">
+                <span class="l-icon-alarm-clock--exclamation">暂停作业</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="启动作业" onclick=" resumeJob();return false; ">
+                <span class="l-icon-alarm-clock--arrow">启动作业</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="启动所有作业" onclick=" resumeAll();return false; ">
+                <span class="l-icon-alarm-clock-select">启动所有作业</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="运行日志" onclick=" log();return false; ">
+                <span class="l-icon-blue-document-clock">运行日志</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="导出Excel" onclick=" reportExcel();return false; ">
+                <span class="l-icon-report-excel">导出Excel</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+        </div>
+        <div class="select_box">
+            组：@Html.SearchTextBox("JobGroup")
+            作业名称:@Html.SearchTextBox("JobName")
+            <input type="button" id="btn_select_box" value="搜 索" class="btnSearch">
+        </div>
+    </div>
+</div>

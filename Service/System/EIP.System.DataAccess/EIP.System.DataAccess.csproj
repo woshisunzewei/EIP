@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8971D98D-1ADF-4552-8344-682C56208943}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.System.DataAccess</RootNamespace>
+    <AssemblyName>EIP.System.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\PermissionRouteConvert.cs" />
+    <Compile Include="Config\ISystemAppRepository.cs" />
+    <Compile Include="Config\ISystemArticleRepository.cs" />
+    <Compile Include="Config\ISystemCalendarRepository.cs" />
+    <Compile Include="Config\ISystemConfigRepository.cs" />
+    <Compile Include="Config\ISystemDataBaseBackUpRepository.cs" />
+    <Compile Include="Config\ISystemDataBaseRepository.cs" />
+    <Compile Include="Config\ISystemDictionaryRepository.cs" />
+    <Compile Include="Config\ISystemDistrictRepository.cs" />
+    <Compile Include="Config\ISystemDownloadRepository.cs" />
+    <Compile Include="Config\ISystemEmailAccountRepository.cs" />
+    <Compile Include="Config\ISystemLoginSlideRepository.cs" />
+    <Compile Include="Config\SystemAppRepository.cs" />
+    <Compile Include="Config\SystemArticleRepository.cs" />
+    <Compile Include="Config\SystemCalendarRepository.cs" />
+    <Compile Include="Config\SystemConfigRepository.cs" />
+    <Compile Include="Config\SystemDataBaseBackUpRepository.cs" />
+    <Compile Include="Config\SystemDataBaseRepository.cs" />
+    <Compile Include="Config\SystemDictionaryRepository.cs" />
+    <Compile Include="Config\SystemDistrictRepository.cs" />
+    <Compile Include="Config\SystemDownloadRepository.cs" />
+    <Compile Include="Config\SystemEmailAccountRepository.cs" />
+    <Compile Include="Config\SystemLoginSlideRepository.cs" />
+    <Compile Include="Gantt\GanttDependencieRepository.cs" />
+    <Compile Include="Gantt\GanttTaskRepository.cs" />
+    <Compile Include="Gantt\IGanttDependencieRepository.cs" />
+    <Compile Include="Gantt\IGanttTaskRepository.cs" />
+    <Compile Include="Identity\ISystemGroupRepository.cs" />
+    <Compile Include="Identity\ISystemOrganizationRepository.cs" />
+    <Compile Include="Identity\ISystemPostRepository.cs" />
+    <Compile Include="Identity\ISystemRoleRepository.cs" />
+    <Compile Include="Identity\ISystemUserInfoRepository.cs" />
+    <Compile Include="Identity\SystemGroupRepository.cs" />
+    <Compile Include="Identity\SystemOrganizationRepository.cs" />
+    <Compile Include="Identity\SystemPostRepository.cs" />
+    <Compile Include="Identity\SystemRoleRepository.cs" />
+    <Compile Include="Identity\SystemUserInfoRepository.cs" />
+    <Compile Include="Log\ISystemDataLogRepository.cs" />
+    <Compile Include="Log\ISystemExceptionLogRepository.cs" />
+    <Compile Include="Log\ISystemLoginLogRepository.cs" />
+    <Compile Include="Log\ISystemOperationLogRepository.cs" />
+    <Compile Include="Log\ISystemSqlLogRepository.cs" />
+    <Compile Include="Log\SystemDataLogRepository.cs" />
+    <Compile Include="Log\SystemExceptionLogRepository.cs" />
+    <Compile Include="Log\SystemLoginLogRepository.cs" />
+    <Compile Include="Log\SystemOperationLogRepository.cs" />
+    <Compile Include="Log\SystemSqlLogRepository.cs" />
+    <Compile Include="Permission\ISystemDataRepository.cs" />
+    <Compile Include="Permission\ISystemFieldRepository.cs" />
+    <Compile Include="Permission\ISystemFunctionRepository.cs" />
+    <Compile Include="Permission\ISystemMenuButtonFunctionRepository.cs" />
+    <Compile Include="Permission\ISystemMenuButtonRepository.cs" />
+    <Compile Include="Permission\ISystemMenuRepository.cs" />
+    <Compile Include="Permission\ISystemPermissionRepository.cs" />
+    <Compile Include="Permission\ISystemPermissionUserRepository.cs" />
+    <Compile Include="Permission\SystemDataRepository.cs" />
+    <Compile Include="Permission\SystemFieldRepository.cs" />
+    <Compile Include="Permission\SystemFunctionRepository.cs" />
+    <Compile Include="Permission\SystemMenuButtonFunctionRepository.cs" />
+    <Compile Include="Permission\SystemMenuButtonRepository.cs" />
+    <Compile Include="Permission\SystemMenuRepository.cs" />
+    <Compile Include="Permission\SystemPermissionRepository.cs" />
+    <Compile Include="Permission\SystemPermissionUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Core\EIP.Common.Core.csproj">
+      <Project>{1cd7655d-aeaf-496d-a3ac-fff0b6423e60}</Project>
+      <Name>EIP.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Dapper\EIP.Common.Dapper.csproj">
+      <Project>{b2adf77f-16e8-4b8b-b11e-9b1f6cb5b07d}</Project>
+      <Name>EIP.Common.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.DataAccess\EIP.Common.DataAccess.csproj">
+      <Project>{e355c064-e7c7-45f1-a231-587f0d46466c}</Project>
+      <Name>EIP.Common.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Entities\EIP.Common.Entities.csproj">
+      <Project>{e11f0521-b8dd-4821-be16-8630ff147878}</Project>
+      <Name>EIP.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EIP.System.Models\EIP.System.Models.csproj">
+      <Project>{30cbfb3f-a887-4d22-b9db-46c1d45dcbbd}</Project>
+      <Name>EIP.System.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,58 @@
+﻿@using EIP.Common.Core.Auth
+@using EIP.Common.Core.Utils
+@using EIP.Common.Entities
+@using EIP.System.Business.Permission.Engine
+<!DOCTYPE html>
+<html lang="zh-cn" data-require="@ViewBag.Require">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="/Scripts/require.min.js" data-main="/Scripts/main.js"></script>
+    @{ string path = UrlUtil.UrlConvertor(); ViewBag.Path = path;}
+    <link href="@ViewBag.Path/Contents/images/icons.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/common.css" rel="stylesheet" />
+    <link href="@ViewBag.Path/Contents/edit.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+    @*所有界面可使用*@
+    <style>
+        @{
+            IPermissionEngineLogic permissionEngineLogic = new PermissionEngineLogic();
+            //获取区域名称,若区域名称为空不进行权限严重
+            object areaName;
+            //字段权限对象
+            string colModelObj = string.Empty;
+            ViewContext.RouteData.DataTokens.TryGetValue("area", out areaName);
+            MvcRote mvcRote = new MvcRote
+            {
+                Area = areaName.ToString(),
+                Action = ViewContext.RouteData.Values["action"].ToString(),
+                Controller = ViewContext.RouteData.Values["controller"].ToString()
+            };
+            /*判断该界面是否具有字段权限*/
+            if (ViewBag.HaveFiledPermission == true)
+            {
+                //读取授权字段信息
+                colModelObj = permissionEngineLogic.GetFiledPermissionStrByMvcRote(mvcRote, FormAuthenticationExtension.Current(HttpContext.Current.Request).UserId);
+            }
+        }
+    </style>
+    @*判断字段权限值是否为空*@
+    @{
+        if (!string.IsNullOrEmpty(colModelObj))
+        {
+            <script>
+                var colModel = @(@Html.Raw(colModelObj));
+            </script>
+        }
+        else
+        {
+            <script>
+                var colModel = [];
+            </script>
+        }
+    }
+</head>
+<body class="mainbody">
+    @RenderBody()
+</body>
+</html>

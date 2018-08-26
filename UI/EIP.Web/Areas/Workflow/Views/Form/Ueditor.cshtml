@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "设计器";
+    ViewBag.Require = "workflow-form-ueditor";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.Workflow.Models.Entities.WorkflowForm
+
+@*工具条*@
+<div id="formtoolbar" style="border-top: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; "></div>
+
+@*表单设计器*@
+<div id="editordiv" style="overflow: auto; margin-top: 1px; ">
+    <script id="editor" type="text/plain" style="height: 406px; width:1087px;">
+    </script>
+</div>
+@Html.HiddenFor(f => f.FormId)
+@Html.HiddenFor(f => f.Html)
+@Html.HiddenFor(f => f.Name)
+@Html.HiddenFor(f => f.DataBaseTable)
+@Html.HiddenFor(f => f.DataBaseId)
+@Html.HiddenFor(f => f.Url)
+<script src="~/Scripts/lib/jquery-1.7.2.js"></script>
+@*ligerui*@
+<link href="@ViewBag.Path/Scripts/lib/ligerui/skins/Aqua/css/ligerui-all.css" rel="stylesheet" />
+<link href="@ViewBag.Path/Contents/ui/ligerui.css" rel="stylesheet" />
+<script src="@ViewBag.Path/Scripts/lib/ligerui/js/core/base.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ligerui/js/plugins/ligerToolBar.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ligerui/js/plugins/ligerTab.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ligerui/js/plugins/ligerButton.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ligerui/js/plugins/ligerMenu.js"></script>
+@*设计器*@
+<script src="@ViewBag.Path/Scripts/lib/ueditor/ueditor.config.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ueditor/ueditor.all.min.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="@ViewBag.Path/Scripts/lib/ueditor/plugins/plugins.js"></script>
+<script src="~/Scripts/lib/ueditor/plugins/compule.js"></script>
+<style>
+    .l-toolbar {
+        border-bottom: none;
+    }
+</style>

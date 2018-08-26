@@ -1,0 +1,40 @@
+﻿.wrapper {
+    margin: 0 auto;
+    padding: 8px 3px 0 0;
+    position: relative;
+    width: 97%;
+}
+
+.tab {
+    width: 50px;
+}
+
+.tabhead {
+    float: left;
+}
+
+.tabbody {
+    clear: both;
+    height: 240px;
+    padding: 3px 0 0 2px;
+    position: relative;
+    width: 100%;
+}
+
+    .tabbody .panel {
+        background: #fff none repeat scroll 0 0;
+        display: none;
+        overflow: hidden;
+        padding: 3px;
+        position: absolute;
+    }
+
+        .tabbody .panel.focus {
+            display: block;
+            width: 98%;
+        }
+
+#event_script {
+    height: 160px;
+    width: 99%;
+}

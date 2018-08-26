@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <title>@Model.Title</title>
+    <link href="/Contents/article/home.css" rel="stylesheet" />
+    <link href="/Contents/article/base.css" rel="stylesheet" />
+</head>
+<body>
+    @model  EIP.System.Models.Entities.SystemArticle
+    <div class="zw_logoc">
+        <div class="zw_logo">
+            <img style="margin-top: 40px; height: 70px" src="/Contents/article/logo.png" />
+        </div>
+
+    </div>
+    <div class="show-bg" id="container">
+        <div class="showbox">
+            <div class="contentPrint">
+                <a href="javascript:void(0)" onclick=" javascript: window.print(); "><img src="/Contents/article/contentPrint.jpg" alt="" class="mr9" /></a>
+                <a href="javascript:void(0)" onclick=" javascript: window.close(); "><img src="/Contents/article/contentClose.jpg" alt="" class="mr9" /></a>
+            </div>
+            <h1 class="st">
+                @Model.Title
+            </h1>
+            <div class="ft">
+
+            </div>
+            <div class="nav">
+                <span id="date">
+                    时间：@Model.CreateTime
+                </span>
+                <span>
+                    作者：@Model.CreateUserName
+                </span>
+                <span>
+                    来源：@Model.CreateOrganizationName
+                </span>
+                <span>
+                    浏览数：@Model.ViewNums
+                </span>
+            </div>
+            <div id="content">
+                @Html.Raw(@Model.Contents)
+            </div>
+
+        </div>
+    </div>
+    <div class="zw_foot">
+        软件开发：XXX&nbsp;|&nbsp; 专业版 【V1.1】&nbsp;|&nbsp;版权所有：XXX XXX<br /><br /> 技术支持：XXXX 0719-8238177<br /><br />
+    </div>
+    <script>
+        function UtilWindowHeightWidth() {
+            var winW, winH;
+            if (window.innerHeight) { // all except IE
+                winW = window.innerWidth;
+                winH = window.innerHeight;
+            } else if (document.documentElement && document.documentElement.clientHeight) { // IE 6 Strict Mode
+                winW = document.documentElement.clientWidth;
+                winH = document.documentElement.clientHeight;
+            } else if (document.body) { // other
+                winW = document.body.clientWidth;
+                winH = document.body.clientHeight;
+            }
+            return { WinW: winW, WinH: winH };
+        };
+
+        window.onload = function () {
+            document.getElementById("container").style.minHeight = (UtilWindowHeightWidth().WinH - 230) + "px";
+        }
+    </script>
+</body>
+</html>

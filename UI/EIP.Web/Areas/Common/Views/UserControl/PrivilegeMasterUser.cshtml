@@ -1,0 +1,33 @@
+﻿@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "人员列表";
+    ViewBag.Require = "common-usercontrol-privilegemaster-user";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+@model EIP.Web.Areas.System.Models.SystemPermissionUserModel
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" add();;return false; ">
+                <span class="l-icon-add">新增</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" del();;return false; ">
+                <span class="l-icon-delete">删除</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+        </div>
+        <div class="tools-box-right">
+            @Html.SearchTextBox("u.Code", " 登录帐号")
+            @Html.SearchTextBox("u.Name", "名称")
+            <input type="hidden" value="eq" />
+            <input class="filter" id="PrivilegeMasterValue" name="PrivilegeMasterValue" type="hidden" value="@Model.PrivilegeMasterValue" />
+            <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+        </div>
+    </div>
+</div>
+@Html.HiddenFor(f => f.PrivilegeMaster)

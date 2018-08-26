@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "文本日志";
+    ViewBag.Require = "system-log-txtlog";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" loadTree(); return false; ">
+                <span class="l-icon-reload">刷新</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" arrowin(); return false; ">
+                <span id="arrowin" class="l-icon-arrow-out">展开</span>
+            </a>
+        </div>
+    </div>
+    <ul id="tree" class="ztree"></ul>
+</div>
+
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    @*框架页*@
+    <iframe id="main" name="main" scrolling="auto" frameborder="0" scrolling="yes" width="100%" height="100%" src="" style="border: 1px solid #ccc;border-bottom: 0px"></iframe>
+</div>

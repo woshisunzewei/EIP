@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>网站访问错误</title>
+
+    <style>
+        body {
+            font-family: "微软雅黑";
+        }
+
+
+        /*error 404*/
+        .error {
+            background: url(/Contents/images/prompts/404.png) no-repeat;
+            margin-top: 75px;
+            padding-top: 65px;
+            width: 490px;
+        }
+
+            .error h2 {
+                font-size: 22px;
+                padding-left: 154px;
+            }
+
+            .error p {
+                color: #717678;
+                line-height: 35px;
+                padding-left: 154px;
+            }
+
+        .reindex {
+            padding-left: 154px;
+        }
+
+            .reindex a {
+                background: #3c95c8;
+                border-radius: 3px;
+                color: #fff;
+                display: block;
+                font-size: 14px;
+                font-weight: bold;
+                height: 35px;
+                line-height: 35px;
+                margin-top: 20px;
+                text-align: center;
+                width: 115px;
+            }
+    </style>
+    <script src="~/Scripts/jquery-1.7.2.min.js"></script>
+    <script language="javascript">
+        $(function () {
+            $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+            $(window).resize(function () {
+                $('.error').css({ 'position': 'absolute', 'left': ($(window).width() - 490) / 2 });
+            });
+        });
+    </script>
+</head>
+<body style="background: #edf6fa;">
+    <div class="error">
+        <h2>非常遗憾，您访问的页面不存在！</h2>
+        <div class="reindex"><a href="/" target="_parent">返回首页</a></div>
+    </div>
+</body>
+</html>

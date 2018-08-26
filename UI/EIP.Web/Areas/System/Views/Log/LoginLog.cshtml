@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "登录日志";
+    ViewBag.Require = "system-log-loginlog";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <div class="tools-box">
+        <div class="tools-box-left" id="partial_button_toolbar">
+            @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+        </div>
+        <div class="tools-box-right">
+            登录名：<input type="hidden" value="cn" /><input name="CreateUserCode" type="text" class="filter" placeholder="请输入登录名查询" />
+            真实姓名：<input type="hidden" value="cn" /><input name="CreateUserName" type="text" class="filter" placeholder="请输入真实姓名查询" />
+            登录时间：<input type="hidden" value="time" /><input name="CreateTime" class="Wdate filter" type="text" placeholder="请输入登录时间查询" onclick=" WdatePicker() " />
+            <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+            <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+        </div>
+    </div>
+</div>

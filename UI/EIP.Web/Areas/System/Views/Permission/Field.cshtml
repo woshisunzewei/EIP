@@ -1,0 +1,54 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "字段权限";
+    ViewBag.Require = "system-permission-field";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请选择权限",
+    Remark = "温馨提示：点击左侧菜单查看字段信息</span>"
+})
+<div id="layout" class="layoutdiv" style="top: 34px;">
+    <div id="functionContainer" class="ui-layout-center" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; ">
+        @*工具条*@
+        <div class="tools_box">
+            <div class="tools-box">
+                <div class="tools-box-left">
+                    <a href="javascript:void(0);" onclick=" return false; ">
+                        <span id="menuname" class="l-icon-application-detail"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @*所有功能性按钮*@
+        <div style="height: 393px;" class="ScrollBar">
+            @Html.MessageBox(new MessageBoxInput()
+            {
+                HtmlAttributes = " width='335'",
+                MessageBoxType = EnumMessageBoxType.info,
+                Msg = "点击左侧菜单查看字段信息"
+            })
+            <div id="div_field" style="display: none">
+                @*列表*@
+                <table id="fieldList"></table>
+                <div id="fieldPager"></div>
+                @*列表*@
+            </div>
+        </div>
+    </div>
+
+    <div id="uiWest" class="ui-layout-west" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; position: absolute; margin: 0px; left: 2px; right: auto; top: 2px; bottom: 2px; height: 517px; z-index: 0; width: 198px; display: block; visibility: visible;">
+        @*工具条*@
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" arrowin(); return false; "><span id="arrowin" class="l-icon-arrow-out">展开</span></a>
+            </div>
+        </div>
+        @*工具条*@
+        <ul id="fieldTree" class="ztree" style="height: 383px; width: 197px; "></ul>
+    </div>
+</div>

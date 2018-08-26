@@ -1,0 +1,53 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "按钮编辑";
+    ViewBag.Require = "workflow-button-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.Workflow.Models.Entities.WorkflowButton
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写按钮信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Title, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">图标：</th>
+                <td>
+                    @Html.TextBox("Icon", @Model.Icon, new { datatype = "*1-32", ignore = "ignore", @readonly = true, @class = "text1", style = @"width: 400px; border-width: 1px 0px 1px 1px; " })
+                    <input type="button" title="" class="button_search" id="chosen_icon" style="margin: 0; cursor: pointer; margin-left: -5px" value="选择" />
+                    <div class="l-icon l-icon-@Model.Icon" id="chosen_icon_show" style="margin: 5px 2px auto 0; float: right"></div>
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">脚本：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Script, new { datatype = "*1-64", ignore = "ignore", style = "height: 150px" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.ButtonId)

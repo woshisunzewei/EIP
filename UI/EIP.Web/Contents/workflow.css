@@ -1,0 +1,104 @@
+﻿#preview {
+    width: 850px;
+    margin: 8px;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    border-collapse: collapse;
+    background-image: url(images/workflow/form/forms_backgroud.jpg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-color: #FFFFFF;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#505050, direction=120, strength=4);
+    -moz-box-shadow: 3px 3px 10px #505050;
+    -webkit-box-shadow: 3px 3px 10px #505050;
+    box-shadow: 3px 3px 10px #505050;
+    min-height: 400px;
+}
+
+.workflow-form-div {
+    background-color: #F5F5F5;
+    position: fixed;
+    top: 64px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+    background-image: url(images/workflow/dw.jpg );
+    background-repeat: no-repeat;
+}
+
+.workflow-form-bottom {
+    /*border-top: 1px dashed #ccc;*/
+    height:188px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+    padding: 5px;
+}
+
+
+.workflow-form-content {
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    border-collapse: collapse;
+    background-image: url(images/workflow/form/forms_backgroud.jpg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-color: #FFFFFF;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#505050, direction=120, strength=4);
+    -moz-box-shadow: 3px 3px 10px #505050;
+    -webkit-box-shadow: 3px 3px 10px #505050;
+    box-shadow: 3px 3px 10px #505050;
+    min-height: 400px;
+}
+
+body {
+    margin: 0px;
+}
+
+
+p {
+    margin: 8px 0;
+}
+
+.flowformtable {
+    background-color: #dddddd;
+    width: 98%;
+    margin: 0 auto;
+}
+
+    .flowformtable tbody tr td {
+        background: #ffffff;
+        padding: 5px 0 5px 3px;
+        vertical-align: middle;
+    }
+
+    .flowformtable thead tr th {
+        background: #ffffff;
+        padding: 5px 0 5px 3px;
+        vertical-align: middle;
+    }
+
+.flowformsubtable {
+    background-color: #dddddd;
+    width: 100%;
+    margin: 0 auto;
+}
+
+    .flowformsubtable tbody tr td {
+        background: #ffffff;
+        padding: 5px 0 5px 3px;
+        vertical-align: middle;
+    }
+
+    .flowformsubtable thead tr th {
+        background: #ffffff;
+        padding: 5px 0 5px 3px;
+        vertical-align: middle;
+    }

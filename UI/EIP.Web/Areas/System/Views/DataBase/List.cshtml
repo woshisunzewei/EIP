@@ -1,0 +1,48 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "应用数据库";
+    ViewBag.Require = "system-database-list";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west">
+    <div id="layout" class="layoutdiv">
+        <div id="list_center" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                </div>
+                <div class="tools-box-right">
+                    @Html.SearchTextBox("Name", "名称")
+                    <input type="button" id="grid_search" value="搜 索" class="btnSearch">
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <div id="layout_table" class="layoutdiv">
+        <div id="list_table_center" class="ui-layout-center" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+            <table id="list_table"></table>
+            <div id="pager_table"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left">
+                    <a href="javascript:void(0);" title="刷新" onclick=" getTableGridData(); return false; "><span class="l-icon-reload">刷新</span></a>
+                </div>
+                <div class="tools-box-right">
+                    @Html.SearchTextBox("TableName", "名称")
+                    @Html.SearchTextBox("Description", "描述")
+                    <input type="button" id="grid_table_search" value="搜 索" class="btnSearch">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,648 @@
+﻿/* -------------------------------------------------------
+文件名 : edit.css
+作者   : 孙泽伟
+描述   : 编辑器页样式文件
+日期   ：2015-05-05
+更新   ：
+------------------------------------------------------------*/
+html, body {
+    width: auto;
+    height: auto;
+}
+
+.edit-main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+    top: 0;
+}
+
+.main-container {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    background: #ffffff;
+}
+/*内容块提示信息*/
+.title {
+    border-top: 6px solid #097ab2;
+    width: 100%;
+    height: 26px;
+}
+
+    .title div {
+        width: 80px;
+        background-color: #097ab2;
+        border-right: 1px solid #59a4cc;
+        text-align: center;
+        color: white;
+        height: 26px;
+        line-height: 23px;
+        float: left;
+    }
+
+.pl {
+    padding-left: 10px;
+}
+
+/*复杂表格布局*/
+.complex-table {
+    table-layout: fixed;
+    border: none;
+    border-bottom: solid 1px #cacaca;
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 1px 0 0 0;
+}
+
+    .complex-table th, .complex-table td {
+        border-top: 1px solid #cacaca;
+        border-right: 1px solid #cacaca;
+        border-left: 1px solid #cacaca;
+        height: 31px;
+        margin: 0;
+    }
+
+    .complex-table th {
+        background-color: #EBF5FC;
+        font-weight: normal;
+        text-align: right;
+    }
+
+    .complex-table td {
+        overflow: hidden;
+        /*white-space: nowrap;*/
+        text-overflow: ellipsis;
+    }
+
+    .complex-table input[type="text"],
+    .complex-table input[type="password"],
+    .complex-table select,
+    .complex-table textarea {
+        width: 98%;
+        border: 1px solid #C6C6C6;
+        outline: none;
+        height: 21px;
+    }
+
+    .complex-table input[type="checkbox"] {
+        border: 1px solid #C6C6C6;
+        margin: 1px;
+        outline: none;
+        vertical-align: middle;
+    }
+
+        .complex-table input[type="text"]:hover,
+        .complex-table input[type="password"]:hover, input[type="radio"]:hover,
+        .complex-table input[type="checkbox"]:hover,
+        .complex-table select:hover,
+        .complex-table textarea:hover {
+            border: 1px solid #559AEE;
+            outline: none;
+        }
+
+    .complex-table .template th {
+        width: 90px;
+    }
+
+    .complex-table .template th, .complex-table .template td {
+        border: 0px;
+        height: 0px;
+    }
+
+fieldset {
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+    color: #333;
+    border: #3994DD double 1px;
+}
+
+legend {
+    color: #06c;
+    font-weight: 800;
+    background: #fff;
+}
+
+/*编辑头部*/
+.edit-top {
+    margin-top: 1px;
+    width: 100%;
+    height: 33px;
+    background: url(images/edit/head-bg.gif) repeat-x left bottom;
+}
+
+    .edit-top .content {
+        float: left;
+        width: 130px;
+        height: 33px;
+        background: url(images/edit/head-title-bg.gif) repeat-x left bottom;
+    }
+
+        .edit-top .content .left {
+            float: left;
+            width: 6px;
+            height: 33px;
+            background: url(images/edit/head-title-left.gif) no-repeat left bottom;
+        }
+
+        .edit-top .content .center {
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            line-height: 33px;
+            float: left;
+            height: 33px;
+            width: 113px;
+        }
+
+        .edit-top .content .right {
+            margin-left: 4px;
+            float: left;
+            width: 7px;
+            height: 33px;
+            background: url(images/edit/head-title-right.gif) no-repeat left bottom;
+        }
+
+.edit-top-center {
+    line-height: 33px;
+    float: right;
+    height: 33px;
+    text-align: right;
+    margin-right: 6px;
+}
+
+.edit-top .right {
+    float: right;
+    width: 10px;
+    height: 33px;
+    background: url(images/edit/head-right.gif) no-repeat right bottom;
+}
+
+.edit-title {
+    font-weight: bold;
+    color: #538de3 !important;
+    font-size: 20pt !important;
+    font-family: Microsoft YaHei !important;
+    margin-bottom: 20px;
+}
+
+/*编辑div*/
+.edit-content {
+    border: 0px;
+    margin: 0 1px 1px 1px;
+}
+
+/*基础table样式*/
+.edit-table {
+    border-top: none;
+    border-right: none;
+    margin: 10px auto;
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+    .edit-table th {
+        background-color: #fff;
+        border-bottom: 1px dashed #ccc;
+        font-weight: normal;
+        height: 27px;
+        line-height: 27px;
+        padding-right: 5px;
+        text-align: right;
+        white-space: nowrap;
+        width: 80px;
+    }
+
+    .edit-table td {
+        background-color: #fff;
+        border-bottom: 1px dashed #ccc;
+        height: 27px;
+        /*line-height: 27px;*/
+        padding: 2px;
+        width: auto;
+    }
+
+    .edit-table input[type="text"],
+    .edit-table input[type="password"],
+    .edit-table input[type="checkbox"],
+    .edit-table select,
+    .edit-table textarea {
+        width: 98%;
+        border: 1px solid #C6C6C6;
+        outline: none;
+    }
+
+        .edit-table input[type="text"]:hover,
+        .edit-table input[type="password"],
+        .edit-table input[type="checkbox"]:hover,
+        .edit-table select:hover,
+        .edit-table textarea:hover {
+            width: 98%;
+            border: 1px solid #559AEE;
+            outline: none;
+        }
+
+    .edit-table input[type="text"],
+    .edit-table input[type="password"] {
+        width: 98%;
+        /*padding: 1px 5px;*/
+        height: 20px;
+    }
+
+    .edit-table input[type="radio"] {
+        position: relative;
+        top: 2px;
+        left: 10px;
+        margin-right: 13px;
+    }
+
+    .edit-table input[type="checkbox"] {
+        position: relative;
+        top: 3px;
+        left: 10px;
+        margin-right: 13px;
+    }
+
+    .edit-table textarea {
+        width: 98%;
+        height: 100px;
+        margin-top: 4px;
+    }
+
+    .edit-table select {
+        width: 98%;
+        height: 25px;
+        line-height: 25px;
+    }
+
+/*视图table*/
+.tableView {
+    border: 1px #cacaca solid;
+    line-height: 20px;
+    font-size: 9pt;
+    border-collapse: collapse;
+}
+
+    .tableView td {
+        padding: 3px;
+        color: #000000;
+        background: #FFFFFF;
+        border-bottom: 1px #cacaca solid;
+        border-right: 1px #cacaca solid;
+    }
+
+    .tableView th {
+        font-weight: normal;
+        text-align: right;
+        background: #ebf5fc;
+        border-bottom: 1px #cacaca solid;
+        border-right: 1px #cacaca solid;
+    }
+
+.msgtable, .form_table {
+    border: 1px solid #cacaca;
+    border-bottom: 0px;
+    border-right: 0px;
+    font-family: Verdana, Geneva, sans-serif;
+    width: 100%;
+}
+
+    .msgtable th {
+        background: #ebf5fc;
+        font-weight: normal;
+        padding: 4px;
+        border-bottom: 1px solid #cacaca;
+        border-right: 1px solid #cacaca;
+    }
+
+    .msgtable td {
+        border-bottom: 1px solid #cacaca;
+        border-right: 1px solid #cacaca;
+        padding: 0.4em;
+    }
+
+    .msgtable .tr_odd_bg {
+        background: #f9f9f9 none repeat scroll 0 0;
+    }
+
+    .msgtable .tr_hover_col {
+        background: #eaeaea none repeat scroll 0 0;
+    }
+
+.need {
+    color: #ff0000;
+    padding-right: 3px;
+    padding-top: 10px;
+    font-family: '宋体';
+}
+
+/*错误样式*/
+.input-error {
+    background-color: white;
+    background-image: url("images/edit/invalid_line.gif");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+}
+
+/*图标:确定、关闭等*/
+.form-submit-btn-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: solid 1px #C6C6C6;
+    background-color: #E7E7E7;
+    height: 32px;
+}
+
+.form-submit-button {
+    float: right;
+    margin: 3px 10px 0px 0px;
+    display: inline-block;
+    text-decoration: none;
+    font: 8px/8px HelveticaNeue, Arial;
+    padding: 0px 8px;
+    border: 1px solid #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 微软雅黑, 宋体, Arial, Helvetica, Verdana, sans-serif;
+    font-size: 9pt;
+    line-height: 22px;
+    color: #000;
+    outline: none;
+    background-repeat: repeat-x;
+    border: 1px solid #ccc;
+    background-image: url('images/common/datagrid_header_bg.gif');
+}
+
+    .form-submit-button.green:hover {
+        color: #FFF;
+        border: solid 1px #3399dd;
+        background: #2288cc;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bbee', endColorstr='#2288cc');
+        background: linear-gradient(top, #33bbee, #2288cc);
+        background: -moz-linear-gradient(top, #33bbee, #2288cc);
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#33bbee), to(#2288cc));
+        text-shadow: -1px -1px 1px #1c6a9e;
+    }
+
+/*自定义复选框*/
+.ScrollBar {
+    background: none repeat scroll 0 0 #fff;
+    overflow: auto;
+}
+
+.sys_spec_text {
+    padding-left: 15px;
+}
+
+    .sys_spec_text li {
+        display: inline;
+        float: left;
+        height: 43px;
+        margin: 10px 15px 0px 0;
+        outline: none;
+        outline: none;
+        position: relative;
+        position: relative;
+    }
+
+        .sys_spec_text li a {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px 5px 5px 5px;
+            cursor: pointer;
+            display: inline-block;
+            height: 39px;
+            line-height: 39px;
+            outline: none;
+            overflow: hidden;
+            padding: 0px 0px;
+            text-align: center;
+            text-align: center;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            white-space: nowrap;
+            width: 98px;
+            word-break: keep-all;
+        }
+
+            .sys_spec_text li a:hover {
+                border: 1px solid #4A5B79;
+                padding: 0 0px;
+                text-decoration: none;
+            }
+
+        .sys_spec_text li i {
+            background: url(images/edit/sys_item_selected.gif) no-repeat right bottom;
+            bottom: 2px;
+            display: none;
+            font-size: 0;
+            height: 10px;
+            line-height: 0;
+            position: absolute;
+            right: 1px;
+            width: 10px;
+            z-index: 99;
+        }
+
+        .sys_spec_text li.selected a {
+            border: 1px solid #4A5B79;
+            padding: 0 0px;
+        }
+
+        .sys_spec_text li.selected i {
+            display: block;
+        }
+
+        .sys_spec_text li img {
+            border: 0px solid #fff;
+            margin-top: -2px;
+            padding-right: 5px;
+            vertical-align: middle;
+        }
+
+    .sys_spec_text a.disabled {
+        color: #a9a6a6;
+        cursor: not-allowed;
+        display: block;
+        overflow: hidden;
+    }
+
+/*内容块提示信息*/
+.title {
+    border-top: 6px solid #097ab2;
+    width: 100%;
+    height: 26px;
+}
+
+    .title div {
+        width: 80px;
+        background-color: #097ab2;
+        border-right: 1px solid #59a4cc;
+        text-align: center;
+        color: white;
+        height: 26px;
+        line-height: 23px;
+        float: left;
+    }
+
+/* 通用背景颜色*/
+.bred {
+    background: #e55938;
+}
+
+.byellow {
+    background: #efd636;
+}
+
+.bgreen {
+    background: #5ab75c;
+}
+
+.bblue {
+    background: #006dcc;
+}
+
+/*左侧布局*/
+#left {
+    bottom: 2px;
+    left: 0px;
+    position: fixed;
+    top: 85px;
+}
+
+#contentHighSetLeft ul {
+    background: 199px center no-repeat;
+    border-bottom: 1px dashed #aaaaaa;
+    color: #1696d3;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    margin: 0px;
+    padding-left: 20px;
+}
+
+    #contentHighSetLeft ul:hover {
+        background-color: #1596d0;
+        color: white;
+    }
+
+#contentHighSetLeft span {
+    color: #0a62ce;
+}
+
+.wrapper {
+    border-top: 1px solid #989898;
+    margin-top: 5px;
+}
+
+    .wrapper .left_area {
+        position: fixed;
+        top: 0px;
+        width: 115px;
+        bottom: 0;
+        left: 0;
+        border-right: 1px solid #989898;
+    }
+
+        .wrapper .left_area span {
+            width: 3px;
+            height: 28px;
+            float: left;
+            display: block;
+        }
+
+    .wrapper .nav {
+        width: 115px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background: url(/Contents/images/edit/nav.png) #dcdcdc no-repeat 20px 12px;
+        color: #525252;
+    }
+
+    .wrapper .left_menu a {
+        float: left;
+        line-height: 28px;
+        width: 115px;
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+        background-color: #f8f8f8;
+        color: #939393;
+        text-decoration: none;
+    }
+
+        .wrapper .left_menu a:hover, .wrapper .left_menu a.active {
+            background: #fff;
+            color: #000;
+        }
+/* 左侧菜单 end */
+
+#content {
+    bottom: 1px;
+    left: 0px;
+    overflow-y: auto;
+    position: absolute;
+    right: 0px;
+    top: 84px;
+}
+
+/*右边*/
+
+#right {
+    bottom: 15px;
+    left: 121px;
+    overflow: auto;
+    position: fixed;
+    right: 2px;
+    top: 0px;
+}
+
+.part {
+    border-top: 0px;
+    clear: both;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-top: 10px;
+}
+
+.fl {
+    float: left;
+    width: 150px;
+}
+
+.fr {
+    float: right;
+}
+
+.pl {
+    padding-left: 10px;
+}
+
+.title .btnGreen {
+    background-color: #42b532;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    line-height: 22px;
+    text-align: center;
+    width: 80px;
+}
+
+    .title .btnGreen:hover {
+        background-color: tomato;
+    }

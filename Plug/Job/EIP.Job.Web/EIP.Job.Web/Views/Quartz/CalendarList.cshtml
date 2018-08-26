@@ -1,0 +1,34 @@
+﻿@using EIP.Job.Web.DataUser.Helpers
+@{
+    ViewBag.Title = "日历列表";
+    ViewBag.Require = "system-quartz-calendarlist";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <div class="tools_box">
+        <div class="toolbar" id="partial_button_toolbar">
+            <a href="javascript:void(0);" title="新增" onclick=" add();return false; ">
+                <span class="l-icon-add">新增</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="编辑" onclick=" edit();return false; ">
+                <span class="l-icon-edit">编辑</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" title="删除" onclick=" del();return false; ">
+                <span class="l-icon-delete">删除</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+        </div>
+        <div class="select_box">
+            名称:@Html.SearchTextBox("Key")
+            描述:@Html.SearchTextBox("Description")
+            <input type="button" id="btn_select_box" value="搜 索" class="btnSearch">
+        </div>
+    </div>
+</div>

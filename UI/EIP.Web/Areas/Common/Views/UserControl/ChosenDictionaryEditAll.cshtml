@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "选择模块权限";
+    ViewBag.Require = "common-usercontrol-chosen-dictionary-edit-all";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@section Head
+{   
+    <style type="text/css">
+        input[type="text"], input[type="password"], input[type="radio"], input[type="checkbox"], select, .edit-table textarea {
+            border: 1px solid #C6C6C6;
+            outline: none;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 225px;
+            padding: 0 5px;
+            height: 23px;
+        }
+
+        input[type="radio"] {
+            position: relative;
+            top: 2px;
+        }
+        
+        .search-box {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+        }
+
+        .search-box .w {
+            width: 230px;
+            color: #A8A8A8;
+        }
+
+        .btn-search {
+            position: absolute;
+            background: #4C88BF;
+            color: #fff;
+            width: 42px;
+            height: 25px;
+            border: 0 none;
+            right: 0;
+            cursor: pointer;
+        }
+
+        .tree-container {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: solid 1px #C8C8C8;
+            overflow: auto;
+        }
+    </style>
+}
+<div class="search-box" style="">
+    <input class="w" name="w" type="text" placeholder="请输入关键字" style="color: rgb(51, 51, 51);">
+    <button type="button" onclick="search()" class="btn btn-search">查询</button>
+</div>
+<div class="tree-container" style="top: 48px;">
+    <ul id="tree" class="ztree"></ul>
+</div>

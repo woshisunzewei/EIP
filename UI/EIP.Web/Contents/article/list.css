@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+
+.list_left{ width:310px; float:left; overflow:hidden;}
+	.list_nav{ clear:both; overflow:hidden; background:url(../images/list/left_bg.gif) repeat-y top left;}
+	.list_nav h1{ height:58px; width:288px; text-align:center; font:normal 24px/58px microsoft yahei; color:#62adf1; border:1px solid #eaeaea; background:url(../xxgk/images/ml_bg.png) no-repeat left top #fff; border-bottom:2px solid #62adf1; margin-bottom:30px;}
+	.list_nav ul{ clear:both; overflow:hidden;}
+	.list_nav ul li{ background:url(../images/list/sub_nav_on.gif) no-repeat; width:290px; height:55px; font:normal 18px/55px microsoft yahei;}
+	.list_nav ul li p{ padding-left:45px;}
+	.list_nav ul li.hover{ background:url(../images/list/sub_nav_hover.gif) no-repeat; width:310px; height:55px; }
+	.list_nav ul li.hover a{ color:#0066b3 !important;}
+	
+	.list_news{ background:url(../images/list/left_title_bg.gif) repeat-x top center; width:248px; border-bottom:1px solid #eaeaea; border-left:1px solid #eaeaea; border-right:1px solid #eaeaea; padding:40px 20px;}
+	.nav_left{ clear:both; overflow:hidden; margin-bottom:30px;}
+	.nav_left h2{ background:url(../images/list/news_title_bg.gif) repeat-x center; font:bold 20px/30px microsoft yahei; margin-bottom:20px;}
+	.nav_left h2 p{ width:100px; margin:0 auto; text-align:center; background:#fff;}
+	.nav_left ul{ clear:both; overflow:hidden;}
+	.nav_left ul li { clear:both; font:normal 14px/16px microsoft yahei; padding-bottom:10px; padding-top:10px; float:left;}
+	.nav_left ul li span{ width:16px; height:16px; text-align:center; font:normal 12px/16px microsoft yahei; float:left; display:block;}
+	.nav_left ul li p{ float:left; padding-left:14px; width:215px;}
+	
+	.num_01{ background:#0066b3; color:#fff; width:16px; height:16px; text-align:center; font:normal 12px/16px microsoft yahei; float:left; display:block;}
+	.num_02{ background:#7fcef5; color:#fff; width:16px; height:16px; text-align:center; font:normal 12px/16px microsoft yahei; float:left; display:block;}
+	.num_03{ background:#cde4f9; color:#fff; width:16px; height:16px; text-align:center; font:normal 12px/16px microsoft yahei; float:left; display:block;}
+	.num_04{ background:#eeeded; color:#333; width:16px; height:16px; text-align:center; font:normal 12px/16px microsoft yahei; float:left; display:block;}
+	
+.list_right{ width:800px; float:right; overflow:hidden;}
+	.list_position{ height:50px; border-bottom:1px solid #eaeaea; font:normal 16px/50px microsoft yahei; text-align:left; overflow:hidden; margin-bottom:30px;}
+	.list_position a.hover{ color:#0066b3 !important;}
+	.list_content{ clear:both; overflow:hidden;}
+	.list_cloumn{ border-bottom:1px dashed #eaeaea; overflow:hidden; padding-bottom:20px; margin-bottom:20px;}
+	.list_cloumn:hover{ border-bottom:1px dashed #62adf1; cursor:pointer;}
+	.list_cloumn h2{ font:normal 16px microsoft yahei; }
+	.list_cloumn:hover h2 a{ color:#62adf1 !important;}
+	.list_cloumn p{ font:normal 14px/24px microsoft yahei; padding-bottom:10px; color:#999;}
+	.list_cloumn span{ color:#999; font:normal 14px microsoft yahei;}
+	.page{ clear:both; overflow:hidden; padding:50px 0px; width:410px;  margin:0 auto;}
+	.page ul li{ border:1px solid #eaeaea; padding:5px 10px; overflow:hidden; float:left; margin-right:10px; font:normal 12px microsoft yahei;}
+	.page ul li:hover,.page ul li.hover{ background:#1485d2; color:#fff;}
+	.page ul li:hover a,.page ul li.hover a{ color:#fff;}
+	
+	.list_info{ clear:both; overflow:hidden; margin-bottom:30px;}
+	.list_text ul li{ clear:both; font:normal 14px/36px microsoft yahei;}
+	.list_text ul li p{ background:url(../images/info_icon.gif) no-repeat left center; padding-left:20px; width:680px; float:left;}
+	.list_text ul li span{ width:100px; float:right; text-align:right; color:#666;}
+	
+.display_content{ padding:10px; clear:both; overflow:hidden;}
+	.display_title{ border-bottom:1px solid #eaeaea; overflow:hidden; padding-bottom:20px; margin-bottom:50px; }
+	.display_title h1{ text-align:center; font:normal 20px/36px microsoft yahei;padding-bottom:50px;}
+	.display_title h1 p{ font:bold 32px microsoft yahei; }
+	.title_info{ clear:both; overflow:hidden;}
+	.title_info p{  float:left; font:normal 16px microsoft yahei; color:#666; text-align:left;}
+	.title_info ul{ width:285px; float:right; overflow:hidden;}
+	.title_info ul li{ width:26px; height:26px; float:right; margin-left:10px;}
+	.share_icon01{ background:url(../images/list/share_icon01.png) no-repeat; width:26px; height:26px;}
+	.share_icon01:hover{ background:url(../images/list/share_hover01.png) no-repeat; }
+	
+	.share_icon02{ background:url(../images/list/share_icon02.png) no-repeat; width:26px; height:26px;}
+	.share_icon02:hover{ background:url(../images/list/share_hover02.png) no-repeat; }
+	
+	.share_icon03{ background:url(../images/list/share_icon03.png) no-repeat; width:26px; height:26px;}
+	.share_icon03:hover{ background:url(../images/list/share_hover03.png) no-repeat; }
+	
+	.share_icon04{ background:url(../images/list/share_icon04.png) no-repeat; width:26px; height:26px;}
+	.share_icon04:hover{ background:url(../images/list/share_hover04.png) no-repeat; }
+	
+	.share_icon05{ background:url(../images/list/share_icon05.png) no-repeat; width:26px; height:26px;}
+	.share_icon05:hover{ background:url(../images/list/share_hover05.png) no-repeat; }
+	
+	.share_icon06{ background:url(../images/list/share_icon06.png) no-repeat; width:26px; height:26px;}
+	.share_icon06:hover{ background:url(../images/list/share_hover06.png) no-repeat; }
+	
+	.share_icon07{ background:url(../images/list/share_icon07.png) no-repeat; width:26px; height:26px;}
+	.share_icon07:hover{ background:url(../images/list/share_hover07.png) no-repeat; }
+	
+	.display_text{ clear:both; overflow:hidden; padding-bottom:50px; font:normal 18px/40px microsoft yahei; text-align:left;}
+	.display_text p{ color:#333;}
+	
+	.news_other{ clear:both; overflow:hidden; padding:30px 0px;}
+	.news_other h2{ font:bold 16px microsoft yahei; padding-bottom:10px; margin-bottom:15px; border-bottom:1px solid #dedede;}
+	.news_other ul{ clear:both; overflow:hidden;}
+	.news_other ul li{ float:left; width:530px; font:normal 14px/36px microsoft yahei; padding:0px 10px;}
+	.news_other ul li p{ background:url(../images/news_icon.gif) no-repeat left center; padding-left:20px; width:410px; float:left;}
+	.news_other ul li span{ width:100px; float:right; text-align:right; color:#666;}
+	
+	.position{ font:normal 16px/40px microsoft yahei; text-align:left; border-bottom:1px solid #dedede; overflow:hidden; margin-bottom:30px;}
+	.position a.hover{ color:#0066b3 !important;}
+	
+	.site_content{ clear:both;}
+	.site_title{ background:url(../images/title_bg.gif) repeat-x bottom; height:46px; margin-bottom:20px; line-height:35px; font-family:microsoft yahei;}
+	.site_title p{ text-align: center;font: normal 16px/44px microsoft yahei;background: url(../images/newindex/name_hover_bg.gif) no-repeat center;font-weight: bold;height: 49px;width: 140px;}
+	.site_title p a{ color: #FFFFFF !important;width: 100%;}
+	.site_cloumn{ clear:both; /*margin-bottom:30px;*/ overflow:hidden;}
+	.site_list{ clear:both; overflow:hidden;}
+	.site_list h3{ float:left; padding-right:45px; width:335px;}
+	.site_list ul{ float:left; width:760px;}
+	.site_list ul li{ width:190px; float:left; font:normal 14px/36px microsoft yahei;}
+	.site_text ul li{ width:198px; float:left; font:normal 14px/36px microsoft yahei;padding-left: 30px;} 
+	
+	
+	.video_info{ clear:both; overflow:hidden; padding-left:20px; padding-top:10px;} 
+	.video_info ul li{ width:190px; float:left; padding:9px; border:1px solid #e6e6e6; margin-right:50px; font:normal 14px/30px microsoft yahei; text-align:left; margin-bottom:30px;}
+	
+		.error{ margin:100px auto; overflow:hidden; width:900px;}
+	.error ul{ width:510px; float:left; padding-left:15px; padding-top:50px;}
+	.error h1{ font:bold 28px microsoft yahei; color:#fb6700; padding-bottom:10px;}
+	.error p{ font:normal 18px/36px microsoft yahei; text-align:left; color:#555;}
+	.error span{ color:#fb6700;}
+	
+	
+	/*2016.4.22增加*/
+	.zw_content{ clear:both; overflow:hidden; background:url(../images/s_line.gif) repeat-y top center; margin-bottom:30px;}
+	.zw_list{ clear:both; overflow:hidden;}
+	.zw_list ul{ margin-bottom:20px; overflow:hidden; width:1176px;}
+	.zw_list ul li{ font:normal 14px/36px microsoft yahei; width:540px; float:left; margin-right:48px;}
+	.zw_list ul li p{ background:url(../images/info_icon.gif) no-repeat left center; padding-left:15px; width:425px; float:left;}
+	.zw_list ul li span{ text-align:right; color:#666; width:100px; float:right;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

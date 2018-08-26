@@ -1,0 +1,83 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "表单基本信息";
+    ViewBag.Require = "workflow-form-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.Workflow.Models.Entities.WorkflowForm
+@Html.EditTopRemark(new EditTopRemarkInput
+{
+    Title = "请填写配置信息",
+    Remark = "注：带*号的为必填信息！保存后设计表单样式。"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th class="m" style="width: 100px">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-128" })
+                </td>
+            </tr>
+            <tr>
+                <th>数据库连接：</th>
+                <td>
+                    @Html.LoadDataBase(new BaseDropDownListInput()
+                    {
+                        Id = "DataBaseId",
+                        Name = "DataBaseId",
+                        SelectedVal = @Model.DataBaseId
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th>数据表：</th>
+                <td><select id="DataBaseTable" name="DataBaseTable" onchange="tableChangeThis(this)"></select></td>
+            </tr>
+            <tr>
+                <th>主键：</th>
+                <td><select id="DataBasePrimaryKey" name="DataBasePrimaryKey"></select></td>
+            </tr>
+            <tr>
+                <th>标题：</th>
+                <td><select id="DataBaseTitle" name="DataBaseTitle"></select></td>
+            </tr>
+            <tr>
+                <th>地址：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Url, new { datatype = "*1-512", ignore = "ignore", placeholder = "若为设计表单则会自动生成,否则请填写对应表单地址" })
+                </td>
+            </tr>
+            <tr>
+                <th>序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th>选项：</th>
+                <td>
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "IsFreeze",
+                            Title = "冻结",
+                            IsCheck = @Model.IsFreeze
+                        })
+                </td>
+            </tr>
+            <tr>
+                <th valign="top">备注：</th>
+                <td>
+                    @Html.TextAreaFor(f => @Model.Remark, new { datatype = "*", ignore = "ignore", style = "height: 40px" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.FormId)
+@Html.Hidden("HiddenDataBaseTable", @Model.DataBaseTable)
+@Html.Hidden("HiddenDataBasePrimaryKey", @Model.DataBasePrimaryKey)
+@Html.Hidden("HiddenDataBaseTitle", @Model.DataBaseTitle)
+<script src="~/Scripts/app/common.js"></script>

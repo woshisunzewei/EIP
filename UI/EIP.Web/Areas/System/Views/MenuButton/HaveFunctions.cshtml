@@ -1,0 +1,34 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "模块按钮列表";
+    ViewBag.Require = "system-menubutton-havefunctions";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+
+<div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+    <div class="tools-box">
+        <div class="tools-box-left" id="partial_button_toolbar">
+            <a href="javascript:void(0);" onclick=" add();;return false; ">
+                <span class="l-icon-add">新增</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" del();;return false; ">
+                <span class="l-icon-delete">删除</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+        </div>
+        <div class="tools-box-right">
+            @Html.SearchTextBox("AppCode", "代码")
+            @*区域:@Html.SearchTextBox("Area")*@
+            @Html.SearchTextBox("Controller", "控制器")
+            @Html.SearchTextBox("Remark", "备注")
+            <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+            <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+        </div>
+    </div>
+</div>

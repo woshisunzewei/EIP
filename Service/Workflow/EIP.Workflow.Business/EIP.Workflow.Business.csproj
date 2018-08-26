@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ECAF45C7-D3E2-4A82-BA0A-885078FE4F6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIP.Workflow.Business</RootNamespace>
+    <AssemblyName>EIP.Workflow.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\IWorkflowButtonLogic.cs" />
+    <Compile Include="Config\IWorkflowCommentLogic.cs" />
+    <Compile Include="Config\IWorkflowFormLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessActivityLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessAreasLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceActivityLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceLineLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessInstanceLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessLineLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessLogic.cs" />
+    <Compile Include="Config\IWorkflowProcessTaskLogic.cs" />
+    <Compile Include="Config\WorkflowButtonLogic.cs" />
+    <Compile Include="Config\WorkflowCommentLogic.cs" />
+    <Compile Include="Config\WorkflowFormLogic.cs" />
+    <Compile Include="Config\WorkflowProcessActivityLogic.cs" />
+    <Compile Include="Config\WorkflowProcessAreasLogic.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceActivityLogic.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceLineLogic.cs" />
+    <Compile Include="Config\WorkflowProcessInstanceLogic.cs" />
+    <Compile Include="Config\WorkflowProcessLineLogic.cs" />
+    <Compile Include="Config\WorkflowProcessLogic.cs" />
+    <Compile Include="Config\WorkflowProcessTaskLogic.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ByAll.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ByGroup.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ByOrganization.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ByPost.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\BySendUser.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ByUser.cs" />
+    <Compile Include="Engine\Core\ReceiveUser\ReceiveUserFactory.cs" />
+    <Compile Include="Engine\Core\Remind\ByEmail.cs" />
+    <Compile Include="Engine\Core\Remind\ByNote.cs" />
+    <Compile Include="Engine\Core\Remind\ByWebIm.cs" />
+    <Compile Include="Engine\Core\Remind\ByWeiXin.cs" />
+    <Compile Include="Engine\Core\Remind\ByWindowsIm.cs" />
+    <Compile Include="Engine\Core\Remind\RemindFactory.cs" />
+    <Compile Include="Engine\IWorkflowEngineLogic.cs" />
+    <Compile Include="Engine\WorkflowEngineLogic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Business\EIP.Common.Business.csproj">
+      <Project>{d31d24d0-4cce-473d-9d08-daf05ace8cf5}</Project>
+      <Name>EIP.Common.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Core\EIP.Common.Core.csproj">
+      <Project>{1cd7655d-aeaf-496d-a3ac-fff0b6423e60}</Project>
+      <Name>EIP.Common.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Dapper\EIP.Common.Dapper.csproj">
+      <Project>{b2adf77f-16e8-4b8b-b11e-9b1f6cb5b07d}</Project>
+      <Name>EIP.Common.Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.DataAccess\EIP.Common.DataAccess.csproj">
+      <Project>{e355c064-e7c7-45f1-a231-587f0d46466c}</Project>
+      <Name>EIP.Common.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\EIP.Common.Entities\EIP.Common.Entities.csproj">
+      <Project>{e11f0521-b8dd-4821-be16-8630ff147878}</Project>
+      <Name>EIP.Common.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\System\EIP.System.Business\EIP.System.Business.csproj">
+      <Project>{0ed4502a-ecf8-43bf-b5db-fe056c637c54}</Project>
+      <Name>EIP.System.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\System\EIP.System.Models\EIP.System.Models.csproj">
+      <Project>{30cbfb3f-a887-4d22-b9db-46c1d45dcbbd}</Project>
+      <Name>EIP.System.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EIP.Workflow.DataAccess\EIP.Workflow.DataAccess.csproj">
+      <Project>{4336809e-0f83-45e8-bfc4-dc5beb0c2bb3}</Project>
+      <Name>EIP.Workflow.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EIP.Workflow.Models\EIP.Workflow.Models.csproj">
+      <Project>{960ed4f8-1ff7-4623-bab1-5825c886c8d0}</Project>
+      <Name>EIP.Workflow.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

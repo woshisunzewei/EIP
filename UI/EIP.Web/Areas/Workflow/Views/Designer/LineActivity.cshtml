@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "连线信息配置";
+    ViewBag.Require = "workflow-designer-line";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+@using EIP.Workflow.Models.Enums
+
+@model EIP.Web.Areas.Workflow.Models.LineViewModel
+<table class="complex-table" style="width: 99%">
+    <tr>
+        <th style="width: 100px">连线Id：</th>
+        <td>
+            <input id="LineId" name="LineId" type="text" disabled="disabled">
+        </td>
+    </tr>
+    <tr>
+        <th class="m">步骤名称：</th>
+        <td>
+            <input id="LineName" name="LineName" type="text" datatype="*1-128">
+        </td>
+    </tr>
+    <tr>
+        <th class="m">连线类型：</th>
+        <td>
+            @Html.DropDownListEnum(new DropDownListEnumInput
+            {
+                EnumType = (typeof (EnumLineType)),
+                Name = "LineType",
+                Id = "LineType"
+            })
+        </td>
+    </tr>
+    <tr id="ShowLineReturnPolicy">
+        <th class="m">退回策略：</th>
+        <td>
+        @Html.DropDownListEnum(new DropDownListEnumInput
+        {
+            EnumType = (typeof (EnumLineReturnPolicy)),
+            Name = "LineReturnPolicy",
+            Id = "LineReturnPolicy"
+        })
+    </tr>
+    <tr id="ShowLineConditions">
+        <th>条件表达式：</th>
+        <td>
+            <input id="LineConditions" name="LineConditions" datatype="*1-128" ignore="ignore" type="text">
+        </td>
+    </tr>
+    <tr>
+        <th>备注说明：</th>
+        <td>
+            <textarea cols="20" id="LineRemark" name="LineRemark" rows="2" style="height: 100px"></textarea>
+        </td>
+    </tr>
+</table>

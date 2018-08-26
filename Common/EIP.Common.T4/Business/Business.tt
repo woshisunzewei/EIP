@@ -1,0 +1,40 @@
+﻿<#@ template debug="True" hostspecific="True" #>
+<#@ assembly name="$(TargetDir)\EIP.Common.T4.dll" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\MultipleOutputHelper.ttinclude" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\SQLServer.ttinclude" #>
+<#
+    var tables = LoadTables();     
+    var manager = Manager.Create(Host, GenerationEnvironment);  
+	//遍历所有表
+	foreach(var tbl in tables){
+		if(!ExcludeTables.Contains(tbl.Name))
+		{
+			// 设置输出的文件名
+			manager.StartNewFile(tbl.ClassName.Replace("_","")+"Logic.cs");
+#>
+namespace Business.Implement
+{
+    public  class <#=tbl.ClassName.Replace("_","")#>Logic : AsyncLogic<<#=tbl.ClassName.Replace("_","")#>>, I<#=tbl.ClassName.Replace("_","")#>Logic
+    {
+        #region 构造函数
+
+        private readonly I<#=tbl.ClassName.Replace("_","")#>Repository _<#=tbl.ClassName.Replace("_","").Substring(0,1).ToLower()+tbl.ClassName.Replace("_","").Substring(1)#>Repository;
+
+        public <#=tbl.ClassName.Replace("_","")#>Logic(I<#=tbl.ClassName.Replace("_","")#>Repository <#=tbl.ClassName.Replace("_","").Substring(0,1).ToLower()+tbl.ClassName.Replace("_","").Substring(1)#>Repository)
+            : base(<#=tbl.ClassName.Replace("_","").Substring(0,1).ToLower()+tbl.ClassName.Replace("_","").Substring(1)#>Repository)
+        {
+            _<#=tbl.ClassName.Replace("_","").Substring(0,1).ToLower()+tbl.ClassName.Replace("_","").Substring(1)#>Repository = <#=tbl.ClassName.Replace("_","").Substring(0,1).ToLower()+tbl.ClassName.Replace("_","").Substring(1)#>Repository;
+        }
+
+        #endregion
+    }
+}
+<# 
+			// 输出文件结束
+			manager.EndBlock();
+		} //if(!ExcludeTables.Contains(tbl.Name)) 判断结束
+       
+	}// end foreach
+	// 执行编译，生成文件
+    manager.Process(true);  
+#>   

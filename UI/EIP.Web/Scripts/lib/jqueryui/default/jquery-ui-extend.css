@@ -1,0 +1,301 @@
+﻿.ui-dialog .ui-dialog-buttonpane{ margin:0px;}
+.ui-dialog-content{background-color: #EFEFEF;}
+.ui-widget-header{background:url("layout/layout-header.gif") repeat-x scroll 50% 50% #F7FAFE;border-bottom-style:none;}
+input[type="text"], input[type="password"], textarea,.ui-input-text{border-radius:3px;}
+.ui-input-text-readonly, input[type="text"][readonly], input[type="password"][readonly], textarea[readonly]{border-radius:3px;}	
+.ui-layout-pane{background-color:#FFFFFF;}
+.ui-dialog .ui-dialog-titlebar-close
+{
+    float: right;
+    font-style: normal;
+    padding: 2px 4px;
+    position:inherit;
+     margin:0px;
+     height:15px;
+     width:auto;
+     top:0px;
+     right:0px;
+    }
+.ui-dialog .ui-dialog-titlebar-close span
+{
+    background: url("images/tool-sprites.gif") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: right;
+    height: 15px;
+    line-height:22px;
+    margin-left: 2px;
+    overflow: hidden;
+    width: 15px;
+    }
+.ui-dialog .ui-dialog-titlebar-close-hover span
+{
+     background-position: -15px 0px;
+ }  
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 2px 4px; }  
+   .AdvanceQueryShow{          
+        border-radius: 0px 0px 9px 9px;
+        box-shadow: 2px 5px 5px #969696;
+    }
+    a:focus
+        {
+            outline: none;
+            -moz-outline: none;
+        }
+    .e-ui-toolbar
+    {            
+        height:23px;
+        line-height:23px;
+        background: url(toolbar/toolbar-bg.png) repeat-x scroll 50% 50%;
+        font-weight: normal; 
+        color: #3f3e40;
+    }
+            .x-box-tl
+        {
+            background: url("box/corners.gif") no-repeat scroll 0 0 transparent;
+        }
+        .x-box-tc
+        {
+            background: url("box/tb.gif") repeat-x scroll 0 0 transparent;
+            height: 8px;
+            overflow: hidden;
+        }
+        .x-box-tr
+        {
+            background: url("box/corners.gif") no-repeat scroll right -8px transparent;
+        }
+        .x-box-ml
+        {
+            background: url("box/l.gif") repeat-y scroll 0 50% transparent;
+            overflow: hidden;
+            padding-left: 4px;
+        }
+        .x-box-mc
+        {
+            background: url("box/tb.gif") repeat-x scroll 0 -16px #EFEFEF;
+            color: #393939;
+            padding: 4px 10px;
+        }
+        .x-box-mc h3
+        {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 4px;
+        }
+        .x-box-mr
+        {
+            background: url("box/r.gif") repeat-y scroll right center transparent;
+            overflow: hidden;
+            padding-right: 4px;
+        }
+        .x-box-bl
+        {
+            background: url("box/corners.gif") no-repeat scroll 0 -16px transparent;
+        }
+        .x-box-bc
+        {
+            background: url("box/tb.gif") repeat-x scroll 0 -8px transparent;
+            height: 8px;
+            overflow: hidden;
+        }
+        .x-box-br
+        {
+            background: url("box/corners.gif") no-repeat scroll right -24px transparent;
+        }
+        .x-box-tl, .x-box-bl
+        {
+            overflow: hidden;
+            padding-left: 8px;
+        }
+        .x-box-tr, .x-box-br
+        {
+            overflow: hidden;
+            padding-right: 8px;
+        }
+        .x-box-blue .x-box-bl, .x-box-blue .x-box-br, .x-box-blue .x-box-tl, .x-box-blue .x-box-tr
+        {
+            background-image: url("box/corners-blue.gif");
+        }
+        .x-box-blue .x-box-bc, .x-box-blue .x-box-mc, .x-box-blue .x-box-tc
+        {
+            background-image: url("box/tb-blue.gif");
+        }
+        .x-box-blue .x-box-mc
+        {
+            background-color: #C3DAF9;
+        }
+        .x-box-blue .x-box-mc h3
+        {
+            color: #17385B;
+        }
+        .x-box-blue .x-box-ml
+        {
+            background-image: url("box/l.gif");
+        }
+        .x-box-blue .x-box-mr
+        {
+            background-image: url("box/r.gif");
+        }
+        .e-layout-right-box
+        {
+            float: right;
+            margin: 0 0 0 -357px;
+            width: 100%;
+            height: 100%;
+            background: none repeat scroll 0 0 #EAF2FE;
+        }
+        .e-layout-right
+        {
+            margin: 0 0 0 360px;
+            border: 1px solid #BED5F3;
+            background: none repeat scroll 0 0 #FFFFFF;
+        }
+        .e-layout-left
+        {
+            float: left;
+            width: 355px;
+            border: 1px solid #BED5F3;
+            background: none repeat scroll 0 0 #FFFFFF;
+            height: 600px;
+        }
+        .e-layout-left .e-layout-header-toggle
+        {
+            background: url("layout/togglebar.png") repeat scroll -20px 0 transparent;
+            cursor: pointer;
+            height: 20px;
+            overflow: hidden;
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 20px;
+        }
+        .e-layout-left .e-layout-header-toggle-over
+        {
+            background-position: -20px -20px;
+        }
+        .e-layout-collapse-left
+        {
+            background: none repeat scroll 0 0 #EAF2FE;
+            border: 1px solid #B8D0D6;
+            display: none;
+            left: 2px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 24px;
+            z-index: 10;
+        }
+        .e-layout-collapse-left-toggle
+        {
+            background: url("layout/togglebar.png") repeat scroll 0 0 transparent;
+            cursor: pointer;
+            height: 20px;
+            overflow: hidden;
+            position: absolute;
+            width: 20px;
+        }
+        .e-layout-collapse-left-toggle-close
+        {
+            background-position: -20px -40px;
+            right: 2px;
+            top: 2px;
+        }
+        .e-layout-collapse-left-toggle-over
+        {
+            background-position: -20px -60px;
+            right: 2px;
+            top: 2px;
+        }  
+        .e-layout-north
+        {
+            width: 100%;
+            border: 0px solid #BED5F3;
+            background: none repeat scroll 0 0 #FFFFFF;
+        }
+        .e-layout-center
+        {
+            margin-top:2px;
+            border: 1px solid #BED5F3;
+            background: none repeat scroll 0 0 #FFFFFF;
+        }              
+        .e-layout-header
+        {
+            background: url("layout/layout-header.gif") repeat-x scroll 0 0 #E5EFFE;
+            color: #183152;
+            font-weight: bold;
+            height: 25px;
+            font-size: 12px;
+            line-height: 24px;
+            overflow: hidden;
+            padding-left: 10px;
+            position: relative;
+        }
+        .e-layout-content
+        {
+            overflow: auto;
+        }
+         .x-loadmask
+    {
+        display: none;
+    }
+    .x-mask
+    {
+        background: none repeat scroll 0 0 #CCCCCC;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 20000;
+        left: 0;
+        top: 0;
+        -moz-opacity: 0.5;
+        opacity: .50;
+        filter: alpha(opacity=50);
+    }
+    .x-mask-msg
+    {
+        background-color: #EEEEEE;
+        background-image: none;
+        border: 1px solid #C0C0C0;
+        padding: 2px;
+        position: absolute;
+        z-index: 20001;
+        left: 42%;
+        top: 42%;
+    }
+    .x-mask-msg div
+    {
+        background-color: #FFFFFF;
+        background-image: url("images/wait.gif");
+        background-position: 5px center;
+        background-repeat: no-repeat;
+        border: 1px solid #CCCCCC;
+        color: #222222;
+        cursor: wait;
+        line-height: 22px;
+        font: 12px/22px simsun,arial,sans-serif;
+        padding: 5px 10px 5px 25px;
+    }
+    .x-shadow
+    {
+        box-shadow: 0 0 4px #888888;
+        display: block;
+        height: 40px;
+        width: 151px;
+        z-index: 19000;
+        border-radius: 5px 5px 5px 5px;
+        position: absolute;
+        left: 42%;
+        top: 42%;
+    }
+    .x-ie .x-shadow
+    {
+        position: absolute;
+        background-color: #777;
+        zoom: 1;
+        overflow: hidden;
+        z-index: 19000;
+        filter: progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius=4);
+        width: 151px;
+        height: 40px;
+        left: 42%;
+        top: 42%;
+    }

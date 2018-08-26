@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "调度任务编辑";
+    ViewBag.Require = "system-quartz-quartzedit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Core.Quartz.Enums
+@using EIP.Common.Entities.Dtos
+@using EIP.Job.Web.DataUser.Helpers
+@model EIP.Job.Service.System.Dto.SystemQuartzOutput
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "菜单按钮信息",
+    Remark = "注：带*号的为必填信息！"
+})
+<script src="~/Scripts/lib/jquery-1.7.2.min.js"></script>
+@*easyui*@
+<link href="~/Scripts/lib/easyui/themes/default/easyui.css" rel="stylesheet" />
+<link href="~/Scripts/lib/easyui/themes/icon.css" rel="stylesheet" />
+<script src="~/Scripts/lib/easyui/jquery.easyui.min.js"></script>
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 110px" class="m">作业名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => Model.JobName, new { datatype = "*1-150" })
+                </td>
+                <th style="width: 110px" class="m">作业组：</th>
+                <td>
+                    @Html.TextBoxFor(f => Model.JobGroup, new { datatype = "*1-150" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">作业方法：</th>
+                <td colspan="3">
+                    @Html.LoadJobAssemblies(new BaseDropDownListInput
+                {
+                    Id = "JobType",
+                    Name = "JobType",
+                    SelectedVal = Model.JobType
+                })
+                </td>
+            <tr>
+                <th class="m">触发器类型：</th>
+                <td colspan="3">
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumTriggerType)),
+                        Id = "TriggerType",
+                        Name = "TriggerType",
+                        SelectedVal = @Model.TriggerType,
+                        CompareType = EnumCompareType.Text
+                    })
+                </td>
+            </tr>
+            <tr id="tr_simple" style="display: none">
+                <th class="m">选项：</th>
+                <td>
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                    {
+                        Name = "Repeat",
+                        Title = "重复执行",
+                        IsCheck = @Model.Repeat
+                    })
+                </td>
+                <th class="m">重复间隔：</th>
+                <td>
+                    <input id="Interval" class="easyui-timespinner" style="width:220px;" data-options="showSeconds:true">
+                </td>
+            </tr>
+            <tr id="tr_cron" style="display: none">
+                <th style="width: 110px" class="m">Cron表达式：</th>
+                <td colspan="3">
+                    @Html.TextBox("Cron", @Model.Cron, new { datatype = "*1-32", ignore = "ignore", style = "width: 490px; border-width: 1px 0 1px 1px; " })
+                    <input type="button" title="" class="button_search" id="chosen_cron" style="margin: 0; cursor: pointer; margin-left: -5px" value="新增" />
+                </td>
+            </tr>
+            <tr>
+                <th class="m">注：</th>
+                <td colspan="3">
+                    @Html.CheckBoxHtmlString(new CheckBoxInput
+                    {
+                        Name = "ReplaceExists",
+                        Title = "根据JobKey/TriggerKey替换现有任务",
+                        IsCheck = @Model.ReplaceExists
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 110px">排除日历：</th>
+                <td colspan="3">
+                    @Html.LoadQuartzCalendar(new BaseDropDownListInput
+                {
+                    Id = "ChoicedCalendar",
+                    Name = "ChoicedCalendar",
+                    NeedDefault = true,
+                    SelectedVal = Model.ChoicedCalendar
+                })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">作业描述：</th>
+                <td colspan="3">
+                    @Html.TextAreaFor(f => Model.JobDescription, new { datatype = "*1-250",style="height: 45px", ignore = "ignore" })
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "作业参数"
+})
+<div class="edit-content" style="border: none">
+    <table id="list"></table>
+    <div id="pager"></div>
+</div>
+
+@Html.Hidden("hiddenInterval", Model.Interval)
+@Html.HiddenFor(f => Model.TriggerGroup)
+@Html.HiddenFor(f => Model.TriggerDescription)
+@Html.HiddenFor(f => Model.TriggerName)

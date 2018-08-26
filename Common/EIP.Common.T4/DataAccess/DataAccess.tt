@@ -1,0 +1,31 @@
+﻿<#@ template debug="True" hostspecific="True" #>
+<#@ assembly name="$(TargetDir)\EIP.Common.T4.dll" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\MultipleOutputHelper.ttinclude" #>
+<#@  include file="$(SolutionDir)\Common\EIP.Common.T4\TtInclude\SQLServer.ttinclude" #>
+<#
+    var tables = LoadTables();     
+    var manager = Manager.Create(Host, GenerationEnvironment);  
+	//遍历所有表
+	foreach(var tbl in tables){
+		if(!ExcludeTables.Contains(tbl.Name))
+		{
+			// 设置输出的文件名
+			manager.StartNewFile(tbl.ClassName.Replace("_","")+"Repository.cs");
+#>
+using Common.DataAccess;
+namespace DataAccess.Implement
+{
+    public class <#=tbl.ClassName.Replace("_","")#>Repository : DapperAsyncRepository<<#=tbl.ClassName.Replace("_","")#>>, I<#=tbl.ClassName.Replace("_","")#>Repository
+    {
+       
+    }
+}
+<# 
+			// 输出文件结束
+			manager.EndBlock();
+		} //if(!ExcludeTables.Contains(tbl.Name)) 判断结束
+       
+	}// end foreach
+	// 执行编译，生成文件
+    manager.Process(true);  
+#> 

@@ -1,0 +1,34 @@
+﻿@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "待办事宜";
+    ViewBag.Require = "workflow-needdo-list";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools_box">
+        <div class="toolbar">
+            <a href="javascript:void(0);" onclick="loadTreeAndGrid(); return false;"><span class="l-icon-reload">刷新</span></a>
+        </div>
+    </div>
+    <ul id="tree" class="ztree"></ul>
+</div>
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="listcenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools_box">
+                @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml");}
+            </div>
+            <div class="select_box">
+                @Html.SearchTextBox("Title", "标题:")
+                @Html.SearchTextBox("CurrentActivityName", "步骤名称:")
+                @Html.SearchTextBox("SendUserName", "创建人:")
+                <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+            </div>
+        </div>
+    </div>
+</div>

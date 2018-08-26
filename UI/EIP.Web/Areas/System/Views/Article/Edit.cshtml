@@ -1,0 +1,74 @@
+@{
+    ViewBag.Title = "文章新闻表编辑";
+    ViewBag.Require = "system-article-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Entities
+@using EIP.Web.DataUsers.Helpers
+@model EIP.System.Models.Entities.SystemArticle
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写文章新闻表",
+    Remark = "注：带*号的为必填信息！"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">标题：</th>
+                <td colspan="3">
+                    @Html.TextBoxFor(f => @Model.Title, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">栏目：</th>
+                <td>
+                    @Html.TextBoxFor(f => f.CategoryName, new { @readonly = true, @class = "text-select",datatype = "*1-128", style = "width: 80%; " })
+                    @Html.HiddenFor(f => f.CategoryId)
+                    <input type="button" class="button_search" plugin="dictionary" value="选择" plugin-code="@ResourceDictionary.文章新闻类别" />
+                </td>
+                <th>排序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px">选项：</th>
+                <td colspan="3">
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "ShowInHome",
+                            Title = "首页显示",
+                            IsCheck = @Model.ShowInHome
+                        })
+                    </span>
+
+                    <span class="item">
+                        @Html.CheckBoxHtmlString(new CheckBoxInput
+                        {
+                            Name = "IsFreeze",
+                            Title = "冻结",
+                            IsCheck = @Model.IsFreeze
+                        })
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px" valign="top">内容：</th>
+                <td colspan="3">
+                    <textarea name="results_ke" style="height: 400px; width: 1045px;">
+                        @Model.Contents
+                    </textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => Model.ArticleId)
+@Html.HiddenFor(f => Model.CreateOrganizationName)
+@Html.HiddenFor(f => Model.CreateOrganizationId)
+@Html.HiddenFor(f => Model.CreateTime)
+@Html.HiddenFor(f => Model.CreateUserId)
+@Html.HiddenFor(f => Model.CreateUserName)

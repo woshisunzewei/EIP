@@ -1,0 +1,23 @@
+﻿@using EIP.Common.Entities
+@{
+    string action, controller;
+    var area = action = controller = string.Empty;
+    object areaName;
+    ViewContext.RouteData.DataTokens.TryGetValue("area", out areaName);
+    if (areaName != null)
+    {
+        area = areaName.ToString();//区域
+        controller = ViewContext.RouteData.Values["controller"].ToString();//控制器
+        action = ViewContext.RouteData.Values["action"].ToString();//方法
+    }
+    MvcRote mvcRote = new MvcRote()
+    {
+        Area = area,
+        Controller = controller,
+        Action = action
+    };
+    @Html.Hidden("area", mvcRote.Area)
+    @Html.Hidden("aontroller", mvcRote.Controller)
+    @Html.Hidden("action", mvcRote.Action)
+   
+}

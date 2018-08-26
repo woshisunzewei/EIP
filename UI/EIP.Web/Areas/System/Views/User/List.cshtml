@@ -1,0 +1,180 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+@{
+    ViewBag.Title = "用户信息维护";
+    ViewBag.HaveFiledPermission = true;
+    ViewBag.Require = "system-user-list";
+    Layout = "~/Views/Shared/_LayoutPageBaseList.cshtml";
+}
+<div id="uiWest" class="ui-layout-west" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+    <div class="tools-box">
+        <div class="tools-box-left">
+            <a href="javascript:void(0);" onclick=" reloadTreeAndGrid(); return false; ">
+                <span class="l-icon-reload">刷新</span>
+            </a>
+            <span class="toolbarsplit">&nbsp;</span>
+            <a href="javascript:void(0);" onclick=" arrowin(); return false; ">
+                <span id="arrowin" class="l-icon-arrow-in">折叠</span>
+            </a>
+        </div>
+    </div>
+    <ul id="tree" class="ztree"></ul>
+</div>
+
+<div id="uiCenter" class="ui-layout-center" style="border-style: none">
+    <div id="layout" class="layoutdiv">
+        <div id="listcenter" class="ui-layout-center" style="border-style: none">
+            <table id="list"></table>
+            <div id="pager"></div>
+        </div>
+        <div id="uiNorth" class="ui-layout-north" style="border-color: #ccc; border-style: solid; border-width: 1px">
+            <div class="tools-box">
+                <div class="tools-box-left" id="partial_button_toolbar">
+                    @{ Html.RenderPartial("~/Areas/Common/Views/Shared/_PartialButton.cshtml"); }
+                </div>
+            </div>
+            <div class="select_box">
+                @Html.SearchTextBox("u.Code", "登录帐号")
+                @Html.SearchTextBox("u.Name", "名称")
+                @Html.SearchDateTime("u.CreateTime", "创建时间", false)
+                状态：<input type="hidden" value="eq" />
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumIsFreeze)),
+                        HtmlAttributes = "name = 'u.IsFreeze' class = 'filter', style = 'width:80px' }",
+                        Name = "IsFreeze",
+                        NeedDefault = true
+                    })
+                <input type="hidden" value="eq" />
+                <input class="filter" id="PrivilegeMasterValue" name="PrivilegeMasterValue" type="hidden" value="" />
+
+                <input type="button" name="btn_select_box" value="搜 索" class="btnSearch">
+                <input type="button" name="btn_reset_box" value="重 置" class="btnSearch">
+            </div>
+        </div>
+
+        <div id="uiSouth" class="ui-layout-south" style="border-color: #ccc; border-style: solid; border-width: 1px;">
+            <div tabid="home" icon="document-invoice" title="基本信息" lselected="true" style="height: 300px;">
+                <div style="padding: 3px">
+                    <table class="tableView" width="100%" align="center">
+                        <tbody>
+                            <tr>
+                                <th width="120">代码【登录名】：</th>
+                                <td width="180">
+                                    <label id="Code"></label>
+                                </td>
+                                <th width="120">名称：</th>
+                                <td width="180">
+                                    <label id="Name"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>邮件：</th>
+                                <td colspan="3">
+                                    <label id="Email"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>联系电话：</th>
+                                <td>
+                                    <label id="Mobile"></label>
+                                </td>
+                                <th>类别：</th>
+                                <td>
+                                    <label id="StateName"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>首次访问时间：</th>
+                                <td>
+                                    <label id="FirstVisitTime"></label>
+                                </td>
+                                <th>最后访问时间：</th>
+                                <td>
+                                    <label id="LastVisitTime"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>创建时间：</th>
+                                <td>
+                                    <label id="CreateTime"></label>
+                                </td>
+                                <th>冻结：</th>
+                                <td>
+                                    <label id="IsFreezeFormatter"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>备注：</th>
+                                <td colspan="3">
+                                    <label id="Remark"></label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div title="归属角色" icon="role" id="tabs-role" style="padding: 3px"></div>
+            <div title="归属组" icon="group" id="tabs-group" style="padding: 3px"></div>
+            <div title="归属岗位" icon="sitemap-application-blue" id="tabs-post" style="padding: 3px"></div>
+        </div>
+    </div>
+</div>
+
+<script id="role-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left" class="noborder">组织机构</th>
+            </tr>
+            {{each Role as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="post-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each Post as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>
+
+<script id="group-template" type="text/html">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="msgtable">
+        <tbody>
+            <tr class="tr_odd_bg">
+                <th width="10%">编号</th>
+                <th width="30%" align="left">名称</th>
+                <th width="40" align="left">组织机构</th>
+            </tr>
+            {{each Group as value i}}
+            <tr class="">
+                <td align="center">{{i + 1}}</td>
+                <td> {{value.Name}}</td>
+                <td align="left"> {{value.Organization}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</script>

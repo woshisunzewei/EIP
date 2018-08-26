@@ -1,0 +1,244 @@
+﻿@{
+    ViewBag.Title = "审批节点配置";
+    ViewBag.Require = "workflow-designer-activity";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@using EIP.Workflow.Models.Enums
+<div class="easyui-layout" style="border: 1px rgb(202, 196, 196) solid; border-radius: 5px; height: 390px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto; width: 713px;">
+<div style="height: 100%;">
+<div class="easyui-tabs" data-options="fit:true,border:false">
+<div title="基本">
+    <table class="complex-table" style="margin-left: 3px;width: 99%">
+        <tr class="template">
+            <th style="width: 100px"></th>
+            <td></td>
+            <th style="width: 100px"></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th style="width: 100px">步骤ID：</th>
+            <td colspan="3">
+                <input id="ActivityId" name="ActivityId" type="text" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <th class="m">步骤名称：</th>
+            <td colspan="3">
+                <input id="ActivityName" name="ActivityName" type="text" datatype="*1-128">
+            </td>
+        </tr>
+        <tr>
+            <th>意见显示：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumActivityOpinion)),
+                    Name = "ActivityOpinion",
+                    Id = "ActivityOpinion"
+                })
+            </td>
+            <th>审签类型：</th>
+            <td>
+            @Html.DropDownListEnum(new DropDownListEnumInput
+            {
+                EnumType = (typeof (EnumActivityCommentsBelow)),
+                Name = "ActivityCommentsBelow",
+                Id = "ActivityCommentsBelow"
+            })
+
+        </tr>
+        <tr>
+            <th>超期提示：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumActivityTimeoutRemind)),
+                    Name = "ActivityTimeoutRemind",
+                    Id = "ActivityTimeoutRemind"
+                })
+            </td>
+            <th>归档：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumActivityArchive)),
+                    Name = "ActivityArchive",
+                    Id = "ActivityArchive"
+                })
+            </td>
+
+        </tr>
+        <tr id="ShowActivityTimeoutRemind">
+            <th>工时(小时)：</th>
+            <td>
+                <input id="ActivityWorkTime" name="ActivityWorkTime" datatype="n" ignore="ignore" type="text">
+            </td>
+            <th>提醒类型</th>
+            <td>
+                @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "ActivityTimeoutRemindTypeEmail",
+                    Title = "邮件"
+                })
+
+                @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "ActivityTimeoutRemindTypeNote",
+                    Title = "短信"
+                })
+
+                @Html.CheckBoxHtmlString(new CheckBoxInput
+                {
+                    Name = "ActivityTimeoutRemindTypeWx",
+                    Title = "微信"
+                })
+            </td>
+        </tr>
+        <tr>
+            <th>表单：</th>
+            <td colspan="3">
+                @Html.LoadWorkflowForm(new DropDownListEnumInput
+                {
+                    Name = "ActivityForm",
+                    Id = "ActivityForm",
+                    NeedDefault = true
+                })
+            </td>
+        </tr>
+        <tr>
+            <th>说明：</th>
+            <td colspan="3">
+                <textarea cols="20" id="LineRemark" name="ActivityRemark" rows="2" style="height: 100px"></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+<div title="策略">
+    <table class="complex-table" style="margin-left: 3px; width: 99%">
+        <tr>
+            <th style="width: 100px">处理者类型：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumActivityProcessorType)),
+                    Name = "ActivityProcessorType"
+                })
+            </td>
+            <th style="width: 100px">选择范围：</th>
+            <td>
+                <input id="ActivityProcessorHandler" name="ActivityProcessorHandler" type="text" readonly="readonly" class="text1" style="border-width: 1px 0 1px 1px; width: 183px;">
+                <input type="button" title="" id="chosen_menu" class="button_search" style="cursor: pointer; margin: 0; margin-left: -5px" value="选择"/>
+
+            </td>
+        </tr>
+        <tr>
+            <th>处理策略：</th>
+            <td>
+                @Html.DropDownListEnum(new DropDownListEnumInput
+                {
+                    EnumType = (typeof (EnumActivityHandlingStrategy)),
+                    Name = "ActivityHandlingStrategy"
+                })
+            </td>
+            <th>策略百分比：</th>
+            <td>
+                <input type="text" id="ActivityHandlingStrategyPercentage" name="ActivityHandlingStrategyPercentage" style="width: 90%"> %
+            </td>
+        </tr>
+
+    </table>
+</div>
+<div title="按钮">
+    <style>
+        .listulli {
+            background: #f1f1f1;
+            border: 1px solid #e9e9e9;
+            height: 19px;
+            list-style: none;
+            margin: 5px 0;
+            overflow: hidden;
+            padding: 4px 0 0 10px;
+        }
+
+        .listulli1 {
+            background: #aac5e0;
+            border: 1px solid #9cbad8;
+            height: 19px;
+            list-style: none;
+            margin: 5px 0;
+            overflow: hidden;
+            padding: 4px 0 0 10px;
+        }
+    </style>
+
+    <div id="div_button" style="display: block; margin: 0 auto; width: 99%;" title="">
+        <div style="height: 8px;"></div>
+        <div id="button_List" style="border: 1px solid #e8e8e8; float: left; height: 335px; overflow: auto; padding: 3px; width: 220px;">
+            <div style="width: 94%;">
+                @Html.LoadWorkflowButton()
+            </div>
+        </div>
+        <div style="float: left; padding-top: 100px; text-align: center; width: 50px;">
+            <input type="button" class="mybutton button1" value="添加" onclick=" button_add(); "><br><br>
+            <input type="button" class="mybutton button1" value="删除" onclick=" button_remove(); ">
+        </div>
+        <div id="button_Select" style="border: 1px solid #e8e8e8; float: left; height: 335px; overflow: auto; padding: 3px; width: 220px;">
+            <div style="width: 94%;" id="button_have">
+
+            </div>
+        </div>
+        <div style="float: left; height: 335px; width: 20px;"></div>
+        <div id="button_Note" style="border: 1px solid #e8e8e8; float: left; height: 335px; overflow: auto; overflow: auto; padding: 3px; width: 150px;">
+            <div style="font-weight: bold; line-height: 22px;">按钮说明：</div>
+            <div id="button_Note1" style="line-height: 22px;"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+<div title="数据"></div>
+<div title="事件">
+    <table class="complex-table" style="margin-left: 3px; width: 99%">
+        <tr>
+            <th style="width: 130px;">步骤提交前事件：</th>
+            <td>
+                <input id="ActivityEventSubmitBefore" name="ActivityEventSubmitBefore" type="text">
+            </td>
+        </tr>
+        <tr>
+            <th>步骤提交后事件：</th>
+            <td>
+                <input id="ActivityEventSubmitAfter" name="ActivityEventSubmitAfter" type="text">
+            </td>
+        </tr>
+        <tr>
+            <th>步骤退回前事件：</th>
+            <td>
+                <input id="ActivityEventBackBefore" name="ActivityEventBackBefore" type="text">
+            </td>
+        </tr>
+        <tr>
+            <th>步骤退回后事件：</th>
+            <td>
+                <input id="ActivityEventBackAfter" name="ActivityEventBackAfter" type="text">
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>
+</div>
+<script id="buttons-template" type="text/html">
+    {{each ActivityButtons as button i}}
+    <ul class="listulli" script="{{button.Script}}" note="{{button.Remarks}}" title="{{button.Remarks}}" val="{{button.ButtonId}}" onmouseover=" $(this).removeClass().addClass('listulli1'); " onmouseout=" if ($currentButton == null || $currentButton.get(0) !== this) {$(this).removeClass().addClass('listulli');} " onclick=" button_click(this); " ondblclick=" button_dblclick(this) ">
+        <label style="background: url(/Contents/images/icons/{{button.Icon}}.png) no-repeat left; padding-left: 20px;">{{button.Title}}</label>
+    </ul>
+    {{/each}}
+</script>
+@*引入easyui*@
+<script src="~/Scripts/lib/jquery-1.7.2.min.js"></script>
+<link href="~/Scripts/lib/easyui/themes/icon.css" rel="stylesheet"/>
+<link href="~/Scripts/lib/easyui/themes/default/easyui.css" rel="stylesheet"/>
+<script src="~/Scripts/lib/easyui/jquery.easyui.min.js"></script>

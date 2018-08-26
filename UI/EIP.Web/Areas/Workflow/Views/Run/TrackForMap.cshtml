@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>流程预览</title>
+    <script src="~/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/app/function.js"></script>
+   
+    @*ArtDialog*@
+    <link href="~/Scripts/lib/artdialog/skins/chrome.css" rel="stylesheet" />
+    <script src="~/Scripts/lib/artdialog/artDialog.source.js"></script>
+    <script src="~/Scripts/lib/artdialog/plugins/iframeTools.source.js"></script>
+
+    @*GooFlow*@
+    <link href="~/Scripts/lib/gooflow/default.css" rel="stylesheet" />
+    <link href="~/Scripts/lib/gooflow/codebase/GooFlow2.css" rel="stylesheet" />
+    <script src="~/Scripts/lib/gooflow/codebase/GooFlow.js"></script>
+    <script src="~/Scripts/lib/gooflow/GooFunc.js"></script>
+
+    <script src="~/Scripts/app/workflow/designer/preview.js"></script>
+</head>
+@model EIP.Workflow.Models.Dtos.Engine.WorkflowEngineTrackForMapOutput
+<body style="overflow: hidden; width: auto; height: auto; margin: 0px; position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; padding: 5px; ">
+    <div id="workflow"></div>
+    <div id="designJson" style="display: none">
+        @Html.Raw(@Model.DesignJson)
+    </div>
+</body>
+</html>

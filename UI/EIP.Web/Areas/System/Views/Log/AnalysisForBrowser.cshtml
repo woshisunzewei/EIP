@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>浏览器使用分析</title>
+    <script src="~/Scripts/lib/echarts/echarts.js"></script>
+    <script src="~/Scripts/lib/jquery-1.7.2.min.js"></script>
+    <script src="~/Scripts/app/function.js"></script>
+    <script src="~/Scripts/resource/language_zh.js"></script>
+    <link href="/Contents/analysis/css/css.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="rig_lm02">
+        <div class="title">
+            <img src="/Contents/analysis/images/listicon.jpg" class="icon" style="padding-top:13px;" />
+            <h2>浏览器使用分析</h2>
+        </div>
+        <div class="detail">
+            <div class="det_inner" id="browserAnalysis" style="height: 500px"></div>
+            <script type="text/javascript">
+                function UtilWindowHeightWidth() {
+                    var winW, winH;
+                    if (window.innerHeight) { // all except IE
+                        winW = window.innerWidth;
+                        winH = window.innerHeight;
+                    } else if (document.documentElement && document.documentElement.clientHeight) { // IE 6 Strict Mode
+                        winW = document.documentElement.clientWidth;
+                        winH = document.documentElement.clientHeight;
+                    } else if (document.body) { // other
+                        winW = document.body.clientWidth;
+                        winH = document.body.clientHeight;
+                    }
+                    return { WinW: winW, WinH: winH };
+                };
+
+                window.onload = function () {
+                    document.getElementById("browserAnalysis").style.minHeight = (UtilWindowHeightWidth().WinH - 80) + "px";
+                }
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('browserAnalysis'));
+                var option = null;
+                UtilAjaxPost("/Demo/Echarts/GetBrowserAnalysis", {}, function (data) {
+                    // 指定图表的配置项和数据
+                    option = {
+                        title: {
+                            text: '浏览器使用分析',
+                            x: 'center'
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                restore: { show: true },
+                                saveAsImage: { show: true },
+                                dataView: { show: true },
+                                magicType: {
+                                    type: ['line', 'bar', 'stack', 'tiled']
+                                }
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                            data: ['Firefox', 'Chrome', 'InternetExplorer', '其他']
+                        },
+                        series: [
+                            {
+                                //roseType:true,
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: '55%',
+                                center: ['50%', '60%'],
+                                data: data,
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                }
+                );
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+            </script>
+        </div>
+    </div>
+</body>
+</html>

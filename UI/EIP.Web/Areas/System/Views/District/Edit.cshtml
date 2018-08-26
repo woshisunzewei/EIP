@@ -1,0 +1,93 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.System.Models.Enums
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "省市区县信息编辑";
+    ViewBag.Require = "system-district-edit";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@model EIP.System.Models.Entities.SystemDistrict
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请填写省市县信息",
+    Remark = "注：带*号的为必填信息！编辑时代码不可编辑,可删除后新增,或联系管理员修改"
+})
+<div class="edit-content">
+    <table class="complex-table">
+        <tbody>
+            <tr>
+                <th style="width: 100px" class="m">代码：</th>
+                <td>
+                    @(string.IsNullOrEmpty(Model.DistrictId) ? Html.TextBoxFor(f => @Model.DistrictId, new {datatype = "n", ajaxurl = "/System/District/CheckDistrictId?id=" + @Model.DistrictId}) : Html.TextBoxFor(f => @Model.DistrictId, new {disabled = "disabled"}))
+                </td>
+            </tr>
+            <tr>
+                <th class="m">名称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Name, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th>简称：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.ShortName, new { datatype = "*1-64", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">等级：</th>
+                <td>
+                    @Html.DropDownListEnum(new DropDownListEnumInput
+                    {
+                        EnumType = (typeof(EnumDistrictLevelType)),
+                        Name = "LevelType",
+                        SelectedVal = @Model.LevelType
+                    })
+                </td>
+            </tr>
+            <tr>
+                <th>城市代码：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.CityCode, new { datatype = "*1-16", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>邮编：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.ZipCode, new { datatype = "*1-16", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>经度：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Lng, new { datatype = "*1-32", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th>纬度：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.Lat, new { datatype = "*1-32", ignore = "ignore" })
+                </td>
+            </tr>
+            <tr>
+                <th class="m">拼音：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.PinYin, new { datatype = "*1-64" })
+                </td>
+            </tr>
+            <tr>
+                <th>冻结：</th>
+                <td>
+                    @Html.CheckBoxFor(f => @Model.IsFreeze)
+                </td>
+            </tr>
+            <tr>
+                <th>序号：</th>
+                <td>
+                    @Html.TextBoxFor(f => @Model.OrderNo, new { datatype = "n", ignore = "ignore" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@Html.HiddenFor(f => @Model.ParentId)

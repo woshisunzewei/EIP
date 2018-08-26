@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "角色选择";
+    ViewBag.Require = "system-role-chosen";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+
+@model IList<EIP.System.Models.Dtos.Identity.SystemUserRoleOutput>
+<div class="note-prompt" style="margin: 1px;">
+    温馨提示：选中复选框即可授予相应权限，取消选中则回收相应权限。
+</div>
+<div id="layout" class="layoutdiv" style="top: 42px; border-top: 1px solid rgb(204, 204, 204);" >
+    <div id="listcenter" class="ui-layout-west" style="border-style: none">
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" loadTree(); return false; "><span class="l-icon-reload">刷新组织机构</span></a>
+            </div>
+        </div>
+        <ul id="tree" class="ztree" style="height: 336px; padding: 5px;"></ul>
+    </div>
+    <div id="uiNorth" class="ui-layout-center">
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" selectAll(); return false; "><span class="l-icon-ui-check-box">全选</span></a>
+               
+            </div>
+            <div class="tools-box-right grid_search">
+                帐号/姓名：<input name="txtKeywords" class="txtInput" id="txtKeywords" type="text" placeholder="请输入帐号/姓名查询">
+                <input class="btnSearch" id="btnSearch" type="button" onclick=" search(); " value="搜 索">
+            </div>
+        </div>
+        @*显示所有人员信息*@
+        <div style="height: 336px; padding: 5px;" class="ScrollBar">
+            <ul class="sys_spec_text">
+                @{
+                    foreach (var m in Model)
+                    {
+                        string className = m.Exist ? "selected" : "";
+                        <li title="@m.Name" searchname="@m.Name.ToLower()" name="@m.OrganizationId" class="@className">
+                            <a id="@m.RoleId">
+                                @m.Name
+                            </a><i></i>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,366 @@
+﻿/* 局部样式 */
+@charset "utf-8";
+
+body {
+    font-family: microsoft yahei !important;
+    background-color: #f0f0f0;
+    background: url(di15.png) no-repeat;
+    color: #272636;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: normal;
+    cursor: pointer;
+    text-align: left;
+}
+
+ul, ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+
+form {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+input, select {
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+}
+
+img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    border: 1px solid #d0d7e0;
+}
+
+table, tr, td {
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    border-radius;
+}
+
+/* 通用属性 */
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
+
+/* 链接样式 */
+a:link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #62adf1 !important;
+}
+
+a:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.zw_logoc {
+    width: 1000px;
+    height: 130px;
+    margin: auto;
+}
+
+.zw_logo {
+    width: 630px;
+    height: 130px;
+    overflow: hidden;
+    float: left;
+}
+
+/*焦点图*/
+.focus {
+    position: relative;
+    width: 635px;
+    height: 414px;
+    float: left;
+}
+
+    .focus img {
+        width: 635px;
+        height: 414px;
+    }
+
+    .focus .shadow .title {
+        width: 260px;
+        height: 65px;
+        padding-left: 30px;
+        padding-top: 20px;
+    }
+
+        .focus .shadow .title a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bolder;
+            overflow: hidden;
+        }
+
+    .focus .fpic {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .focus .d1fbt {
+        overflow: hidden;
+        zoom: 1;
+        height: 16px;
+        z-index: 10;
+    }
+
+    .focus .shadow {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0px;
+        z-index: 10;
+        height: 50px;
+        line-height: 50px;
+        background: rgba(0,0,0,0.6);
+        filter: progid:dximagetransform.microsoft.gradient( gradienttype = 0,startcolorstr = '#80000000',endcolorstr = '#80000000')\9;
+        display: block;
+        text-align: left;
+    }
+
+        .focus .shadow a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            overflow: hidden;
+            margin-left: 10px;
+            font-family: "\5fae\8f6f\96c5\9ed1";
+        }
+
+    .focus .fcon {
+        position: relative;
+        width: 100%;
+        float: left;
+        display: none;
+        background: #000;
+    }
+
+        .focus .fcon img {
+            display: block;
+        }
+
+    .focus .fbg {
+        bottom: 14px;
+        position: absolute;
+        text-align: center;
+        z-index: 20;
+    }
+
+        .focus .fbg div {
+            margin: 18px auto 0;
+            overflow: hidden;
+            zoom: 1;
+            height: 14px;
+            margin-left: 500px;
+        }
+
+    .focus .d1fbt a {
+        position: relative;
+        display: inline;
+        width: 12px;
+        height: 12px;
+        border-radius: 7px;
+        margin: 0 5px;
+        color: #b0b0b0;
+        font: 12px/15px "\5b8b\4f53";
+        text-decoration: none;
+        text-align: center;
+        outline: 0;
+        float: right;
+        background: #d9d9d9;
+    }
+
+        .focus .d1fbt .current, .focus .d1fbt a:hover {
+            background: #ff5a00;
+        }
+
+    .focus .d1fbt img {
+        display: none;
+    }
+
+    .focus .d1fbt i {
+        display: none;
+        font-style: normal;
+    }
+
+    .focus .prev, .focus .next {
+        position: absolute;
+        width: 40px;
+        height: 74px;
+        background: url(focus_btn.png) no-repeat;
+    }
+
+    .focus .prev {
+        top: 50%;
+        margin-top: -37px;
+        left: 0;
+        background-position: 0 -74px;
+        cursor: pointer;
+    }
+
+    .focus .next {
+        top: 50%;
+        margin-top: -37px;
+        right: 0;
+        background-position: -40px -74px;
+        cursor: pointer;
+    }
+
+    .focus .prev:hover {
+        background-position: 0 0;
+    }
+
+    .focus .next:hover {
+        background-position: -40px 0;
+    }
+
+
+.show-bg {
+    background-color: white;
+    width: 904px;
+    min-height: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#content {
+    font-size: 15px;
+    line-height: 27px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 830px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+
+.showbox { /*border-top:5px solid #F50000;*/
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    background-color: #FFF;
+}
+
+    .showbox .st {
+        font-size: 18px;
+        line-height: 33px;
+        text-align: center;
+        display: block;
+        color: rgb(204, 0, 0);
+        font-family: 微软雅黑;
+        font-weight: bold;
+    }
+
+    .showbox .nav {
+        line-height: 35px;
+        margin-right: auto;
+        margin-left: auto;
+        color: #666;
+        height: 35px;
+        text-align: center;
+        width: 830px;
+    }
+
+    .showbox .ft {
+        font-size: 14px;
+        display: block;
+        text-align: center;
+        line-height: 30px;
+        color: #333;
+        width: 799px;
+        margin-right: auto;
+        margin-left: auto;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #E3E3E3;
+        padding-bottom: 11px;
+    }
+
+    .showbox .contentPrint {
+        text-align: right;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        clear: both;
+    }
+
+.select_box {
+    float: left;
+    border: solid 1px #CFCFCF;
+    color: #000;
+    position: relative;
+    cursor: pointer;
+    width: 204px;
+    font-size: 12px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.zw_foot {
+    width: 906px;
+    background: url(index_r25_c4.jpg) repeat-x;
+    overflow: hidden;
+    margin: 0px auto;
+    padding-top:20px;
+    text-align: center;
+    clear: both;
+}
+
+    .zw_foot p {
+        line-height: 30px;
+        color: #777;
+    }
+
+        .zw_foot p a {
+            color: #777;
+        }

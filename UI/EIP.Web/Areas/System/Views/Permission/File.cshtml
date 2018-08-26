@@ -1,0 +1,177 @@
+﻿@using EIP.Common.Entities.Dtos
+@using EIP.Web.DataUsers.Helpers
+
+@{
+    ViewBag.Title = "FieldPermission";
+    Layout = "~/Views/Shared/_LayoutPageEditSubmit.cshtml";
+}
+@section Head
+{
+    @*布局*@
+    <link href="@ViewBag.Path/Scripts/lib/layout/layout-default-latest.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/layout/jquery-ui-latest.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/layout/jquery.layout-latest.js"></script>
+
+    @*ztree树*@
+    <link href="@ViewBag.Path/Scripts/lib/ztree/zTreeStyle.css" rel="stylesheet" />
+    <script src="@ViewBag.Path/Scripts/lib/ztree/js/jquery.ztree.core-3.5.js"></script>
+    <script src="@ViewBag.Path/Scripts/lib/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+    <script src="@ViewBag.Path/Scripts/app/system/permission/function.js"></script>
+
+    <script type="text/javascript">
+        var
+            fieldZNodes, //模块按钮节点
+            fieldTreeObj, //模块按钮树对象
+            fieldSetting, //功能性树设置
+            $fieldGrid, //字段权限列表
+            size = UtilWindowHeightWidth();
+
+        //初始化菜单
+        function initFieldMenuTree() {
+            //配置
+            fieldSetting = {
+                view: {
+                    dblClickExpand: false,
+                    showLine: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+                callback: {
+                    onClick: function (e, treeId, treeNode) {
+                        if (treeNode.isParent) {
+                            var zTree = $.fn.zTree.getZTreeObj("fieldTree");
+                            zTree.expandNode(treeNode);
+                        } else {
+                            //加载数据
+                            getFieldGridData(treeNode.id);
+                            //根据角色获取具有的字段权限信息
+                            UtilAjaxPost("/SysSetting/Permission/GetFieldPermissionByRoleId", { roleId: UtilGetUrlParam("roleId") }, function (data) {
+                                var rowData = $fieldGrid.jqGrid('getRowData');
+                                for (var i = 0; i < data.length; i++) {
+                                    if (rowData.length) {
+                                        for (var j = 1; j <= rowData.length; j++) {
+                                            var fieldId = $fieldGrid.jqGrid('getCell', j, 'FieldId');
+                                            if (fieldId === data[i].FieldId) {
+                                                GridSetSelection($fieldGrid, j);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            };
+            fieldTreeObj = $.fn.zTree.init($("#fieldTree"),
+                fieldSetting, fieldZNodes);
+        }
+
+        //初始化树结构
+        function initFieldTreeData() {
+            UtilAjaxPost("/System/Permission/GetMenuHavePermissionByPrivilegeMasterValue", {
+                privilegeMasterValue: UtilGetUrlParam("privilegeMasterValue"),
+                privilegeMaster: UtilGetUrlParam("privilegeMaster"),
+                PrivilegeAccess: Language.privilegeAccess.data//字段
+            }, function (data) {
+                fieldZNodes = data;
+                initFieldMenuTree();
+            });
+        }
+
+        //初始化字段列表
+        function initFieldGrid() {
+            $fieldGrid = $("#fieldList").jgridview(
+            {
+                multiselect: true,
+                colModel: [
+                    { name: "FieldId", index: "FieldId", hidden: true },
+                    { label: "字段名称", name: "FieldName", index: "FieldName", width: 100, fixed: true },
+                    { label: "显示名称", name: "FieldShowName", index: "FieldShowName", width: 100, fixed: true },
+                    { label: "排序名称", name: "FieldSortName", index: "FieldSortName", width: 100, fixed: true },
+                    { label: "列宽", name: "FieldColumnWidth", index: "FieldColumnWidth", width: 50, fixed: true }
+                ],
+                height: size.WinH - 125,
+                pager: "fieldPager",
+                rownumWidth: 43
+            });
+        }
+
+        //获取表格数据
+        function getFieldGridData(treeId) {
+            UtilAjaxPost("/System/Field/GetFieldByMenuId", { id: treeId },
+                function (data) {
+                    GridReloadLoadOnceData($fieldGrid, data);
+                });
+        }
+
+        //初始化布局
+        function initLayout() {
+            $("body").layout({
+                "west": {
+                    size: "210",
+                    closable: false,
+                    resizable: false,
+                    sliderTip: "显示/隐藏侧边栏", //在某个Pane隐藏后，当鼠标移到边框上显示的提示语。
+                    togglerTip_open: "关闭", //pane打开时，当鼠标移动到边框上按钮上，显示的提示语
+                    togglerTip_closed: "打开", //pane关闭时，当鼠标移动到边框上按钮上，显示的提示语
+                    resizerTip: "可调整大小", //鼠标移到边框时，提示语
+                    slidable: false
+                },
+                "center": {
+                    onresize_end: function () {
+
+                    }
+                }
+            });
+        }
+
+        //页面初始化执行
+        $(function () {
+            initLayout();
+            initFieldGrid();
+            initFieldTreeData();
+        });
+    </script>
+}
+@Html.EditTopRemark(new EditTopRemarkInput()
+{
+    Title = "请选择权限",
+    Remark = "温馨提示：选中复选框即可授予相应权限，取消选中则回收相应权。<span style='color: red'>点击左侧菜单查看模块按钮信息</span>"
+})
+<div id="layout" class="layoutdiv" style="top: 34px;">
+    <div id="functionContainer" class="ui-layout-center" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; ">
+        @*工具条*@
+        <div class="tools_box">
+            <div class="toolbar">
+                <a href="javascript:void(0);" onclick=" selectall(); return false; "><span class="l-icon-ui-check-boxes-series">全选/反选</span></a>
+            </div>
+        </div>
+        @Html.MessageBox(new MessageBoxInput()
+            {
+                HtmlAttributes = " width='335'",
+                MessageBoxType = EnumMessageBoxType.info,
+                Msg = "点击左侧菜单查看模块按钮信息"
+            })
+        <div id="div_filed">
+            @*列表*@
+            <table id="fieldList"></table>
+            <div id="fieldPager"></div>
+            @*列表*@
+        </div>
+    </div>
+
+    <div id="uiWest" class="ui-layout-west" style="border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; position: absolute; margin: 0px; left: 2px; right: auto; top: 2px; bottom: 2px; height: 517px; z-index: 0; width: 198px; display: block; visibility: visible;">
+        @*工具条*@
+        <div class="tools-box">
+            <div class="tools-box-left">
+                <a href="javascript:void(0);" onclick=" arrowin(); return false; "><span id="arrowin" class="l-icon-arrow-out">展开</span></a>
+            </div>
+        </div>
+        @*工具条*@
+        <ul id="fieldTree" class="ztree" style="height: 383px; width: 197px; "></ul>
+    </div>
+</div>
