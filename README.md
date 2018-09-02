@@ -5,8 +5,11 @@
 
 
  **请右上角关注此源码为方便.net开发人员知晓该源码**
-
-Core2版本:http://www.eipflow.com/Account/Login   用户名admin 密码 123456
+http://www.eipflow.com/
+Core2版本:
+http://www.eipflow.com:9998/Account/Login
+http://www.eipflow.com:8080/Account/Login
+用户名admin 密码 123456
 
 一、更新记录1、更新日期：2017-02-24 00:00:002、更新内容：  版本升级:V2.0      
  1、支持多数据库,可在实体类指定具体操作数据库,可实现系统分库操作       
@@ -14,8 +17,6 @@ Core2版本:http://www.eipflow.com/Account/Login   用户名admin 密码 123456
 3、编写系统配套的web代码生成器,直接生成系统文件。减少开发时间       
 4、增加个人日程管理组件,方便快捷的管理日程       
 5、日志输出到数据库,可随时查看系统运行状况,SQL执行情况,数据库数据增删改情况,修改增加数据对比功能。可看到哪些数据进行了修改
-
-6、在线地址:http://118.24.107.78:1234/Account/Login
 一、源码介绍       
 1、系统采用Vs2013+SqlServer2008R2+Asp.net MVC+Dapper等各种组件组成,界面美观大方,具有无限的扩展能力。       
 2、系统设计为通用平台,可用作ERP、OA、CRM等系统的基础开发框架,具有成熟的数据访问(Dapper)、作业调度(Quartz.net)、日志记录(Log4Net)、权限控制
